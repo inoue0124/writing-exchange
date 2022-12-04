@@ -52,6 +52,8 @@ class _TabBarPageState extends State<TabBarPage> {
       appBar: AppBar(
         title: const Text('BottomNavigationBar Sample'),
         backgroundColor: Theme.of(context).backgroundColor,
+        bottomOpacity: 0.0,
+        elevation: 0.0,
       ),
       body: body(_selectedIndex),
       bottomNavigationBar: BottomNavigationBar(

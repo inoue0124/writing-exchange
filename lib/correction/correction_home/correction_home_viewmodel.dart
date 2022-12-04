@@ -12,7 +12,7 @@ class CorrectionHomeViewModel
   Future<void> _fetchDashBoardData() async {
     state = const AsyncLoading();
     sleep(
-      const Duration(seconds: 10),
+      const Duration(seconds: 2),
     );
     state = const AsyncData(
       CorrectionHomeState(

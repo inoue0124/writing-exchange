@@ -2,5 +2,9 @@
   "@@locale":"en",
   "correctionCount": "Correction Count",
   "reviewPoint": "Your Rating",
-  "correctionCredit": "Correction Credit"
+  "correctionCredit": "Correction Credit",
+  "waitingCorrection": "Waiting correction",
+  "alredyCorrected": "Already corrected",
+  "correct": "Correct",
+  "updateCorrection": "Update correction"
 }

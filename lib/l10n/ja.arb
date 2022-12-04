@@ -2,5 +2,9 @@
   "@@locale":"ja",
   "correctionCount": "添削回数",
   "reviewPoint": "レビュー点数",
-  "correctionCredit": "クレジット"
+  "correctionCredit": "クレジット",
+  "waitingCorrection": "添削待ちの投稿",
+  "alredyCorrected": "添削済み一覧",
+  "Correct": "添削する",
+  "update": "添削を修正する"
 }
