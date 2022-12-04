@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:writing_exchange/correction/correction.dart';
+import 'package:writing_exchange/correction/correction_home/correction_home_view.dart';
 import 'package:writing_exchange/writing/list.dart';
 
 class TabBarPage extends StatefulWidget {
@@ -40,9 +40,9 @@ class _TabBarPageState extends State<TabBarPage> {
     Widget body(int index) {
       switch (index) {
         case 0:
-          return const WritingListPage();
+          return CorrectionHomeView();
         case 1:
-          return const CorrectionPage();
+          return const WritingListPage();
         default:
           return const SizedBox.shrink();
       }
