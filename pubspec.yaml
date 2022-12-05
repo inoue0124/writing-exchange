@@ -15,9 +15,9 @@ dependencies:
   freezed: ^1.1.1
   freezed_annotation: ^1.1.0
   cupertino_icons: ^1.0.2
-  flutter_localizations:
-    sdk: flutter
-  intl: "^0.17.0"
+  slang: ^3.5.0
+  slang_flutter: ^3.5.0
+  pretty_diff_text: ^1.0.0
 
 dev_dependencies:
   flutter_test:

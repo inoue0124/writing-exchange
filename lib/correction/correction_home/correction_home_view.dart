@@ -3,13 +3,18 @@ import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:writing_exchange/components/post_list_item.dart';
 import 'package:writing_exchange/components/dashboard.dart';
 import 'package:writing_exchange/correction/correction_home/correction_home_viewmodel.dart';
-import 'package:flutter_gen/gen_l10n/app_localizations.dart';
+import 'package:writing_exchange/i18n/strings.g.dart';
 import 'package:writing_exchange/model/post.dart';
 import 'package:writing_exchange/model/user.dart';
 
 class CorrectionHomeView extends ConsumerWidget {
-  CorrectionHomeView({super.key});
+  CorrectionHomeView({
+    super.key,
+    required this.onPressEdit,
+  });
+
   final ScrollController _homeController = ScrollController();
+  Function() onPressEdit;
 
   @override
   Widget build(BuildContext context, WidgetRef ref) {
@@ -35,64 +40,74 @@ class CorrectionHomeView extends ConsumerWidget {
           loading: CircularProgressIndicator.new,
           error: (error, stacktrace) => Text(error.toString()),
           data: (state) {
-            return SingleChildScrollView(
-              controller: _homeController,
-              child: Padding(
-                padding: const EdgeInsets.all(16),
-                child: Wrap(
-                  runSpacing: 16,
-                  children: [
-                    DashBoard(
-                      correctionCount: state.correctionCount,
-                      reviewPoint: state.reviewPoint,
-                      creditCount: state.creditCount,
-                    ),
-                    Padding(
-                      padding: const EdgeInsets.symmetric(
-                        horizontal: 8,
+            return Scaffold(
+              appBar: AppBar(
+                title: Text(
+                  'Writing Exchange',
+                  style: Theme.of(context).textTheme.headline5,
+                ),
+                backgroundColor: Theme.of(context).backgroundColor,
+                bottomOpacity: 0.0,
+                elevation: 0.0,
+              ),
+              body: SingleChildScrollView(
+                controller: _homeController,
+                child: Padding(
+                  padding: const EdgeInsets.all(16),
+                  child: Wrap(
+                    runSpacing: 16,
+                    children: [
+                      DashBoard(
+                        correctionCount: state.correctionCount,
+                        reviewPoint: state.reviewPoint,
+                        creditCount: state.creditCount,
                       ),
-                      child: SizedBox(
-                        width: double.infinity,
-                        child: Text(
-                          AppLocalizations.of(context)!.waitingCorrection,
-                          style: Theme.of(context).textTheme.headline5,
+                      Padding(
+                        padding: const EdgeInsets.symmetric(
+                          horizontal: 8,
+                        ),
+                        child: SizedBox(
+                          width: double.infinity,
+                          child: Text(
+                            t.waitingCorrection,
+                            style: Theme.of(context).textTheme.headline5,
+                          ),
                         ),
                       ),
-                    ),
-                    PostListItem(
-                      title: waitingCorrectionPost.title,
-                      body: waitingCorrectionPost.body,
-                      imageUrls: waitingCorrectionPost.imageUrls,
-                      correctedCount: waitingCorrectionPost.correctedCount,
-                      editButtonTitle: AppLocalizations.of(context)!.correct,
-                      onPressEdit: () {},
-                    ),
-                    const SizedBox(
-                      height: 16,
-                    ),
-                    Padding(
-                      padding: const EdgeInsets.symmetric(
-                        horizontal: 8,
-                      ),
-                      child: SizedBox(
-                        width: double.infinity,
-                        child: Text(
-                          AppLocalizations.of(context)!.alredyCorrected,
-                          style: Theme.of(context).textTheme.headline5,
-                        ),
-                      ),
-                    ),
-                    for (var post in correctedPosts)
                       PostListItem(
-                        title: post.title,
-                        body: post.body,
-                        imageUrls: post.imageUrls,
-                        correctedCount: post.correctedCount,
-                        editButtonTitle:
-                            AppLocalizations.of(context)!.updateCorrection,
-                        onPressEdit: () {},
+                        title: waitingCorrectionPost.title,
+                        body: waitingCorrectionPost.body,
+                        imageUrls: waitingCorrectionPost.imageUrls,
+                        correctedCount: waitingCorrectionPost.correctedCount,
+                        editButtonTitle: t.correct,
+                        onPressEdit: onPressEdit,
                       ),
-                  ],
+                      const SizedBox(
+                        height: 16,
+                      ),
+                      Padding(
+                        padding: const EdgeInsets.symmetric(
+                          horizontal: 8,
+                        ),
+                        child: SizedBox(
+                          width: double.infinity,
+                          child: Text(
+                            t.alredyCorrected,
+                            style: Theme.of(context).textTheme.headline5,
+                          ),
+                        ),
+                      ),
+                      for (var post in correctedPosts)
+                        PostListItem(
+                          title: post.title,
+                          body: post.body,
+                          imageUrls: post.imageUrls,
+                          correctedCount: post.correctedCount,
+                          editButtonTitle: t.updateCorrection,
+                          onPressEdit: () {},
+                        ),
+                    ],
+                  ),
                 ),
               ),
             );

@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_gen/gen_l10n/app_localizations.dart';
+import 'package:writing_exchange/i18n/strings.g.dart';
 
 class DashBoard extends StatelessWidget {
   const DashBoard({
@@ -22,8 +22,7 @@ class DashBoard extends StatelessWidget {
         child: Row(
           mainAxisAlignment: MainAxisAlignment.center,
           children: [
-            _item(
-                AppLocalizations.of(context)!.correctionCount, correctionCount),
+            _item(t.correctionCount, correctionCount),
             const VerticalDivider(
               width: 20,
               thickness: 1,
@@ -31,7 +30,7 @@ class DashBoard extends StatelessWidget {
               endIndent: 0,
               color: Colors.grey,
             ),
-            _item(AppLocalizations.of(context)!.reviewPoint, reviewPoint),
+            _item(t.reviewPoint, reviewPoint),
             const VerticalDivider(
               width: 20,
               thickness: 1,
@@ -39,7 +38,7 @@ class DashBoard extends StatelessWidget {
               endIndent: 0,
               color: Colors.grey,
             ),
-            _item(AppLocalizations.of(context)!.correctionCredit, creditCount),
+            _item(t.correctionCredit, creditCount),
           ],
         ),
       ),
