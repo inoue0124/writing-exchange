@@ -16,13 +16,14 @@ class MyApp extends StatelessWidget {
       theme: ThemeData(
         brightness: Brightness.light,
         backgroundColor: Colors.white,
+        scaffoldBackgroundColor: const Color.fromRGBO(246, 246, 246, 1),
         textTheme: const TextTheme(
           bodyText1: TextStyle(color: Color.fromRGBO(0, 0, 0, 1)),
         ),
       ),
       darkTheme: ThemeData.dark(),
       themeMode: ThemeMode.system,
-      home: App(),
+      home: const App(),
     );
   }
 }

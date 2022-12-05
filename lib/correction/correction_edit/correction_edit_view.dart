@@ -17,6 +17,7 @@ class CorrectionEditView extends ConsumerWidget {
           error: (error, stacktrace) => Text(error.toString()),
           data: (state) {
             return Scaffold(
+              backgroundColor: Theme.of(context).scaffoldBackgroundColor,
               appBar: AppBar(
                 title: Text(
                   'Writing Exchange',

@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
+import 'package:flutter_staggered_grid_view/flutter_staggered_grid_view.dart';
 import 'package:writing_exchange/components/post_list_item.dart';
 import 'package:writing_exchange/components/dashboard.dart';
 import 'package:writing_exchange/correction/correction_home/correction_home_viewmodel.dart';
@@ -41,6 +42,7 @@ class CorrectionHomeView extends ConsumerWidget {
           error: (error, stacktrace) => Text(error.toString()),
           data: (state) {
             return Scaffold(
+              backgroundColor: Theme.of(context).scaffoldBackgroundColor,
               appBar: AppBar(
                 title: Text(
                   'Writing Exchange',
@@ -97,15 +99,24 @@ class CorrectionHomeView extends ConsumerWidget {
                           ),
                         ),
                       ),
-                      for (var post in correctedPosts)
-                        PostListItem(
-                          title: post.title,
-                          body: post.body,
-                          imageUrls: post.imageUrls,
-                          correctedCount: post.correctedCount,
-                          editButtonTitle: t.updateCorrection,
-                          onPressEdit: () {},
-                        ),
+                      MasonryGridView.count(
+                        shrinkWrap: true,
+                        primary: false,
+                        itemCount: post.imageUrls.length,
+                        crossAxisCount: 2,
+                        mainAxisSpacing: 4,
+                        crossAxisSpacing: 4,
+                        itemBuilder: (context, index) {
+                          return PostListItem(
+                            title: post.title,
+                            body: post.body,
+                            imageUrls: post.imageUrls,
+                            correctedCount: post.correctedCount,
+                            editButtonTitle: t.updateCorrection,
+                            onPressEdit: () {},
+                          );
+                        },
+                      ),
                     ],
                   ),
                 ),

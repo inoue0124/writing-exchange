@@ -23,7 +23,7 @@ class PostListItem extends StatelessWidget {
     return Card(
       elevation: 0,
       shape: RoundedRectangleBorder(
-        borderRadius: BorderRadius.circular(16),
+        borderRadius: BorderRadius.circular(4),
       ),
       clipBehavior: Clip.antiAliasWithSaveLayer,
       child: Column(
@@ -51,7 +51,7 @@ class PostListItem extends StatelessWidget {
                     )
               : const SizedBox.shrink(),
           Padding(
-            padding: const EdgeInsets.only(right: 16, left: 16, top: 8),
+            padding: const EdgeInsets.all(8),
             child: Column(
               mainAxisAlignment: MainAxisAlignment.start,
               children: [
@@ -91,10 +91,6 @@ class PostListItem extends StatelessWidget {
                       ],
                     ),
                     const Spacer(),
-                    TextButton(
-                      onPressed: onPressEdit,
-                      child: Text(editButtonTitle),
-                    )
                   ],
                 ),
               ],
