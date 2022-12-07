@@ -2,7 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:writing_exchange/app/tab_helper.dart';
 import 'package:writing_exchange/correction/correction_edit/correction_edit_view.dart';
 import 'package:writing_exchange/correction/correction_home/correction_home_view.dart';
-import 'package:writing_exchange/writing/writing_home/list.dart';
+import 'package:writing_exchange/writing/writing_home/writing_home_view.dart';
 
 class TabNavigatorRoutes {
   static const String correctionHome = '/';
@@ -37,7 +37,8 @@ class TabNavigator extends StatelessWidget {
                 _push(context, TabNavigatorRoutes.correctionEdit),
           ),
       TabNavigatorRoutes.correctionEdit: (context) => CorrectionEditView(),
-      TabNavigatorRoutes.writingHome: (context) => const WritingListPage(),
+      TabNavigatorRoutes.writingHome: (context) =>
+          CorrectionHomeView(onPressEdit: () => {}),
     };
   }
 
