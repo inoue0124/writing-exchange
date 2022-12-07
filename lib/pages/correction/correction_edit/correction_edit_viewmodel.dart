@@ -1,7 +1,5 @@
-import 'dart:io';
-
 import 'package:flutter_riverpod/flutter_riverpod.dart';
-import 'package:writing_exchange/correction/correction_Edit/correction_edit_state.dart';
+import 'package:writing_exchange/pages/correction/correction_edit/correction_edit_state.dart';
 
 class CorrectionEditViewModel
     extends StateNotifier<AsyncValue<CorrectionEditState>> {

@@ -19,11 +19,15 @@ class _$CorrectionHomeStateTearOff {
   const _$CorrectionHomeStateTearOff();
 
   _CorrectionHomeState call(
-      {int correctionCount = 0, int reviewPoint = 0, int creditCount = 0}) {
+      {int correctionCount = 0,
+      int reviewPoint = 0,
+      int creditCount = 0,
+      User? user}) {
     return _CorrectionHomeState(
       correctionCount: correctionCount,
       reviewPoint: reviewPoint,
       creditCount: creditCount,
+      user: user,
     );
   }
 }
@@ -36,6 +40,7 @@ mixin _$CorrectionHomeState {
   int get correctionCount => throw _privateConstructorUsedError;
   int get reviewPoint => throw _privateConstructorUsedError;
   int get creditCount => throw _privateConstructorUsedError;
+  User? get user => throw _privateConstructorUsedError;
 
   @JsonKey(ignore: true)
   $CorrectionHomeStateCopyWith<CorrectionHomeState> get copyWith =>
@@ -47,7 +52,10 @@ abstract class $CorrectionHomeStateCopyWith<$Res> {
   factory $CorrectionHomeStateCopyWith(
           CorrectionHomeState value, $Res Function(CorrectionHomeState) then) =
       _$CorrectionHomeStateCopyWithImpl<$Res>;
-  $Res call({int correctionCount, int reviewPoint, int creditCount});
+  $Res call(
+      {int correctionCount, int reviewPoint, int creditCount, User? user});
+
+  $UserCopyWith<$Res>? get user;
 }
 
 /// @nodoc
@@ -64,6 +72,7 @@ class _$CorrectionHomeStateCopyWithImpl<$Res>
     Object? correctionCount = freezed,
     Object? reviewPoint = freezed,
     Object? creditCount = freezed,
+    Object? user = freezed,
   }) {
     return _then(_value.copyWith(
       correctionCount: correctionCount == freezed
@@ -78,7 +87,22 @@ class _$CorrectionHomeStateCopyWithImpl<$Res>
           ? _value.creditCount
           : creditCount // ignore: cast_nullable_to_non_nullable
               as int,
+      user: user == freezed
+          ? _value.user
+          : user // ignore: cast_nullable_to_non_nullable
+              as User?,
     ));
+  }
+
+  @override
+  $UserCopyWith<$Res>? get user {
+    if (_value.user == null) {
+      return null;
+    }
+
+    return $UserCopyWith<$Res>(_value.user!, (value) {
+      return _then(_value.copyWith(user: value));
+    });
   }
 }
 
@@ -89,7 +113,11 @@ abstract class _$CorrectionHomeStateCopyWith<$Res>
           $Res Function(_CorrectionHomeState) then) =
       __$CorrectionHomeStateCopyWithImpl<$Res>;
   @override
-  $Res call({int correctionCount, int reviewPoint, int creditCount});
+  $Res call(
+      {int correctionCount, int reviewPoint, int creditCount, User? user});
+
+  @override
+  $UserCopyWith<$Res>? get user;
 }
 
 /// @nodoc
@@ -108,6 +136,7 @@ class __$CorrectionHomeStateCopyWithImpl<$Res>
     Object? correctionCount = freezed,
     Object? reviewPoint = freezed,
     Object? creditCount = freezed,
+    Object? user = freezed,
   }) {
     return _then(_CorrectionHomeState(
       correctionCount: correctionCount == freezed
@@ -122,6 +151,10 @@ class __$CorrectionHomeStateCopyWithImpl<$Res>
           ? _value.creditCount
           : creditCount // ignore: cast_nullable_to_non_nullable
               as int,
+      user: user == freezed
+          ? _value.user
+          : user // ignore: cast_nullable_to_non_nullable
+              as User?,
     ));
   }
 }
@@ -130,7 +163,10 @@ class __$CorrectionHomeStateCopyWithImpl<$Res>
 
 class _$_CorrectionHomeState implements _CorrectionHomeState {
   const _$_CorrectionHomeState(
-      {this.correctionCount = 0, this.reviewPoint = 0, this.creditCount = 0});
+      {this.correctionCount = 0,
+      this.reviewPoint = 0,
+      this.creditCount = 0,
+      this.user});
 
   @JsonKey()
   @override
@@ -141,10 +177,12 @@ class _$_CorrectionHomeState implements _CorrectionHomeState {
   @JsonKey()
   @override
   final int creditCount;
+  @override
+  final User? user;
 
   @override
   String toString() {
-    return 'CorrectionHomeState(correctionCount: $correctionCount, reviewPoint: $reviewPoint, creditCount: $creditCount)';
+    return 'CorrectionHomeState(correctionCount: $correctionCount, reviewPoint: $reviewPoint, creditCount: $creditCount, user: $user)';
   }
 
   @override
@@ -157,7 +195,8 @@ class _$_CorrectionHomeState implements _CorrectionHomeState {
             const DeepCollectionEquality()
                 .equals(other.reviewPoint, reviewPoint) &&
             const DeepCollectionEquality()
-                .equals(other.creditCount, creditCount));
+                .equals(other.creditCount, creditCount) &&
+            const DeepCollectionEquality().equals(other.user, user));
   }
 
   @override
@@ -165,7 +204,8 @@ class _$_CorrectionHomeState implements _CorrectionHomeState {
       runtimeType,
       const DeepCollectionEquality().hash(correctionCount),
       const DeepCollectionEquality().hash(reviewPoint),
-      const DeepCollectionEquality().hash(creditCount));
+      const DeepCollectionEquality().hash(creditCount),
+      const DeepCollectionEquality().hash(user));
 
   @JsonKey(ignore: true)
   @override
@@ -178,7 +218,8 @@ abstract class _CorrectionHomeState implements CorrectionHomeState {
   const factory _CorrectionHomeState(
       {int correctionCount,
       int reviewPoint,
-      int creditCount}) = _$_CorrectionHomeState;
+      int creditCount,
+      User? user}) = _$_CorrectionHomeState;
 
   @override
   int get correctionCount;
@@ -186,6 +227,8 @@ abstract class _CorrectionHomeState implements CorrectionHomeState {
   int get reviewPoint;
   @override
   int get creditCount;
+  @override
+  User? get user;
   @override
   @JsonKey(ignore: true)
   _$CorrectionHomeStateCopyWith<_CorrectionHomeState> get copyWith =>
