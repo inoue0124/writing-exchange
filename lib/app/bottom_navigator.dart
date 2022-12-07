@@ -16,8 +16,9 @@ class BottomNavigation extends StatelessWidget {
       currentIndex: currentTab.index,
       type: BottomNavigationBarType.fixed,
       items: [
-        _buildItem(tabItem: TabItem.correction),
         _buildItem(tabItem: TabItem.writing),
+        _buildItem(tabItem: TabItem.question),
+        _buildItem(tabItem: TabItem.profile),
       ],
       onTap: (index) => onSelectTab(
         TabItem.values[index],

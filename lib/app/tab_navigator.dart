@@ -1,13 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:writing_exchange/app/tab_helper.dart';
-import 'package:writing_exchange/pages/correction/correction_edit/correction_edit_view.dart';
 import 'package:writing_exchange/pages/correction/correction_home/correction_home_view.dart';
-
-class TabNavigatorRoutes {
-  static const String correctionHome = '/';
-  static const String correctionEdit = '/correction/edit';
-  static const String writingHome = '/writing';
-}
+import 'package:writing_exchange/pages/profile/profile_top/profile_top_view.dart';
+import 'package:writing_exchange/pages/question/question_top_view.dart';
 
 class TabNavigator extends StatelessWidget {
   const TabNavigator({
@@ -31,13 +26,10 @@ class TabNavigator extends StatelessWidget {
 
   Map<String, WidgetBuilder> _routeBuilders(BuildContext context) {
     return {
-      TabNavigatorRoutes.correctionHome: (context) => CorrectionHomeView(
-            onPressEdit: () =>
-                _push(context, TabNavigatorRoutes.correctionEdit),
-          ),
-      TabNavigatorRoutes.correctionEdit: (context) => CorrectionEditView(),
-      TabNavigatorRoutes.writingHome: (context) =>
+      TabNavigatorRoutes.writingTop: (context) =>
           CorrectionHomeView(onPressEdit: () => {}),
+      TabNavigatorRoutes.questionTop: (context) => QuestionTopView(),
+      TabNavigatorRoutes.profileTop: (context) => ProfileTopView(),
     };
   }
 
@@ -46,9 +38,7 @@ class TabNavigator extends StatelessWidget {
     final routeBuilders = _routeBuilders(context);
     return Navigator(
       key: navigatorKey,
-      initialRoute: tabItem == TabItem.correction
-          ? TabNavigatorRoutes.correctionHome
-          : TabNavigatorRoutes.writingHome,
+      initialRoute: initialRoutes[tabItem],
       onGenerateRoute: (routeSettings) {
         return MaterialPageRoute<Widget>(
           builder: (context) => routeBuilders[routeSettings.name]!(context),

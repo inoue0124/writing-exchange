@@ -11,15 +11,11 @@ class App extends StatefulWidget {
 }
 
 class AppState extends State<App> {
-  TabItem _currentTab = TabItem.correction;
-  final Map<TabItem, GlobalKey<NavigatorState>> _navigatorKeys = {
-    TabItem.correction: GlobalKey<NavigatorState>(),
-    TabItem.writing: GlobalKey<NavigatorState>(),
-  };
+  TabItem _currentTab = TabItem.writing;
 
   void _selectTab(TabItem tabItem) {
     if (tabItem == _currentTab) {
-      _navigatorKeys[tabItem]?.currentState?.popUntil((route) => route.isFirst);
+      navigatorKeys[tabItem]?.currentState?.popUntil((route) => route.isFirst);
     } else {
       setState(() => _currentTab = tabItem);
     }
@@ -34,8 +30,9 @@ class AppState extends State<App> {
       child: Scaffold(
         body: Stack(
           children: <Widget>[
-            _buildOffstageNavigator(TabItem.correction),
             _buildOffstageNavigator(TabItem.writing),
+            _buildOffstageNavigator(TabItem.question),
+            _buildOffstageNavigator(TabItem.profile),
           ],
         ),
         bottomNavigationBar: BottomNavigation(
@@ -50,7 +47,7 @@ class AppState extends State<App> {
     return Offstage(
       offstage: _currentTab != tabItem,
       child: TabNavigator(
-        navigatorKey: _navigatorKeys[tabItem]!,
+        navigatorKey: navigatorKeys[tabItem]!,
         tabItem: tabItem,
       ),
     );

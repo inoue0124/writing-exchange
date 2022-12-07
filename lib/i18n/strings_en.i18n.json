@@ -1,6 +1,8 @@
 {
   "correction": "Correction",
-  "writing": "My writing",
+  "writing": "Writing",
+  "question": "Question",
+  "profile": "Profile",
   "correctionCount": "Correction Count",
   "reviewPoint": "Your Rating",
   "correctionCredit": "Correction Credit",

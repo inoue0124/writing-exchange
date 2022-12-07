@@ -1,9 +1,9 @@
 /// Generated file. Do not edit.
 ///
 /// Locales: 2
-/// Strings: 22 (11 per locale)
+/// Strings: 26 (13 per locale)
 ///
-/// Built on 2022-12-04 at 16:40 UTC
+/// Built on 2022-12-07 at 14:52 UTC
 
 // coverage:ignore-file
 // ignore_for_file: type=lint
@@ -149,7 +149,9 @@ class _StringsEn implements BaseTranslations<AppLocale, _StringsEn> {
 
 	// Translations
 	String get correction => 'Correction';
-	String get writing => 'My writing';
+	String get writing => 'Writing';
+	String get question => 'Question';
+	String get profile => 'Profile';
 	String get correctionCount => 'Correction Count';
 	String get reviewPoint => 'Your Rating';
 	String get correctionCredit => 'Correction Credit';
@@ -187,7 +189,9 @@ class _StringsJa implements _StringsEn {
 
 	// Translations
 	@override String get correction => '添削';
-	@override String get writing => '私の作文';
+	@override String get writing => '作文';
+	@override String get question => '質問';
+	@override String get profile => 'プロフィール';
 	@override String get correctionCount => '添削回数';
 	@override String get reviewPoint => 'レビュー点数';
 	@override String get correctionCredit => 'クレジット';
@@ -206,7 +210,9 @@ extension on _StringsEn {
 	dynamic _flatMapFunction(String path) {
 		switch (path) {
 			case 'correction': return 'Correction';
-			case 'writing': return 'My writing';
+			case 'writing': return 'Writing';
+			case 'question': return 'Question';
+			case 'profile': return 'Profile';
 			case 'correctionCount': return 'Correction Count';
 			case 'reviewPoint': return 'Your Rating';
 			case 'correctionCredit': return 'Correction Credit';
@@ -225,7 +231,9 @@ extension on _StringsJa {
 	dynamic _flatMapFunction(String path) {
 		switch (path) {
 			case 'correction': return '添削';
-			case 'writing': return '私の作文';
+			case 'writing': return '作文';
+			case 'question': return '質問';
+			case 'profile': return 'プロフィール';
 			case 'correctionCount': return '添削回数';
 			case 'reviewPoint': return 'レビュー点数';
 			case 'correctionCredit': return 'クレジット';

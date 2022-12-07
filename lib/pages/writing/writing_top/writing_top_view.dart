@@ -1,13 +1,11 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
-import 'package:flutter_staggered_grid_view/flutter_staggered_grid_view.dart';
-import 'package:writing_exchange/components/post_list_item.dart';
 import 'package:writing_exchange/components/dashboard.dart';
 import 'package:writing_exchange/i18n/strings.g.dart';
-import 'package:writing_exchange/pages/writing/writing_home/writing_home_viewmodel.dart';
+import 'package:writing_exchange/pages/writing/writing_top/writing_top_viewmodel.dart';
 
-class WritingHomeView extends ConsumerWidget {
-  WritingHomeView({
+class WritingTopView extends ConsumerWidget {
+  WritingTopView({
     super.key,
     required this.onPressEdit,
   });
@@ -20,7 +18,7 @@ class WritingHomeView extends ConsumerWidget {
     var correctedPosts = [];
     // var waitingCorrectionPost = correctedPosts[0];
 
-    return ref.watch(WritingHomeViewModelProvider).when(
+    return ref.watch(WritingTopViewModelProvider).when(
           loading: CircularProgressIndicator.new,
           error: (error, stacktrace) => Text(error.toString()),
           data: (state) {
