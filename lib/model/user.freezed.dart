@@ -14,15 +14,38 @@ T _$identity<T>(T value) => value;
 final _privateConstructorUsedError = UnsupportedError(
     'It seems like you constructed your class using `MyClass._()`. This constructor is only meant to be used by freezed and you are not supposed to need it nor use it.\nPlease check the documentation here for more informations: https://github.com/rrousselGit/freezed#custom-getters-and-methods');
 
+User _$UserFromJson(Map<String, dynamic> json) {
+  return _User.fromJson(json);
+}
+
 /// @nodoc
 class _$UserTearOff {
   const _$UserTearOff();
 
-  _User call({String name = "", String imageUrl = ""}) {
+  _User call(
+      {@JsonKey(name: 'name')
+          required String name,
+      @JsonKey(name: 'email')
+          required String email,
+      @JsonKey(name: 'status')
+      @UserStatusConverter()
+          required UserStatus status,
+      @JsonKey(name: 'createdAt')
+      @DateTimeConverter()
+          required DateTime createdAt,
+      @JsonKey(name: 'postCount')
+          required int postCount}) {
     return _User(
       name: name,
-      imageUrl: imageUrl,
+      email: email,
+      status: status,
+      createdAt: createdAt,
+      postCount: postCount,
     );
+  }
+
+  User fromJson(Map<String, Object?> json) {
+    return User.fromJson(json);
   }
 }
 
@@ -31,9 +54,20 @@ const $User = _$UserTearOff();
 
 /// @nodoc
 mixin _$User {
+  @JsonKey(name: 'name')
   String get name => throw _privateConstructorUsedError;
-  String get imageUrl => throw _privateConstructorUsedError;
+  @JsonKey(name: 'email')
+  String get email => throw _privateConstructorUsedError;
+  @JsonKey(name: 'status')
+  @UserStatusConverter()
+  UserStatus get status => throw _privateConstructorUsedError;
+  @JsonKey(name: 'createdAt')
+  @DateTimeConverter()
+  DateTime get createdAt => throw _privateConstructorUsedError;
+  @JsonKey(name: 'postCount')
+  int get postCount => throw _privateConstructorUsedError;
 
+  Map<String, dynamic> toJson() => throw _privateConstructorUsedError;
   @JsonKey(ignore: true)
   $UserCopyWith<User> get copyWith => throw _privateConstructorUsedError;
 }
@@ -42,7 +76,12 @@ mixin _$User {
 abstract class $UserCopyWith<$Res> {
   factory $UserCopyWith(User value, $Res Function(User) then) =
       _$UserCopyWithImpl<$Res>;
-  $Res call({String name, String imageUrl});
+  $Res call(
+      {@JsonKey(name: 'name') String name,
+      @JsonKey(name: 'email') String email,
+      @JsonKey(name: 'status') @UserStatusConverter() UserStatus status,
+      @JsonKey(name: 'createdAt') @DateTimeConverter() DateTime createdAt,
+      @JsonKey(name: 'postCount') int postCount});
 }
 
 /// @nodoc
@@ -56,17 +95,32 @@ class _$UserCopyWithImpl<$Res> implements $UserCopyWith<$Res> {
   @override
   $Res call({
     Object? name = freezed,
-    Object? imageUrl = freezed,
+    Object? email = freezed,
+    Object? status = freezed,
+    Object? createdAt = freezed,
+    Object? postCount = freezed,
   }) {
     return _then(_value.copyWith(
       name: name == freezed
           ? _value.name
           : name // ignore: cast_nullable_to_non_nullable
               as String,
-      imageUrl: imageUrl == freezed
-          ? _value.imageUrl
-          : imageUrl // ignore: cast_nullable_to_non_nullable
+      email: email == freezed
+          ? _value.email
+          : email // ignore: cast_nullable_to_non_nullable
               as String,
+      status: status == freezed
+          ? _value.status
+          : status // ignore: cast_nullable_to_non_nullable
+              as UserStatus,
+      createdAt: createdAt == freezed
+          ? _value.createdAt
+          : createdAt // ignore: cast_nullable_to_non_nullable
+              as DateTime,
+      postCount: postCount == freezed
+          ? _value.postCount
+          : postCount // ignore: cast_nullable_to_non_nullable
+              as int,
     ));
   }
 }
@@ -76,7 +130,12 @@ abstract class _$UserCopyWith<$Res> implements $UserCopyWith<$Res> {
   factory _$UserCopyWith(_User value, $Res Function(_User) then) =
       __$UserCopyWithImpl<$Res>;
   @override
-  $Res call({String name, String imageUrl});
+  $Res call(
+      {@JsonKey(name: 'name') String name,
+      @JsonKey(name: 'email') String email,
+      @JsonKey(name: 'status') @UserStatusConverter() UserStatus status,
+      @JsonKey(name: 'createdAt') @DateTimeConverter() DateTime createdAt,
+      @JsonKey(name: 'postCount') int postCount});
 }
 
 /// @nodoc
@@ -91,36 +150,70 @@ class __$UserCopyWithImpl<$Res> extends _$UserCopyWithImpl<$Res>
   @override
   $Res call({
     Object? name = freezed,
-    Object? imageUrl = freezed,
+    Object? email = freezed,
+    Object? status = freezed,
+    Object? createdAt = freezed,
+    Object? postCount = freezed,
   }) {
     return _then(_User(
       name: name == freezed
           ? _value.name
           : name // ignore: cast_nullable_to_non_nullable
               as String,
-      imageUrl: imageUrl == freezed
-          ? _value.imageUrl
-          : imageUrl // ignore: cast_nullable_to_non_nullable
+      email: email == freezed
+          ? _value.email
+          : email // ignore: cast_nullable_to_non_nullable
               as String,
+      status: status == freezed
+          ? _value.status
+          : status // ignore: cast_nullable_to_non_nullable
+              as UserStatus,
+      createdAt: createdAt == freezed
+          ? _value.createdAt
+          : createdAt // ignore: cast_nullable_to_non_nullable
+              as DateTime,
+      postCount: postCount == freezed
+          ? _value.postCount
+          : postCount // ignore: cast_nullable_to_non_nullable
+              as int,
     ));
   }
 }
 
 /// @nodoc
+@JsonSerializable()
+class _$_User extends _User {
+  const _$_User(
+      {@JsonKey(name: 'name') required this.name,
+      @JsonKey(name: 'email') required this.email,
+      @JsonKey(name: 'status') @UserStatusConverter() required this.status,
+      @JsonKey(name: 'createdAt') @DateTimeConverter() required this.createdAt,
+      @JsonKey(name: 'postCount') required this.postCount})
+      : super._();
 
-class _$_User implements _User {
-  const _$_User({this.name = "", this.imageUrl = ""});
+  factory _$_User.fromJson(Map<String, dynamic> json) => _$$_UserFromJson(json);
 
-  @JsonKey()
   @override
+  @JsonKey(name: 'name')
   final String name;
-  @JsonKey()
   @override
-  final String imageUrl;
+  @JsonKey(name: 'email')
+  final String email;
+  @override
+  @JsonKey(name: 'status')
+  @UserStatusConverter()
+  final UserStatus status;
+  @override
+  @JsonKey(name: 'createdAt')
+  @DateTimeConverter()
+  final DateTime createdAt;
+  @override
+  @JsonKey(name: 'postCount')
+  final int postCount;
 
   @override
   String toString() {
-    return 'User(name: $name, imageUrl: $imageUrl)';
+    return 'User(name: $name, email: $email, status: $status, createdAt: $createdAt, postCount: $postCount)';
   }
 
   @override
@@ -129,28 +222,67 @@ class _$_User implements _User {
         (other.runtimeType == runtimeType &&
             other is _User &&
             const DeepCollectionEquality().equals(other.name, name) &&
-            const DeepCollectionEquality().equals(other.imageUrl, imageUrl));
+            const DeepCollectionEquality().equals(other.email, email) &&
+            const DeepCollectionEquality().equals(other.status, status) &&
+            const DeepCollectionEquality().equals(other.createdAt, createdAt) &&
+            const DeepCollectionEquality().equals(other.postCount, postCount));
   }
 
   @override
   int get hashCode => Object.hash(
       runtimeType,
       const DeepCollectionEquality().hash(name),
-      const DeepCollectionEquality().hash(imageUrl));
+      const DeepCollectionEquality().hash(email),
+      const DeepCollectionEquality().hash(status),
+      const DeepCollectionEquality().hash(createdAt),
+      const DeepCollectionEquality().hash(postCount));
 
   @JsonKey(ignore: true)
   @override
   _$UserCopyWith<_User> get copyWith =>
       __$UserCopyWithImpl<_User>(this, _$identity);
+
+  @override
+  Map<String, dynamic> toJson() {
+    return _$$_UserToJson(this);
+  }
 }
 
-abstract class _User implements User {
-  const factory _User({String name, String imageUrl}) = _$_User;
+abstract class _User extends User {
+  const factory _User(
+      {@JsonKey(name: 'name')
+          required String name,
+      @JsonKey(name: 'email')
+          required String email,
+      @JsonKey(name: 'status')
+      @UserStatusConverter()
+          required UserStatus status,
+      @JsonKey(name: 'createdAt')
+      @DateTimeConverter()
+          required DateTime createdAt,
+      @JsonKey(name: 'postCount')
+          required int postCount}) = _$_User;
+  const _User._() : super._();
+
+  factory _User.fromJson(Map<String, dynamic> json) = _$_User.fromJson;
 
   @override
+  @JsonKey(name: 'name')
   String get name;
   @override
-  String get imageUrl;
+  @JsonKey(name: 'email')
+  String get email;
+  @override
+  @JsonKey(name: 'status')
+  @UserStatusConverter()
+  UserStatus get status;
+  @override
+  @JsonKey(name: 'createdAt')
+  @DateTimeConverter()
+  DateTime get createdAt;
+  @override
+  @JsonKey(name: 'postCount')
+  int get postCount;
   @override
   @JsonKey(ignore: true)
   _$UserCopyWith<_User> get copyWith => throw _privateConstructorUsedError;

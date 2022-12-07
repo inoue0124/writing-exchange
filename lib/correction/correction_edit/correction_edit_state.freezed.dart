@@ -18,12 +18,8 @@ final _privateConstructorUsedError = UnsupportedError(
 class _$CorrectionEditStateTearOff {
   const _$CorrectionEditStateTearOff();
 
-  _CorrectionEditState call(
-      {dynamic post = const Post(),
-      String editedText = "",
-      String comment = ""}) {
+  _CorrectionEditState call({String editedText = "", String comment = ""}) {
     return _CorrectionEditState(
-      post: post,
       editedText: editedText,
       comment: comment,
     );
@@ -35,7 +31,6 @@ const $CorrectionEditState = _$CorrectionEditStateTearOff();
 
 /// @nodoc
 mixin _$CorrectionEditState {
-  dynamic get post => throw _privateConstructorUsedError;
   String get editedText => throw _privateConstructorUsedError;
   String get comment => throw _privateConstructorUsedError;
 
@@ -49,7 +44,7 @@ abstract class $CorrectionEditStateCopyWith<$Res> {
   factory $CorrectionEditStateCopyWith(
           CorrectionEditState value, $Res Function(CorrectionEditState) then) =
       _$CorrectionEditStateCopyWithImpl<$Res>;
-  $Res call({dynamic post, String editedText, String comment});
+  $Res call({String editedText, String comment});
 }
 
 /// @nodoc
@@ -63,15 +58,10 @@ class _$CorrectionEditStateCopyWithImpl<$Res>
 
   @override
   $Res call({
-    Object? post = freezed,
     Object? editedText = freezed,
     Object? comment = freezed,
   }) {
     return _then(_value.copyWith(
-      post: post == freezed
-          ? _value.post
-          : post // ignore: cast_nullable_to_non_nullable
-              as dynamic,
       editedText: editedText == freezed
           ? _value.editedText
           : editedText // ignore: cast_nullable_to_non_nullable
@@ -91,7 +81,7 @@ abstract class _$CorrectionEditStateCopyWith<$Res>
           $Res Function(_CorrectionEditState) then) =
       __$CorrectionEditStateCopyWithImpl<$Res>;
   @override
-  $Res call({dynamic post, String editedText, String comment});
+  $Res call({String editedText, String comment});
 }
 
 /// @nodoc
@@ -107,12 +97,10 @@ class __$CorrectionEditStateCopyWithImpl<$Res>
 
   @override
   $Res call({
-    Object? post = freezed,
     Object? editedText = freezed,
     Object? comment = freezed,
   }) {
     return _then(_CorrectionEditState(
-      post: post == freezed ? _value.post : post,
       editedText: editedText == freezed
           ? _value.editedText
           : editedText // ignore: cast_nullable_to_non_nullable
@@ -128,12 +116,8 @@ class __$CorrectionEditStateCopyWithImpl<$Res>
 /// @nodoc
 
 class _$_CorrectionEditState implements _CorrectionEditState {
-  const _$_CorrectionEditState(
-      {this.post = const Post(), this.editedText = "", this.comment = ""});
+  const _$_CorrectionEditState({this.editedText = "", this.comment = ""});
 
-  @JsonKey()
-  @override
-  final dynamic post;
   @JsonKey()
   @override
   final String editedText;
@@ -143,7 +127,7 @@ class _$_CorrectionEditState implements _CorrectionEditState {
 
   @override
   String toString() {
-    return 'CorrectionEditState(post: $post, editedText: $editedText, comment: $comment)';
+    return 'CorrectionEditState(editedText: $editedText, comment: $comment)';
   }
 
   @override
@@ -151,7 +135,6 @@ class _$_CorrectionEditState implements _CorrectionEditState {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
             other is _CorrectionEditState &&
-            const DeepCollectionEquality().equals(other.post, post) &&
             const DeepCollectionEquality()
                 .equals(other.editedText, editedText) &&
             const DeepCollectionEquality().equals(other.comment, comment));
@@ -160,7 +143,6 @@ class _$_CorrectionEditState implements _CorrectionEditState {
   @override
   int get hashCode => Object.hash(
       runtimeType,
-      const DeepCollectionEquality().hash(post),
       const DeepCollectionEquality().hash(editedText),
       const DeepCollectionEquality().hash(comment));
 
@@ -172,13 +154,9 @@ class _$_CorrectionEditState implements _CorrectionEditState {
 }
 
 abstract class _CorrectionEditState implements CorrectionEditState {
-  const factory _CorrectionEditState(
-      {dynamic post,
-      String editedText,
-      String comment}) = _$_CorrectionEditState;
+  const factory _CorrectionEditState({String editedText, String comment}) =
+      _$_CorrectionEditState;
 
-  @override
-  dynamic get post;
   @override
   String get editedText;
   @override

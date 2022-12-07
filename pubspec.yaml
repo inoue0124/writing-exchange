@@ -8,25 +8,29 @@ environment:
   sdk: ">=2.18.4 <3.0.0"
 
 dependencies:
-  build_runner: ^2.1.8
   flutter:
     sdk: flutter
-  flutter_riverpod: ^1.0.3
-  freezed: ^1.1.1
-  freezed_annotation: ^1.1.0
   cupertino_icons: ^1.0.2
+  flutter_riverpod: ^1.0.3
+  freezed_annotation: ^1.1.0
   slang: ^3.5.0
   slang_flutter: ^3.5.0
   pretty_diff_text: ^1.0.0
   flutter_staggered_grid_view: ^0.6.2
   firebase_core: ^2.3.0
+  cloud_firestore: ^4.1.0
+  firebase_storage: ^11.0.6
+  firebase_auth: ^4.1.5
+  json_annotation: ^4.3.0
 
 dev_dependencies:
   flutter_test:
     sdk: flutter
 
+  build_runner: ^2.1.8
   flutter_lints: ^2.0.0
+  freezed: ^1.1.1
+  json_serializable: ^6.0.0
 
 flutter:
   uses-material-design: true
-  generate: true

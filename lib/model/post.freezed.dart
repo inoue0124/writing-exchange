@@ -14,239 +14,243 @@ T _$identity<T>(T value) => value;
 final _privateConstructorUsedError = UnsupportedError(
     'It seems like you constructed your class using `MyClass._()`. This constructor is only meant to be used by freezed and you are not supposed to need it nor use it.\nPlease check the documentation here for more informations: https://github.com/rrousselGit/freezed#custom-getters-and-methods');
 
-/// @nodoc
-class _$PostTearOff {
-  const _$PostTearOff();
+post _$postFromJson(Map<String, dynamic> json) {
+  return _post.fromJson(json);
+}
 
-  _Post call(
-      {String title = "",
-      String body = "",
-      List<String> imageUrls = const [],
-      int correctedCount = 0,
-      User user = const User()}) {
-    return _Post(
-      title: title,
-      body: body,
-      imageUrls: imageUrls,
-      correctedCount: correctedCount,
-      user: user,
+/// @nodoc
+class _$postTearOff {
+  const _$postTearOff();
+
+  _post call(
+      {@JsonKey(name: 'name')
+          required String name,
+      @JsonKey(name: 'email')
+          required String email,
+      @JsonKey(name: 'createdAt')
+      @DateTimeConverter()
+          required DateTime createdAt,
+      @JsonKey(name: 'postCount')
+          required int postCount}) {
+    return _post(
+      name: name,
+      email: email,
+      createdAt: createdAt,
+      postCount: postCount,
     );
   }
+
+  post fromJson(Map<String, Object?> json) {
+    return post.fromJson(json);
+  }
 }
 
 /// @nodoc
-const $Post = _$PostTearOff();
+const $post = _$postTearOff();
 
 /// @nodoc
-mixin _$Post {
-  String get title => throw _privateConstructorUsedError;
-  String get body => throw _privateConstructorUsedError;
-  List<String> get imageUrls => throw _privateConstructorUsedError;
-  int get correctedCount => throw _privateConstructorUsedError;
-  User get user => throw _privateConstructorUsedError;
+mixin _$post {
+  @JsonKey(name: 'name')
+  String get name => throw _privateConstructorUsedError;
+  @JsonKey(name: 'email')
+  String get email => throw _privateConstructorUsedError;
+  @JsonKey(name: 'createdAt')
+  @DateTimeConverter()
+  DateTime get createdAt => throw _privateConstructorUsedError;
+  @JsonKey(name: 'postCount')
+  int get postCount => throw _privateConstructorUsedError;
 
+  Map<String, dynamic> toJson() => throw _privateConstructorUsedError;
   @JsonKey(ignore: true)
-  $PostCopyWith<Post> get copyWith => throw _privateConstructorUsedError;
+  $postCopyWith<post> get copyWith => throw _privateConstructorUsedError;
 }
 
 /// @nodoc
-abstract class $PostCopyWith<$Res> {
-  factory $PostCopyWith(Post value, $Res Function(Post) then) =
-      _$PostCopyWithImpl<$Res>;
+abstract class $postCopyWith<$Res> {
+  factory $postCopyWith(post value, $Res Function(post) then) =
+      _$postCopyWithImpl<$Res>;
   $Res call(
-      {String title,
-      String body,
-      List<String> imageUrls,
-      int correctedCount,
-      User user});
-
-  $UserCopyWith<$Res> get user;
+      {@JsonKey(name: 'name') String name,
+      @JsonKey(name: 'email') String email,
+      @JsonKey(name: 'createdAt') @DateTimeConverter() DateTime createdAt,
+      @JsonKey(name: 'postCount') int postCount});
 }
 
 /// @nodoc
-class _$PostCopyWithImpl<$Res> implements $PostCopyWith<$Res> {
-  _$PostCopyWithImpl(this._value, this._then);
+class _$postCopyWithImpl<$Res> implements $postCopyWith<$Res> {
+  _$postCopyWithImpl(this._value, this._then);
 
-  final Post _value;
+  final post _value;
   // ignore: unused_field
-  final $Res Function(Post) _then;
+  final $Res Function(post) _then;
 
   @override
   $Res call({
-    Object? title = freezed,
-    Object? body = freezed,
-    Object? imageUrls = freezed,
-    Object? correctedCount = freezed,
-    Object? user = freezed,
+    Object? name = freezed,
+    Object? email = freezed,
+    Object? createdAt = freezed,
+    Object? postCount = freezed,
   }) {
     return _then(_value.copyWith(
-      title: title == freezed
-          ? _value.title
-          : title // ignore: cast_nullable_to_non_nullable
+      name: name == freezed
+          ? _value.name
+          : name // ignore: cast_nullable_to_non_nullable
               as String,
-      body: body == freezed
-          ? _value.body
-          : body // ignore: cast_nullable_to_non_nullable
+      email: email == freezed
+          ? _value.email
+          : email // ignore: cast_nullable_to_non_nullable
               as String,
-      imageUrls: imageUrls == freezed
-          ? _value.imageUrls
-          : imageUrls // ignore: cast_nullable_to_non_nullable
-              as List<String>,
-      correctedCount: correctedCount == freezed
-          ? _value.correctedCount
-          : correctedCount // ignore: cast_nullable_to_non_nullable
+      createdAt: createdAt == freezed
+          ? _value.createdAt
+          : createdAt // ignore: cast_nullable_to_non_nullable
+              as DateTime,
+      postCount: postCount == freezed
+          ? _value.postCount
+          : postCount // ignore: cast_nullable_to_non_nullable
               as int,
-      user: user == freezed
-          ? _value.user
-          : user // ignore: cast_nullable_to_non_nullable
-              as User,
     ));
   }
-
-  @override
-  $UserCopyWith<$Res> get user {
-    return $UserCopyWith<$Res>(_value.user, (value) {
-      return _then(_value.copyWith(user: value));
-    });
-  }
 }
 
 /// @nodoc
-abstract class _$PostCopyWith<$Res> implements $PostCopyWith<$Res> {
-  factory _$PostCopyWith(_Post value, $Res Function(_Post) then) =
-      __$PostCopyWithImpl<$Res>;
+abstract class _$postCopyWith<$Res> implements $postCopyWith<$Res> {
+  factory _$postCopyWith(_post value, $Res Function(_post) then) =
+      __$postCopyWithImpl<$Res>;
   @override
   $Res call(
-      {String title,
-      String body,
-      List<String> imageUrls,
-      int correctedCount,
-      User user});
-
-  @override
-  $UserCopyWith<$Res> get user;
+      {@JsonKey(name: 'name') String name,
+      @JsonKey(name: 'email') String email,
+      @JsonKey(name: 'createdAt') @DateTimeConverter() DateTime createdAt,
+      @JsonKey(name: 'postCount') int postCount});
 }
 
 /// @nodoc
-class __$PostCopyWithImpl<$Res> extends _$PostCopyWithImpl<$Res>
-    implements _$PostCopyWith<$Res> {
-  __$PostCopyWithImpl(_Post _value, $Res Function(_Post) _then)
-      : super(_value, (v) => _then(v as _Post));
+class __$postCopyWithImpl<$Res> extends _$postCopyWithImpl<$Res>
+    implements _$postCopyWith<$Res> {
+  __$postCopyWithImpl(_post _value, $Res Function(_post) _then)
+      : super(_value, (v) => _then(v as _post));
 
   @override
-  _Post get _value => super._value as _Post;
+  _post get _value => super._value as _post;
 
   @override
   $Res call({
-    Object? title = freezed,
-    Object? body = freezed,
-    Object? imageUrls = freezed,
-    Object? correctedCount = freezed,
-    Object? user = freezed,
+    Object? name = freezed,
+    Object? email = freezed,
+    Object? createdAt = freezed,
+    Object? postCount = freezed,
   }) {
-    return _then(_Post(
-      title: title == freezed
-          ? _value.title
-          : title // ignore: cast_nullable_to_non_nullable
+    return _then(_post(
+      name: name == freezed
+          ? _value.name
+          : name // ignore: cast_nullable_to_non_nullable
               as String,
-      body: body == freezed
-          ? _value.body
-          : body // ignore: cast_nullable_to_non_nullable
+      email: email == freezed
+          ? _value.email
+          : email // ignore: cast_nullable_to_non_nullable
               as String,
-      imageUrls: imageUrls == freezed
-          ? _value.imageUrls
-          : imageUrls // ignore: cast_nullable_to_non_nullable
-              as List<String>,
-      correctedCount: correctedCount == freezed
-          ? _value.correctedCount
-          : correctedCount // ignore: cast_nullable_to_non_nullable
+      createdAt: createdAt == freezed
+          ? _value.createdAt
+          : createdAt // ignore: cast_nullable_to_non_nullable
+              as DateTime,
+      postCount: postCount == freezed
+          ? _value.postCount
+          : postCount // ignore: cast_nullable_to_non_nullable
               as int,
-      user: user == freezed
-          ? _value.user
-          : user // ignore: cast_nullable_to_non_nullable
-              as User,
     ));
   }
 }
 
 /// @nodoc
+@JsonSerializable()
+class _$_post extends _post {
+  const _$_post(
+      {@JsonKey(name: 'name') required this.name,
+      @JsonKey(name: 'email') required this.email,
+      @JsonKey(name: 'createdAt') @DateTimeConverter() required this.createdAt,
+      @JsonKey(name: 'postCount') required this.postCount})
+      : super._();
 
-class _$_Post implements _Post {
-  const _$_Post(
-      {this.title = "",
-      this.body = "",
-      this.imageUrls = const [],
-      this.correctedCount = 0,
-      this.user = const User()});
+  factory _$_post.fromJson(Map<String, dynamic> json) => _$$_postFromJson(json);
 
-  @JsonKey()
   @override
-  final String title;
-  @JsonKey()
+  @JsonKey(name: 'name')
+  final String name;
   @override
-  final String body;
-  @JsonKey()
+  @JsonKey(name: 'email')
+  final String email;
   @override
-  final List<String> imageUrls;
-  @JsonKey()
+  @JsonKey(name: 'createdAt')
+  @DateTimeConverter()
+  final DateTime createdAt;
   @override
-  final int correctedCount;
-  @JsonKey()
-  @override
-  final User user;
+  @JsonKey(name: 'postCount')
+  final int postCount;
 
   @override
   String toString() {
-    return 'Post(title: $title, body: $body, imageUrls: $imageUrls, correctedCount: $correctedCount, user: $user)';
+    return 'post(name: $name, email: $email, createdAt: $createdAt, postCount: $postCount)';
   }
 
   @override
   bool operator ==(dynamic other) {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
-            other is _Post &&
-            const DeepCollectionEquality().equals(other.title, title) &&
-            const DeepCollectionEquality().equals(other.body, body) &&
-            const DeepCollectionEquality().equals(other.imageUrls, imageUrls) &&
-            const DeepCollectionEquality()
-                .equals(other.correctedCount, correctedCount) &&
-            const DeepCollectionEquality().equals(other.user, user));
+            other is _post &&
+            const DeepCollectionEquality().equals(other.name, name) &&
+            const DeepCollectionEquality().equals(other.email, email) &&
+            const DeepCollectionEquality().equals(other.createdAt, createdAt) &&
+            const DeepCollectionEquality().equals(other.postCount, postCount));
   }
 
   @override
   int get hashCode => Object.hash(
       runtimeType,
-      const DeepCollectionEquality().hash(title),
-      const DeepCollectionEquality().hash(body),
-      const DeepCollectionEquality().hash(imageUrls),
-      const DeepCollectionEquality().hash(correctedCount),
-      const DeepCollectionEquality().hash(user));
+      const DeepCollectionEquality().hash(name),
+      const DeepCollectionEquality().hash(email),
+      const DeepCollectionEquality().hash(createdAt),
+      const DeepCollectionEquality().hash(postCount));
 
   @JsonKey(ignore: true)
   @override
-  _$PostCopyWith<_Post> get copyWith =>
-      __$PostCopyWithImpl<_Post>(this, _$identity);
+  _$postCopyWith<_post> get copyWith =>
+      __$postCopyWithImpl<_post>(this, _$identity);
+
+  @override
+  Map<String, dynamic> toJson() {
+    return _$$_postToJson(this);
+  }
 }
 
-abstract class _Post implements Post {
-  const factory _Post(
-      {String title,
-      String body,
-      List<String> imageUrls,
-      int correctedCount,
-      User user}) = _$_Post;
+abstract class _post extends post {
+  const factory _post(
+      {@JsonKey(name: 'name')
+          required String name,
+      @JsonKey(name: 'email')
+          required String email,
+      @JsonKey(name: 'createdAt')
+      @DateTimeConverter()
+          required DateTime createdAt,
+      @JsonKey(name: 'postCount')
+          required int postCount}) = _$_post;
+  const _post._() : super._();
+
+  factory _post.fromJson(Map<String, dynamic> json) = _$_post.fromJson;
 
   @override
-  String get title;
+  @JsonKey(name: 'name')
+  String get name;
   @override
-  String get body;
+  @JsonKey(name: 'email')
+  String get email;
   @override
-  List<String> get imageUrls;
+  @JsonKey(name: 'createdAt')
+  @DateTimeConverter()
+  DateTime get createdAt;
   @override
-  int get correctedCount;
-  @override
-  User get user;
+  @JsonKey(name: 'postCount')
+  int get postCount;
   @override
   @JsonKey(ignore: true)
-  _$PostCopyWith<_Post> get copyWith => throw _privateConstructorUsedError;
+  _$postCopyWith<_post> get copyWith => throw _privateConstructorUsedError;
 }
