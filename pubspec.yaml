@@ -19,6 +19,7 @@ dependencies:
   slang_flutter: ^3.5.0
   pretty_diff_text: ^1.0.0
   flutter_staggered_grid_view: ^0.6.2
+  firebase_core: ^2.3.0
 
 dev_dependencies:
   flutter_test:
