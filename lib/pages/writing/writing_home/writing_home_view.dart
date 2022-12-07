@@ -3,13 +3,11 @@ import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:flutter_staggered_grid_view/flutter_staggered_grid_view.dart';
 import 'package:writing_exchange/components/post_list_item.dart';
 import 'package:writing_exchange/components/dashboard.dart';
-import 'package:writing_exchange/correction/correction_home/correction_home_viewmodel.dart';
 import 'package:writing_exchange/i18n/strings.g.dart';
-import 'package:writing_exchange/model/post.dart';
-import 'package:writing_exchange/model/user.dart';
+import 'package:writing_exchange/pages/writing/writing_home/writing_home_viewmodel.dart';
 
-class CorrectionHomeView extends ConsumerWidget {
-  CorrectionHomeView({
+class WritingHomeView extends ConsumerWidget {
+  WritingHomeView({
     super.key,
     required this.onPressEdit,
   });
@@ -22,7 +20,7 @@ class CorrectionHomeView extends ConsumerWidget {
     var correctedPosts = [];
     // var waitingCorrectionPost = correctedPosts[0];
 
-    return ref.watch(correctionHomeViewModelProvider).when(
+    return ref.watch(WritingHomeViewModelProvider).when(
           loading: CircularProgressIndicator.new,
           error: (error, stacktrace) => Text(error.toString()),
           data: (state) {
@@ -84,24 +82,6 @@ class CorrectionHomeView extends ConsumerWidget {
                           ),
                         ),
                       ),
-                      // MasonryGridView.count(
-                      //   shrinkWrap: true,
-                      //   primary: false,
-                      //   itemCount: post.imageUrls.length,
-                      //   crossAxisCount: 2,
-                      //   mainAxisSpacing: 4,
-                      //   crossAxisSpacing: 4,
-                      //   itemBuilder: (context, index) {
-                      //     return PostListItem(
-                      //       title: post.title,
-                      //       body: post.body,
-                      //       imageUrls: post.imageUrls,
-                      //       correctedCount: post.correctedCount,
-                      //       editButtonTitle: t.updateCorrection,
-                      //       onPressEdit: () {},
-                      //     );
-                      //   },
-                      // ),
                     ],
                   ),
                 ),

@@ -1,6 +1,6 @@
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:freezed_annotation/freezed_annotation.dart';
-import 'package:writing_exchange/model/datetime_converter.dart';
+import 'package:writing_exchange/data/model/datetime_converter.dart';
 
 part 'post.freezed.dart';
 part 'post.g.dart';

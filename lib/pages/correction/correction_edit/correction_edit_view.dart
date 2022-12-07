@@ -2,8 +2,8 @@ import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:pretty_diff_text/pretty_diff_text.dart';
 import 'package:writing_exchange/components/correct_sentence.dart';
-import 'package:writing_exchange/correction/correction_edit/correction_edit_viewmodel.dart';
 import 'package:writing_exchange/i18n/strings.g.dart';
+import 'package:writing_exchange/pages/correction/correction_edit/correction_edit_viewmodel.dart';
 
 class CorrectionEditView extends ConsumerWidget {
   CorrectionEditView({super.key});

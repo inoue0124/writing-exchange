@@ -1,7 +1,7 @@
 import 'dart:io';
 
 import 'package:flutter_riverpod/flutter_riverpod.dart';
-import 'package:writing_exchange/writing/writing_home/writing_home_state.dart';
+import 'package:writing_exchange/pages/writing/writing_home/writing_home_state.dart';
 
 class WritingHomeViewModel extends StateNotifier<AsyncValue<WritingHomeState>> {
   WritingHomeViewModel() : super(const AsyncLoading()) {

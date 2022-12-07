@@ -1,5 +1,4 @@
 import 'package:freezed_annotation/freezed_annotation.dart';
-import 'package:writing_exchange/model/post.dart';
 
 part 'correction_edit_state.freezed.dart';
 

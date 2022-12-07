@@ -1,8 +1,8 @@
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:freezed_annotation/freezed_annotation.dart';
-import 'package:writing_exchange/model/datetime_converter.dart';
-import 'package:writing_exchange/model/user_status.dart';
-import 'package:writing_exchange/model/user_status_converter.dart';
+import 'package:writing_exchange/data/model/datetime_converter.dart';
+import 'package:writing_exchange/data/model/user_status.dart';
+import 'package:writing_exchange/data/model/user_status_converter.dart';
 
 part 'user.freezed.dart';
 part 'user.g.dart';

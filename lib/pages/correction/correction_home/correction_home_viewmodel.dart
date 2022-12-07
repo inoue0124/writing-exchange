@@ -2,7 +2,7 @@ import 'dart:io';
 
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
-import 'package:writing_exchange/correction/correction_home/correction_home_state.dart';
+import 'package:writing_exchange/pages/correction/correction_home/correction_home_state.dart';
 
 class CorrectionHomeViewModel
     extends StateNotifier<AsyncValue<CorrectionHomeState>> {
