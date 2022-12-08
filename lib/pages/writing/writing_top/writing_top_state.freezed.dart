@@ -18,12 +18,9 @@ final _privateConstructorUsedError = UnsupportedError(
 class _$WritingTopStateTearOff {
   const _$WritingTopStateTearOff();
 
-  _WritingTopState call(
-      {int correctionCount = 0, int reviewPoint = 0, int creditCount = 0}) {
+  _WritingTopState call({List<Post> writings = const []}) {
     return _WritingTopState(
-      correctionCount: correctionCount,
-      reviewPoint: reviewPoint,
-      creditCount: creditCount,
+      writings: writings,
     );
   }
 }
@@ -33,9 +30,7 @@ const $WritingTopState = _$WritingTopStateTearOff();
 
 /// @nodoc
 mixin _$WritingTopState {
-  int get correctionCount => throw _privateConstructorUsedError;
-  int get reviewPoint => throw _privateConstructorUsedError;
-  int get creditCount => throw _privateConstructorUsedError;
+  List<Post> get writings => throw _privateConstructorUsedError;
 
   @JsonKey(ignore: true)
   $WritingTopStateCopyWith<WritingTopState> get copyWith =>
@@ -47,7 +42,7 @@ abstract class $WritingTopStateCopyWith<$Res> {
   factory $WritingTopStateCopyWith(
           WritingTopState value, $Res Function(WritingTopState) then) =
       _$WritingTopStateCopyWithImpl<$Res>;
-  $Res call({int correctionCount, int reviewPoint, int creditCount});
+  $Res call({List<Post> writings});
 }
 
 /// @nodoc
@@ -61,23 +56,13 @@ class _$WritingTopStateCopyWithImpl<$Res>
 
   @override
   $Res call({
-    Object? correctionCount = freezed,
-    Object? reviewPoint = freezed,
-    Object? creditCount = freezed,
+    Object? writings = freezed,
   }) {
     return _then(_value.copyWith(
-      correctionCount: correctionCount == freezed
-          ? _value.correctionCount
-          : correctionCount // ignore: cast_nullable_to_non_nullable
-              as int,
-      reviewPoint: reviewPoint == freezed
-          ? _value.reviewPoint
-          : reviewPoint // ignore: cast_nullable_to_non_nullable
-              as int,
-      creditCount: creditCount == freezed
-          ? _value.creditCount
-          : creditCount // ignore: cast_nullable_to_non_nullable
-              as int,
+      writings: writings == freezed
+          ? _value.writings
+          : writings // ignore: cast_nullable_to_non_nullable
+              as List<Post>,
     ));
   }
 }
@@ -89,7 +74,7 @@ abstract class _$WritingTopStateCopyWith<$Res>
           _WritingTopState value, $Res Function(_WritingTopState) then) =
       __$WritingTopStateCopyWithImpl<$Res>;
   @override
-  $Res call({int correctionCount, int reviewPoint, int creditCount});
+  $Res call({List<Post> writings});
 }
 
 /// @nodoc
@@ -105,23 +90,13 @@ class __$WritingTopStateCopyWithImpl<$Res>
 
   @override
   $Res call({
-    Object? correctionCount = freezed,
-    Object? reviewPoint = freezed,
-    Object? creditCount = freezed,
+    Object? writings = freezed,
   }) {
     return _then(_WritingTopState(
-      correctionCount: correctionCount == freezed
-          ? _value.correctionCount
-          : correctionCount // ignore: cast_nullable_to_non_nullable
-              as int,
-      reviewPoint: reviewPoint == freezed
-          ? _value.reviewPoint
-          : reviewPoint // ignore: cast_nullable_to_non_nullable
-              as int,
-      creditCount: creditCount == freezed
-          ? _value.creditCount
-          : creditCount // ignore: cast_nullable_to_non_nullable
-              as int,
+      writings: writings == freezed
+          ? _value.writings
+          : writings // ignore: cast_nullable_to_non_nullable
+              as List<Post>,
     ));
   }
 }
@@ -129,22 +104,15 @@ class __$WritingTopStateCopyWithImpl<$Res>
 /// @nodoc
 
 class _$_WritingTopState implements _WritingTopState {
-  const _$_WritingTopState(
-      {this.correctionCount = 0, this.reviewPoint = 0, this.creditCount = 0});
+  const _$_WritingTopState({this.writings = const []});
 
   @JsonKey()
   @override
-  final int correctionCount;
-  @JsonKey()
-  @override
-  final int reviewPoint;
-  @JsonKey()
-  @override
-  final int creditCount;
+  final List<Post> writings;
 
   @override
   String toString() {
-    return 'WritingTopState(correctionCount: $correctionCount, reviewPoint: $reviewPoint, creditCount: $creditCount)';
+    return 'WritingTopState(writings: $writings)';
   }
 
   @override
@@ -152,20 +120,12 @@ class _$_WritingTopState implements _WritingTopState {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
             other is _WritingTopState &&
-            const DeepCollectionEquality()
-                .equals(other.correctionCount, correctionCount) &&
-            const DeepCollectionEquality()
-                .equals(other.reviewPoint, reviewPoint) &&
-            const DeepCollectionEquality()
-                .equals(other.creditCount, creditCount));
+            const DeepCollectionEquality().equals(other.writings, writings));
   }
 
   @override
-  int get hashCode => Object.hash(
-      runtimeType,
-      const DeepCollectionEquality().hash(correctionCount),
-      const DeepCollectionEquality().hash(reviewPoint),
-      const DeepCollectionEquality().hash(creditCount));
+  int get hashCode =>
+      Object.hash(runtimeType, const DeepCollectionEquality().hash(writings));
 
   @JsonKey(ignore: true)
   @override
@@ -174,17 +134,10 @@ class _$_WritingTopState implements _WritingTopState {
 }
 
 abstract class _WritingTopState implements WritingTopState {
-  const factory _WritingTopState(
-      {int correctionCount,
-      int reviewPoint,
-      int creditCount}) = _$_WritingTopState;
+  const factory _WritingTopState({List<Post> writings}) = _$_WritingTopState;
 
   @override
-  int get correctionCount;
-  @override
-  int get reviewPoint;
-  @override
-  int get creditCount;
+  List<Post> get writings;
   @override
   @JsonKey(ignore: true)
   _$WritingTopStateCopyWith<_WritingTopState> get copyWith =>

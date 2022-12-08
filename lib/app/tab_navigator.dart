@@ -3,6 +3,7 @@ import 'package:writing_exchange/app/tab_helper.dart';
 import 'package:writing_exchange/pages/correction/correction_home/correction_home_view.dart';
 import 'package:writing_exchange/pages/profile/profile_top/profile_top_view.dart';
 import 'package:writing_exchange/pages/question/question_top_view.dart';
+import 'package:writing_exchange/pages/writing/writing_top/writing_top_view.dart';
 
 class TabNavigator extends StatelessWidget {
   const TabNavigator({
@@ -27,7 +28,7 @@ class TabNavigator extends StatelessWidget {
   Map<String, WidgetBuilder> _routeBuilders(BuildContext context) {
     return {
       TabNavigatorRoutes.writingTop: (context) =>
-          CorrectionHomeView(onPressEdit: () => {}),
+          WritingTopView(onPressEdit: () {}),
       TabNavigatorRoutes.questionTop: (context) => QuestionTopView(),
       TabNavigatorRoutes.profileTop: (context) => ProfileTopView(),
     };

@@ -2,12 +2,12 @@ import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:writing_exchange/app/providers.dart';
 import 'package:writing_exchange/data/model/post.dart';
-import 'package:writing_exchange/data/model/post_status.dart';
 import 'package:writing_exchange/data/repository/firestore_refs.dart';
 
 abstract class PostRepositoryInterface {
   Future<void> upsert(Post post);
   Future<Post?> getById(String postId);
+  Future<List<Post>> getListByUserId(String userId);
   Future<void> deleteById(String postId);
 }
 
@@ -46,6 +46,19 @@ class PostRepository implements PostRepositoryInterface {
     try {
       await _reader(firebaseFirestoreProvider).postsRef().doc(postId).delete();
       return;
+    } on FirebaseException catch (e) {
+      throw e.toString();
+    }
+  }
+
+  @override
+  Future<List<Post>> getListByUserId(String userId) async {
+    try {
+      final snaps = await _reader(firebaseFirestoreProvider)
+          .postsRef()
+          .where('userId', isEqualTo: userId)
+          .get();
+      return snaps.docs.map((doc) => Post.fromJson(doc.data())).toList();
     } on FirebaseException catch (e) {
       throw e.toString();
     }
