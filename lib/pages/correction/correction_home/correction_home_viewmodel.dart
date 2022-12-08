@@ -14,7 +14,7 @@ class CorrectionHomeViewModel
 
   Future<void> _fetchDashBoardData() async {
     state = const AsyncLoading();
-    final user = await _userRepository.getUsersInfo();
+    final user = await _userRepository.getById("");
     state = AsyncData(
       CorrectionHomeState(
         correctionCount: 10,

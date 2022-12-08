@@ -5,8 +5,8 @@ enum UserStatus {
   /// 退会
   withdraw,
 
-  /// statusNotFound:想定のデータでない場合
-  statusNotFound,
+  /// unknown:想定のデータでない場合
+  unknown,
 }
 
 extension UserStatusExtension on UserStatus {
@@ -17,7 +17,7 @@ extension UserStatusExtension on UserStatus {
       case 'withdraw':
         return UserStatus.withdraw;
       default:
-        return UserStatus.statusNotFound;
+        return UserStatus.unknown;
     }
   }
 

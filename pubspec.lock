@@ -162,6 +162,13 @@ packages:
       url: "https://pub.dartlang.org"
     source: hosted
     version: "3.1.1"
+  country_list_pick:
+    dependency: "direct main"
+    description:
+      name: country_list_pick
+      url: "https://pub.dartlang.org"
+    source: hosted
+    version: "1.0.1+6"
   crypto:
     dependency: transitive
     description:
@@ -415,6 +422,13 @@ packages:
       url: "https://pub.dartlang.org"
     source: hosted
     version: "6.3.1"
+  language_picker:
+    dependency: "direct main"
+    description:
+      name: language_picker
+      url: "https://pub.dartlang.org"
+    source: hosted
+    version: "0.4.2"
   lints:
     dependency: transitive
     description:
@@ -506,6 +520,13 @@ packages:
       url: "https://pub.dartlang.org"
     source: hosted
     version: "1.2.1"
+  recase:
+    dependency: transitive
+    description:
+      name: recase
+      url: "https://pub.dartlang.org"
+    source: hosted
+    version: "4.1.0"
   riverpod:
     dependency: transitive
     description:
