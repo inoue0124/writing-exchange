@@ -12,13 +12,13 @@ abstract class UserRepositoryInterface {
 }
 
 class UserRepository implements UserRepositoryInterface {
-  final Reader _reader;
-  const UserRepository(this._reader);
+  final Ref _ref;
+  const UserRepository(this._ref);
 
   @override
   Future<void> upsert(User user) async {
     try {
-      await _reader(firebaseFirestoreProvider).usersRef().add(user.toJson());
+      await _ref.read(firebaseFirestoreProvider).usersRef().add(user.toJson());
       return;
     } on FirebaseException catch (e) {
       throw e.toString();
@@ -28,8 +28,11 @@ class UserRepository implements UserRepositoryInterface {
   @override
   Future<User?> getById(String userId) async {
     try {
-      final snap =
-          await _reader(firebaseFirestoreProvider).usersRef().doc(userId).get();
+      final snap = await _ref
+          .read(firebaseFirestoreProvider)
+          .usersRef()
+          .doc(userId)
+          .get();
       final data = snap.data();
       if (data == null) {
         return null;
@@ -44,7 +47,8 @@ class UserRepository implements UserRepositoryInterface {
   @override
   Future<void> deleteById(String userId) async {
     try {
-      await _reader(firebaseFirestoreProvider)
+      await _ref
+          .read(firebaseFirestoreProvider)
           .usersRef()
           .doc(userId)
           .update({"status": UserStatus.withdraw});
@@ -56,5 +60,5 @@ class UserRepository implements UserRepositoryInterface {
 }
 
 final userRepositoryProvider = Provider<UserRepositoryInterface>(
-  (ref) => UserRepository(ref.read),
+  (ref) => UserRepository(ref),
 );

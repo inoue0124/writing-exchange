@@ -14,15 +14,13 @@ class Post with _$Post {
   const factory Post({
     @JsonKey(name: 'title') required String title,
     @JsonKey(name: 'content') required String content,
-    @JsonKey(name: 'author') required User author,
-    @JsonKey(name: 'correctionCount') required int correctionCount,
-    @JsonKey(name: 'postedAt') @DateTimeConverter() required DateTime postedAt,
     @JsonKey(name: 'audioUrl') required String audioUrl,
     @JsonKey(name: 'imageUrls') required List<String> imageUrls,
     @JsonKey(name: 'status') @PostStatusConverter() required PostStatus status,
-    @JsonKey(name: 'createdAt')
-    @DateTimeConverter()
-        required DateTime createdAt,
+    @JsonKey(name: 'userId') required String userId,
+    @JsonKey(name: 'correctionCount') @Default(0) int correctionCount,
+    @JsonKey(name: 'postedAt') @DateTimeConverter() DateTime? postedAt,
+    @JsonKey(ignore: true) User? user,
   }) = _Post;
 
   factory Post.fromJson(Map<String, dynamic> json) => _$PostFromJson(json);

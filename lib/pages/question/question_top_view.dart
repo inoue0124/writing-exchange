@@ -23,7 +23,7 @@ class QuestionTopView extends ConsumerWidget {
         bottomOpacity: 0.0,
         elevation: 0.0,
       ),
-      body: ref.watch(QuestionTopViewModelProvider).when(
+      body: ref.watch(questionTopViewModelProvider).when(
             loading: () => const LoadingStateView(),
             error: (error, stacktrace) => Text(error.toString()),
             data: (state) {

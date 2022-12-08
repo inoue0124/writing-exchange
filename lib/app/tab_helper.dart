@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:writing_exchange/app/routes.dart';
 import 'package:writing_exchange/i18n/strings.g.dart';
 
 enum TabItem {
@@ -13,16 +14,10 @@ final Map<TabItem, GlobalKey<NavigatorState>> navigatorKeys = {
   TabItem.profile: GlobalKey<NavigatorState>(),
 };
 
-class TabNavigatorRoutes {
-  static const String writingTop = '/';
-  static const String questionTop = '/question';
-  static const String profileTop = '/profile';
-}
-
 Map<TabItem, String> initialRoutes = {
-  TabItem.writing: TabNavigatorRoutes.writingTop,
-  TabItem.question: TabNavigatorRoutes.questionTop,
-  TabItem.profile: TabNavigatorRoutes.profileTop,
+  TabItem.writing: Routes.writingTop,
+  TabItem.question: Routes.questionTop,
+  TabItem.profile: Routes.profileTop,
 };
 
 Map<TabItem, String> tabNames = {

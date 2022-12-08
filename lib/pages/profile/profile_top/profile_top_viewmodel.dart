@@ -13,7 +13,7 @@ class ProfileTopViewModel extends StateNotifier<AsyncValue<ProfileTopState>> {
   }
 }
 
-final ProfileTopViewModelProvider = StateNotifierProvider.autoDispose<
+final profileTopViewModelProvider = StateNotifierProvider.autoDispose<
     ProfileTopViewModel, AsyncValue<ProfileTopState>>(
   (ref) => ProfileTopViewModel(),
 );

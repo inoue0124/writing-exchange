@@ -11,13 +11,14 @@ abstract class QuestionRepositoryInterface {
 }
 
 class QuestionRepository implements QuestionRepositoryInterface {
-  final Reader _reader;
-  const QuestionRepository(this._reader);
+  final Ref _ref;
+  const QuestionRepository(this._ref);
 
   @override
   Future<void> upsert(Question question) async {
     try {
-      await _reader(firebaseFirestoreProvider)
+      await _ref
+          .read(firebaseFirestoreProvider)
           .questionsRef()
           .add(question.toJson());
       return;
@@ -29,7 +30,8 @@ class QuestionRepository implements QuestionRepositoryInterface {
   @override
   Future<Question?> getById(String questionId) async {
     try {
-      final snap = await _reader(firebaseFirestoreProvider)
+      final snap = await _ref
+          .read(firebaseFirestoreProvider)
           .questionsRef()
           .doc(questionId)
           .get();
@@ -47,7 +49,8 @@ class QuestionRepository implements QuestionRepositoryInterface {
   @override
   Future<void> deleteById(String questionId) async {
     try {
-      await _reader(firebaseFirestoreProvider)
+      await _ref
+          .read(firebaseFirestoreProvider)
           .questionsRef()
           .doc(questionId)
           .delete();
@@ -59,5 +62,5 @@ class QuestionRepository implements QuestionRepositoryInterface {
 }
 
 final questionRepositoryProvider = Provider<QuestionRepositoryInterface>(
-  (ref) => QuestionRepository(ref.read),
+  (ref) => QuestionRepository(ref),
 );

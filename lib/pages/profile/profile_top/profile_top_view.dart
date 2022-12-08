@@ -23,7 +23,7 @@ class ProfileTopView extends ConsumerWidget {
         bottomOpacity: 0.0,
         elevation: 0.0,
       ),
-      body: ref.watch(ProfileTopViewModelProvider).when(
+      body: ref.watch(profileTopViewModelProvider).when(
             loading: () => const LoadingStateView(),
             error: (error, stacktrace) => Text(error.toString()),
             data: (state) {

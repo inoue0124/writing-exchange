@@ -9,21 +9,21 @@ class WritingTopViewModel extends StateNotifier<AsyncValue<WritingTopState>> {
     required PostRepositoryInterface postRepository,
   })  : _postRepository = postRepository,
         super(const AsyncLoading()) {
-    _fetchDashBoardData();
+    _fetch();
   }
 
   final PostRepositoryInterface _postRepository;
 
-  Future<void> _fetchDashBoardData() async {
+  Future<void> _fetch() async {
     state = const AsyncLoading();
-    final writings = await _postRepository.getListByUserId("userId");
+    final writings = await _postRepository.getListByUserId("stateValue.userId");
     state = AsyncData(
       WritingTopState(writings: writings),
     );
   }
 }
 
-final WritingTopViewModelProvider = StateNotifierProvider.autoDispose<
+final writingTopViewModelProvider = StateNotifierProvider.autoDispose<
     WritingTopViewModel, AsyncValue<WritingTopState>>(
   (ref) => WritingTopViewModel(
     postRepository: ref.watch(postRepositoryProvider),

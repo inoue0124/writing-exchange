@@ -27,13 +27,6 @@ class _$PostTearOff {
           required String title,
       @JsonKey(name: 'content')
           required String content,
-      @JsonKey(name: 'author')
-          required User author,
-      @JsonKey(name: 'correctionCount')
-          required int correctionCount,
-      @JsonKey(name: 'postedAt')
-      @DateTimeConverter()
-          required DateTime postedAt,
       @JsonKey(name: 'audioUrl')
           required String audioUrl,
       @JsonKey(name: 'imageUrls')
@@ -41,19 +34,25 @@ class _$PostTearOff {
       @JsonKey(name: 'status')
       @PostStatusConverter()
           required PostStatus status,
-      @JsonKey(name: 'createdAt')
+      @JsonKey(name: 'userId')
+          required String userId,
+      @JsonKey(name: 'correctionCount')
+          int correctionCount = 0,
+      @JsonKey(name: 'postedAt')
       @DateTimeConverter()
-          required DateTime createdAt}) {
+          DateTime? postedAt,
+      @JsonKey(ignore: true)
+          User? user}) {
     return _Post(
       title: title,
       content: content,
-      author: author,
-      correctionCount: correctionCount,
-      postedAt: postedAt,
       audioUrl: audioUrl,
       imageUrls: imageUrls,
       status: status,
-      createdAt: createdAt,
+      userId: userId,
+      correctionCount: correctionCount,
+      postedAt: postedAt,
+      user: user,
     );
   }
 
@@ -71,13 +70,6 @@ mixin _$Post {
   String get title => throw _privateConstructorUsedError;
   @JsonKey(name: 'content')
   String get content => throw _privateConstructorUsedError;
-  @JsonKey(name: 'author')
-  User get author => throw _privateConstructorUsedError;
-  @JsonKey(name: 'correctionCount')
-  int get correctionCount => throw _privateConstructorUsedError;
-  @JsonKey(name: 'postedAt')
-  @DateTimeConverter()
-  DateTime get postedAt => throw _privateConstructorUsedError;
   @JsonKey(name: 'audioUrl')
   String get audioUrl => throw _privateConstructorUsedError;
   @JsonKey(name: 'imageUrls')
@@ -85,9 +77,15 @@ mixin _$Post {
   @JsonKey(name: 'status')
   @PostStatusConverter()
   PostStatus get status => throw _privateConstructorUsedError;
-  @JsonKey(name: 'createdAt')
+  @JsonKey(name: 'userId')
+  String get userId => throw _privateConstructorUsedError;
+  @JsonKey(name: 'correctionCount')
+  int get correctionCount => throw _privateConstructorUsedError;
+  @JsonKey(name: 'postedAt')
   @DateTimeConverter()
-  DateTime get createdAt => throw _privateConstructorUsedError;
+  DateTime? get postedAt => throw _privateConstructorUsedError;
+  @JsonKey(ignore: true)
+  User? get user => throw _privateConstructorUsedError;
 
   Map<String, dynamic> toJson() => throw _privateConstructorUsedError;
   @JsonKey(ignore: true)
@@ -101,15 +99,15 @@ abstract class $PostCopyWith<$Res> {
   $Res call(
       {@JsonKey(name: 'title') String title,
       @JsonKey(name: 'content') String content,
-      @JsonKey(name: 'author') User author,
-      @JsonKey(name: 'correctionCount') int correctionCount,
-      @JsonKey(name: 'postedAt') @DateTimeConverter() DateTime postedAt,
       @JsonKey(name: 'audioUrl') String audioUrl,
       @JsonKey(name: 'imageUrls') List<String> imageUrls,
       @JsonKey(name: 'status') @PostStatusConverter() PostStatus status,
-      @JsonKey(name: 'createdAt') @DateTimeConverter() DateTime createdAt});
+      @JsonKey(name: 'userId') String userId,
+      @JsonKey(name: 'correctionCount') int correctionCount,
+      @JsonKey(name: 'postedAt') @DateTimeConverter() DateTime? postedAt,
+      @JsonKey(ignore: true) User? user});
 
-  $UserCopyWith<$Res> get author;
+  $UserCopyWith<$Res>? get user;
 }
 
 /// @nodoc
@@ -124,13 +122,13 @@ class _$PostCopyWithImpl<$Res> implements $PostCopyWith<$Res> {
   $Res call({
     Object? title = freezed,
     Object? content = freezed,
-    Object? author = freezed,
-    Object? correctionCount = freezed,
-    Object? postedAt = freezed,
     Object? audioUrl = freezed,
     Object? imageUrls = freezed,
     Object? status = freezed,
-    Object? createdAt = freezed,
+    Object? userId = freezed,
+    Object? correctionCount = freezed,
+    Object? postedAt = freezed,
+    Object? user = freezed,
   }) {
     return _then(_value.copyWith(
       title: title == freezed
@@ -141,18 +139,6 @@ class _$PostCopyWithImpl<$Res> implements $PostCopyWith<$Res> {
           ? _value.content
           : content // ignore: cast_nullable_to_non_nullable
               as String,
-      author: author == freezed
-          ? _value.author
-          : author // ignore: cast_nullable_to_non_nullable
-              as User,
-      correctionCount: correctionCount == freezed
-          ? _value.correctionCount
-          : correctionCount // ignore: cast_nullable_to_non_nullable
-              as int,
-      postedAt: postedAt == freezed
-          ? _value.postedAt
-          : postedAt // ignore: cast_nullable_to_non_nullable
-              as DateTime,
       audioUrl: audioUrl == freezed
           ? _value.audioUrl
           : audioUrl // ignore: cast_nullable_to_non_nullable
@@ -165,17 +151,33 @@ class _$PostCopyWithImpl<$Res> implements $PostCopyWith<$Res> {
           ? _value.status
           : status // ignore: cast_nullable_to_non_nullable
               as PostStatus,
-      createdAt: createdAt == freezed
-          ? _value.createdAt
-          : createdAt // ignore: cast_nullable_to_non_nullable
-              as DateTime,
+      userId: userId == freezed
+          ? _value.userId
+          : userId // ignore: cast_nullable_to_non_nullable
+              as String,
+      correctionCount: correctionCount == freezed
+          ? _value.correctionCount
+          : correctionCount // ignore: cast_nullable_to_non_nullable
+              as int,
+      postedAt: postedAt == freezed
+          ? _value.postedAt
+          : postedAt // ignore: cast_nullable_to_non_nullable
+              as DateTime?,
+      user: user == freezed
+          ? _value.user
+          : user // ignore: cast_nullable_to_non_nullable
+              as User?,
     ));
   }
 
   @override
-  $UserCopyWith<$Res> get author {
-    return $UserCopyWith<$Res>(_value.author, (value) {
-      return _then(_value.copyWith(author: value));
+  $UserCopyWith<$Res>? get user {
+    if (_value.user == null) {
+      return null;
+    }
+
+    return $UserCopyWith<$Res>(_value.user!, (value) {
+      return _then(_value.copyWith(user: value));
     });
   }
 }
@@ -188,16 +190,16 @@ abstract class _$PostCopyWith<$Res> implements $PostCopyWith<$Res> {
   $Res call(
       {@JsonKey(name: 'title') String title,
       @JsonKey(name: 'content') String content,
-      @JsonKey(name: 'author') User author,
-      @JsonKey(name: 'correctionCount') int correctionCount,
-      @JsonKey(name: 'postedAt') @DateTimeConverter() DateTime postedAt,
       @JsonKey(name: 'audioUrl') String audioUrl,
       @JsonKey(name: 'imageUrls') List<String> imageUrls,
       @JsonKey(name: 'status') @PostStatusConverter() PostStatus status,
-      @JsonKey(name: 'createdAt') @DateTimeConverter() DateTime createdAt});
+      @JsonKey(name: 'userId') String userId,
+      @JsonKey(name: 'correctionCount') int correctionCount,
+      @JsonKey(name: 'postedAt') @DateTimeConverter() DateTime? postedAt,
+      @JsonKey(ignore: true) User? user});
 
   @override
-  $UserCopyWith<$Res> get author;
+  $UserCopyWith<$Res>? get user;
 }
 
 /// @nodoc
@@ -213,13 +215,13 @@ class __$PostCopyWithImpl<$Res> extends _$PostCopyWithImpl<$Res>
   $Res call({
     Object? title = freezed,
     Object? content = freezed,
-    Object? author = freezed,
-    Object? correctionCount = freezed,
-    Object? postedAt = freezed,
     Object? audioUrl = freezed,
     Object? imageUrls = freezed,
     Object? status = freezed,
-    Object? createdAt = freezed,
+    Object? userId = freezed,
+    Object? correctionCount = freezed,
+    Object? postedAt = freezed,
+    Object? user = freezed,
   }) {
     return _then(_Post(
       title: title == freezed
@@ -230,18 +232,6 @@ class __$PostCopyWithImpl<$Res> extends _$PostCopyWithImpl<$Res>
           ? _value.content
           : content // ignore: cast_nullable_to_non_nullable
               as String,
-      author: author == freezed
-          ? _value.author
-          : author // ignore: cast_nullable_to_non_nullable
-              as User,
-      correctionCount: correctionCount == freezed
-          ? _value.correctionCount
-          : correctionCount // ignore: cast_nullable_to_non_nullable
-              as int,
-      postedAt: postedAt == freezed
-          ? _value.postedAt
-          : postedAt // ignore: cast_nullable_to_non_nullable
-              as DateTime,
       audioUrl: audioUrl == freezed
           ? _value.audioUrl
           : audioUrl // ignore: cast_nullable_to_non_nullable
@@ -254,10 +244,22 @@ class __$PostCopyWithImpl<$Res> extends _$PostCopyWithImpl<$Res>
           ? _value.status
           : status // ignore: cast_nullable_to_non_nullable
               as PostStatus,
-      createdAt: createdAt == freezed
-          ? _value.createdAt
-          : createdAt // ignore: cast_nullable_to_non_nullable
-              as DateTime,
+      userId: userId == freezed
+          ? _value.userId
+          : userId // ignore: cast_nullable_to_non_nullable
+              as String,
+      correctionCount: correctionCount == freezed
+          ? _value.correctionCount
+          : correctionCount // ignore: cast_nullable_to_non_nullable
+              as int,
+      postedAt: postedAt == freezed
+          ? _value.postedAt
+          : postedAt // ignore: cast_nullable_to_non_nullable
+              as DateTime?,
+      user: user == freezed
+          ? _value.user
+          : user // ignore: cast_nullable_to_non_nullable
+              as User?,
     ));
   }
 }
@@ -268,13 +270,13 @@ class _$_Post extends _Post {
   const _$_Post(
       {@JsonKey(name: 'title') required this.title,
       @JsonKey(name: 'content') required this.content,
-      @JsonKey(name: 'author') required this.author,
-      @JsonKey(name: 'correctionCount') required this.correctionCount,
-      @JsonKey(name: 'postedAt') @DateTimeConverter() required this.postedAt,
       @JsonKey(name: 'audioUrl') required this.audioUrl,
       @JsonKey(name: 'imageUrls') required this.imageUrls,
       @JsonKey(name: 'status') @PostStatusConverter() required this.status,
-      @JsonKey(name: 'createdAt') @DateTimeConverter() required this.createdAt})
+      @JsonKey(name: 'userId') required this.userId,
+      @JsonKey(name: 'correctionCount') this.correctionCount = 0,
+      @JsonKey(name: 'postedAt') @DateTimeConverter() this.postedAt,
+      @JsonKey(ignore: true) this.user})
       : super._();
 
   factory _$_Post.fromJson(Map<String, dynamic> json) => _$$_PostFromJson(json);
@@ -286,16 +288,6 @@ class _$_Post extends _Post {
   @JsonKey(name: 'content')
   final String content;
   @override
-  @JsonKey(name: 'author')
-  final User author;
-  @override
-  @JsonKey(name: 'correctionCount')
-  final int correctionCount;
-  @override
-  @JsonKey(name: 'postedAt')
-  @DateTimeConverter()
-  final DateTime postedAt;
-  @override
   @JsonKey(name: 'audioUrl')
   final String audioUrl;
   @override
@@ -306,13 +298,22 @@ class _$_Post extends _Post {
   @PostStatusConverter()
   final PostStatus status;
   @override
-  @JsonKey(name: 'createdAt')
+  @JsonKey(name: 'userId')
+  final String userId;
+  @override
+  @JsonKey(name: 'correctionCount')
+  final int correctionCount;
+  @override
+  @JsonKey(name: 'postedAt')
   @DateTimeConverter()
-  final DateTime createdAt;
+  final DateTime? postedAt;
+  @override
+  @JsonKey(ignore: true)
+  final User? user;
 
   @override
   String toString() {
-    return 'Post(title: $title, content: $content, author: $author, correctionCount: $correctionCount, postedAt: $postedAt, audioUrl: $audioUrl, imageUrls: $imageUrls, status: $status, createdAt: $createdAt)';
+    return 'Post(title: $title, content: $content, audioUrl: $audioUrl, imageUrls: $imageUrls, status: $status, userId: $userId, correctionCount: $correctionCount, postedAt: $postedAt, user: $user)';
   }
 
   @override
@@ -322,14 +323,14 @@ class _$_Post extends _Post {
             other is _Post &&
             const DeepCollectionEquality().equals(other.title, title) &&
             const DeepCollectionEquality().equals(other.content, content) &&
-            const DeepCollectionEquality().equals(other.author, author) &&
-            const DeepCollectionEquality()
-                .equals(other.correctionCount, correctionCount) &&
-            const DeepCollectionEquality().equals(other.postedAt, postedAt) &&
             const DeepCollectionEquality().equals(other.audioUrl, audioUrl) &&
             const DeepCollectionEquality().equals(other.imageUrls, imageUrls) &&
             const DeepCollectionEquality().equals(other.status, status) &&
-            const DeepCollectionEquality().equals(other.createdAt, createdAt));
+            const DeepCollectionEquality().equals(other.userId, userId) &&
+            const DeepCollectionEquality()
+                .equals(other.correctionCount, correctionCount) &&
+            const DeepCollectionEquality().equals(other.postedAt, postedAt) &&
+            const DeepCollectionEquality().equals(other.user, user));
   }
 
   @override
@@ -337,13 +338,13 @@ class _$_Post extends _Post {
       runtimeType,
       const DeepCollectionEquality().hash(title),
       const DeepCollectionEquality().hash(content),
-      const DeepCollectionEquality().hash(author),
-      const DeepCollectionEquality().hash(correctionCount),
-      const DeepCollectionEquality().hash(postedAt),
       const DeepCollectionEquality().hash(audioUrl),
       const DeepCollectionEquality().hash(imageUrls),
       const DeepCollectionEquality().hash(status),
-      const DeepCollectionEquality().hash(createdAt));
+      const DeepCollectionEquality().hash(userId),
+      const DeepCollectionEquality().hash(correctionCount),
+      const DeepCollectionEquality().hash(postedAt),
+      const DeepCollectionEquality().hash(user));
 
   @JsonKey(ignore: true)
   @override
@@ -362,13 +363,6 @@ abstract class _Post extends Post {
           required String title,
       @JsonKey(name: 'content')
           required String content,
-      @JsonKey(name: 'author')
-          required User author,
-      @JsonKey(name: 'correctionCount')
-          required int correctionCount,
-      @JsonKey(name: 'postedAt')
-      @DateTimeConverter()
-          required DateTime postedAt,
       @JsonKey(name: 'audioUrl')
           required String audioUrl,
       @JsonKey(name: 'imageUrls')
@@ -376,9 +370,15 @@ abstract class _Post extends Post {
       @JsonKey(name: 'status')
       @PostStatusConverter()
           required PostStatus status,
-      @JsonKey(name: 'createdAt')
+      @JsonKey(name: 'userId')
+          required String userId,
+      @JsonKey(name: 'correctionCount')
+          int correctionCount,
+      @JsonKey(name: 'postedAt')
       @DateTimeConverter()
-          required DateTime createdAt}) = _$_Post;
+          DateTime? postedAt,
+      @JsonKey(ignore: true)
+          User? user}) = _$_Post;
   const _Post._() : super._();
 
   factory _Post.fromJson(Map<String, dynamic> json) = _$_Post.fromJson;
@@ -390,16 +390,6 @@ abstract class _Post extends Post {
   @JsonKey(name: 'content')
   String get content;
   @override
-  @JsonKey(name: 'author')
-  User get author;
-  @override
-  @JsonKey(name: 'correctionCount')
-  int get correctionCount;
-  @override
-  @JsonKey(name: 'postedAt')
-  @DateTimeConverter()
-  DateTime get postedAt;
-  @override
   @JsonKey(name: 'audioUrl')
   String get audioUrl;
   @override
@@ -410,9 +400,18 @@ abstract class _Post extends Post {
   @PostStatusConverter()
   PostStatus get status;
   @override
-  @JsonKey(name: 'createdAt')
+  @JsonKey(name: 'userId')
+  String get userId;
+  @override
+  @JsonKey(name: 'correctionCount')
+  int get correctionCount;
+  @override
+  @JsonKey(name: 'postedAt')
   @DateTimeConverter()
-  DateTime get createdAt;
+  DateTime? get postedAt;
+  @override
+  @JsonKey(ignore: true)
+  User? get user;
   @override
   @JsonKey(ignore: true)
   _$PostCopyWith<_Post> get copyWith => throw _privateConstructorUsedError;

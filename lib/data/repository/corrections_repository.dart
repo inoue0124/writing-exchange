@@ -11,13 +11,14 @@ abstract class CorrectionRepositoryInterface {
 }
 
 class CorrectionRepository implements CorrectionRepositoryInterface {
-  final Reader _reader;
-  const CorrectionRepository(this._reader);
+  final Ref _ref;
+  const CorrectionRepository(this._ref);
 
   @override
   Future<void> upsert(Correction correction) async {
     try {
-      await _reader(firebaseFirestoreProvider)
+      await _ref
+          .read(firebaseFirestoreProvider)
           .correctionsRef()
           .add(correction.toJson());
       return;
@@ -29,7 +30,8 @@ class CorrectionRepository implements CorrectionRepositoryInterface {
   @override
   Future<Correction?> getById(String correctionId) async {
     try {
-      final snap = await _reader(firebaseFirestoreProvider)
+      final snap = await _ref
+          .read(firebaseFirestoreProvider)
           .correctionsRef()
           .doc(correctionId)
           .get();
@@ -47,7 +49,8 @@ class CorrectionRepository implements CorrectionRepositoryInterface {
   @override
   Future<void> deleteById(String correctionId) async {
     try {
-      await _reader(firebaseFirestoreProvider)
+      await _ref
+          .read(firebaseFirestoreProvider)
           .correctionsRef()
           .doc(correctionId)
           .delete();
@@ -59,5 +62,5 @@ class CorrectionRepository implements CorrectionRepositoryInterface {
 }
 
 final correctionRepositoryProvider = Provider<CorrectionRepositoryInterface>(
-  (ref) => CorrectionRepository(ref.read),
+  (ref) => CorrectionRepository(ref),
 );

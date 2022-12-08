@@ -1,19 +1,20 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
-import 'package:writing_exchange/components/dashboard.dart';
 import 'package:writing_exchange/components/empty_state_view.dart';
 import 'package:writing_exchange/components/loading_state_view.dart';
+import 'package:writing_exchange/components/post_list_item.dart';
+import 'package:writing_exchange/components/rounded_button.dart';
 import 'package:writing_exchange/i18n/strings.g.dart';
 import 'package:writing_exchange/pages/writing/writing_top/writing_top_viewmodel.dart';
 
 class WritingTopView extends ConsumerWidget {
   WritingTopView({
     super.key,
-    required this.onPressEdit,
+    required this.onPressCreateNew,
   });
 
   final ScrollController _homeController = ScrollController();
-  Function() onPressEdit;
+  Function() onPressCreateNew;
 
   @override
   Widget build(BuildContext context, WidgetRef ref) {
@@ -24,16 +25,26 @@ class WritingTopView extends ConsumerWidget {
           'Writing',
           style: Theme.of(context).textTheme.headline5,
         ),
+        actions: [
+          RoundedButton(
+            onPressed: onPressCreateNew,
+            title: "新規作成",
+          ),
+        ],
         backgroundColor: Theme.of(context).backgroundColor,
         bottomOpacity: 0.0,
         elevation: 0.0,
       ),
-      body: ref.watch(WritingTopViewModelProvider).when(
+      body: ref.watch(writingTopViewModelProvider).when(
             loading: () => const LoadingStateView(),
             error: (error, stacktrace) => Text(error.toString()),
             data: (state) {
               return state.writings.isEmpty
-                  ? const EmptyStateView(title: "まだ作文がありません。")
+                  ? EmptyStateView(
+                      title: "まだ作文がありません。",
+                      actionText: "作成",
+                      onPressedActionButton: onPressCreateNew,
+                    )
                   : SingleChildScrollView(
                       controller: _homeController,
                       child: Padding(
@@ -58,14 +69,6 @@ class WritingTopView extends ConsumerWidget {
                                 ),
                               ),
                             ),
-                            // PostListItem(
-                            //   title: waitingCorrectionPost.title,
-                            //   body: waitingCorrectionPost.body,
-                            //   imageUrls: waitingCorrectionPost.imageUrls,
-                            //   correctedCount: waitingCorrectionPost.correctedCount,
-                            //   editButtonTitle: t.correct,
-                            //   onPressEdit: onPressEdit,
-                            // ),
                             const SizedBox(
                               height: 16,
                             ),
@@ -81,6 +84,15 @@ class WritingTopView extends ConsumerWidget {
                                 ),
                               ),
                             ),
+                            for (var post in state.writings)
+                              PostListItem(
+                                title: post.title,
+                                body: post.content,
+                                imageUrls: post.imageUrls,
+                                correctedCount: post.correctionCount,
+                                editButtonTitle: t.updateCorrection,
+                                onPressEdit: () {},
+                              ),
                           ],
                         ),
                       ),

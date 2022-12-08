@@ -12,13 +12,14 @@ abstract class CorrectionMessageRepositoryInterface {
 
 class CorrectionMessageRepository
     implements CorrectionMessageRepositoryInterface {
-  final Reader _reader;
-  const CorrectionMessageRepository(this._reader);
+  final Ref _ref;
+  const CorrectionMessageRepository(this._ref);
 
   @override
   Future<void> upsert(String correctionId, CorrectionMessage message) async {
     try {
-      await _reader(firebaseFirestoreProvider)
+      await _ref
+          .read(firebaseFirestoreProvider)
           .correctionMessagesRef(correctionId)
           .add(message.toJson());
       return;
@@ -31,7 +32,8 @@ class CorrectionMessageRepository
   Future<List<CorrectionMessage>> getListByCorrectionId(
       String correctionId) async {
     try {
-      final snaps = await _reader(firebaseFirestoreProvider)
+      final snaps = await _ref
+          .read(firebaseFirestoreProvider)
           .correctionMessagesRef(correctionId)
           .get();
       return snaps.docs
@@ -45,7 +47,8 @@ class CorrectionMessageRepository
   @override
   Future<void> deleteById(String correctionId, String messageId) async {
     try {
-      await _reader(firebaseFirestoreProvider)
+      await _ref
+          .read(firebaseFirestoreProvider)
           .correctionMessagesRef(correctionId)
           .doc(messageId)
           .delete();
@@ -58,5 +61,5 @@ class CorrectionMessageRepository
 
 final messageRepositoryProvider =
     Provider<CorrectionMessageRepositoryInterface>(
-  (ref) => CorrectionMessageRepository(ref.read),
+  (ref) => CorrectionMessageRepository(ref),
 );

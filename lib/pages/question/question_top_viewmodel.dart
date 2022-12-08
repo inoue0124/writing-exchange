@@ -13,7 +13,7 @@ class QuestionTopViewModel extends StateNotifier<AsyncValue<QuestionTopState>> {
   }
 }
 
-final QuestionTopViewModelProvider = StateNotifierProvider.autoDispose<
+final questionTopViewModelProvider = StateNotifierProvider.autoDispose<
     QuestionTopViewModel, AsyncValue<QuestionTopState>>(
   (ref) => QuestionTopViewModel(),
 );

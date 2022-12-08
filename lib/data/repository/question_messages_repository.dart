@@ -11,13 +11,14 @@ abstract class QuestionMessageRepositoryInterface {
 }
 
 class QuestionMessageRepository implements QuestionMessageRepositoryInterface {
-  final Reader _reader;
-  const QuestionMessageRepository(this._reader);
+  final Ref _ref;
+  const QuestionMessageRepository(this._ref);
 
   @override
   Future<void> upsert(String correctionId, QuestionMessage message) async {
     try {
-      await _reader(firebaseFirestoreProvider)
+      await _ref
+          .read(firebaseFirestoreProvider)
           .questionMessagesRef(correctionId)
           .add(message.toJson());
       return;
@@ -30,7 +31,8 @@ class QuestionMessageRepository implements QuestionMessageRepositoryInterface {
   Future<List<QuestionMessage>> getListByCorrectionId(
       String correctionId) async {
     try {
-      final snaps = await _reader(firebaseFirestoreProvider)
+      final snaps = await _ref
+          .read(firebaseFirestoreProvider)
           .questionMessagesRef(correctionId)
           .get();
       return snaps.docs
@@ -44,7 +46,8 @@ class QuestionMessageRepository implements QuestionMessageRepositoryInterface {
   @override
   Future<void> deleteById(String correctionId, String messageId) async {
     try {
-      await _reader(firebaseFirestoreProvider)
+      await _ref
+          .read(firebaseFirestoreProvider)
           .questionMessagesRef(correctionId)
           .doc(messageId)
           .delete();
@@ -56,5 +59,5 @@ class QuestionMessageRepository implements QuestionMessageRepositoryInterface {
 }
 
 final messageRepositoryProvider = Provider<QuestionMessageRepositoryInterface>(
-  (ref) => QuestionMessageRepository(ref.read),
+  (ref) => QuestionMessageRepository(ref),
 );

@@ -13,8 +13,19 @@ class RoundedButton extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return ElevatedButton(
+      style: ElevatedButton.styleFrom(
+        foregroundColor: Theme.of(context).canvasColor,
+        backgroundColor: Theme.of(context).primaryColor,
+        shape: const StadiumBorder(),
+      ),
       onPressed: onPressed,
-      child: Text(title),
+      child: Row(
+        mainAxisSize: MainAxisSize.min,
+        children: [
+          const Icon(Icons.add),
+          Text(title),
+        ],
+      ),
     );
   }
 }
