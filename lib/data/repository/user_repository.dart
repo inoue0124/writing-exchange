@@ -1,5 +1,6 @@
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
+import 'package:hive_flutter/hive_flutter.dart';
 import 'package:writing_exchange/app/providers.dart';
 import 'package:writing_exchange/data/model/user.dart';
 import 'package:writing_exchange/data/model/user_status.dart';
@@ -13,12 +14,19 @@ abstract class UserRepositoryInterface {
 
 class UserRepository implements UserRepositoryInterface {
   final Ref _ref;
-  const UserRepository(this._ref);
+  UserRepository(this._ref);
+  Box? _db;
+
+  Future<Box> get db async {
+    if (_db != null) return _db!;
+    return await Hive.openBox('box');
+  }
 
   @override
   Future<void> upsert(User user) async {
     try {
       await _ref.read(firebaseFirestoreProvider).usersRef().add(user.toJson());
+      (await db).put(user.userId, user);
       return;
     } on FirebaseException catch (e) {
       throw e.toString();
