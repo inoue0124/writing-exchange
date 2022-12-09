@@ -24,9 +24,8 @@ dependencies:
   json_annotation: ^4.3.0
   language_picker: ^0.4.2
   country_list_pick: ^1.0.1+6
-  hive: ^2.2.3
-  hive_flutter: ^1.1.0
   circle_flags: ^1.0.3
+  shared_preferences: ^2.0.15
 
 dev_dependencies:
   flutter_test:
