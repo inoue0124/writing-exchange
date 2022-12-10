@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:writing_exchange/components/loading_state_view.dart';
-import 'package:writing_exchange/pages/question/question_top_viewmodel.dart';
+import 'package:writing_exchange/pages/question/question_top/question_top_viewmodel.dart';
 
 class QuestionTopView extends ConsumerWidget {
   QuestionTopView({
