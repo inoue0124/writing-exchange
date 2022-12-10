@@ -11,5 +11,11 @@
   "correct": "添削する",
   "updateCorrection": "添削を修正する",
   "save": "保存",
-  "yourComment": "あなたのコメント"
+  "yourComment": "あなたのコメント",
+  "walkthroughTitle1": "外国語で作文を書こう！",
+  "walkthroughTitle2": "あなたの母語を学ぶ人が書いた作文を添削しよう！",
+  "walkthroughTitle3": "ネイティブに質問しよう！",
+  "walkthroughSubitle1": "毎日の出来事、将来の夢や目標、仕事やライフスタイルなど色々なテーマの作文で、外国語のライティング能力を高めましょう。",
+  "walkthroughSubitle2": "他の人の作文を1回添削する毎に、あなたの作文をネイティブが1回添削してくれます。",
+  "walkthroughSubitle3": "あなたが他の学習者の質問に回答した数だけ、ネイティブに質問することができます。"
 }

@@ -1,7 +1,7 @@
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:shared_preferences/shared_preferences.dart';
-import 'package:writing_exchange/app/providers.dart';
+import 'package:writing_exchange/app/utils/providers.dart';
 import 'package:writing_exchange/data/model/user.dart';
 import 'package:writing_exchange/data/model/user_status.dart';
 import 'package:writing_exchange/data/repository/firestore_refs.dart';

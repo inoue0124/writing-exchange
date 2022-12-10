@@ -1,6 +1,6 @@
 import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
-import 'package:writing_exchange/app/providers.dart';
+import 'package:writing_exchange/app/utils/providers.dart';
 
 abstract class AuthServiceInterface {
   Future<void> register();

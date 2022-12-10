@@ -1,6 +1,6 @@
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
-import 'package:writing_exchange/app/providers.dart';
+import 'package:writing_exchange/app/utils/providers.dart';
 import 'package:writing_exchange/data/model/post.dart';
 import 'package:writing_exchange/data/model/post_status.dart';
 import 'package:writing_exchange/data/model/post_status_converter.dart';

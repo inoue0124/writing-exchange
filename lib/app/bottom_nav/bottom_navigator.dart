@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:writing_exchange/app/tab_helper.dart';
+import 'package:writing_exchange/app/bottom_nav/tab_helper.dart';
 
 class BottomNavigation extends StatelessWidget {
   const BottomNavigation({

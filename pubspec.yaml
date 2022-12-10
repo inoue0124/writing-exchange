@@ -26,6 +26,7 @@ dependencies:
   country_list_pick: ^1.0.1+6
   circle_flags: ^1.0.3
   shared_preferences: ^2.0.15
+  smooth_page_indicator: ^1.0.0+2
 
 dev_dependencies:
   flutter_test:
@@ -39,3 +40,6 @@ dev_dependencies:
 
 flutter:
   uses-material-design: true
+
+  assets:
+    - assets/

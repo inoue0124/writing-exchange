@@ -1,9 +1,9 @@
 /// Generated file. Do not edit.
 ///
 /// Locales: 2
-/// Strings: 26 (13 per locale)
+/// Strings: 38 (19 per locale)
 ///
-/// Built on 2022-12-07 at 14:52 UTC
+/// Built on 2022-12-10 at 13:57 UTC
 
 // coverage:ignore-file
 // ignore_for_file: type=lint
@@ -161,6 +161,12 @@ class _StringsEn implements BaseTranslations<AppLocale, _StringsEn> {
 	String get updateCorrection => 'Update correction';
 	String get save => 'Save';
 	String get yourComment => 'Your comment';
+	String get walkthroughTitle1 => 'Write essays\n in foreign languages!';
+	String get walkthroughTitle2 => 'Correct essays written in your native language!';
+	String get walkthroughTitle3 => 'Ask native speakers!';
+	String get walkthroughSubitle1 => 'Improve your writing skills by writing essays on various topics such as daily events, future dreams and goals, work and lifestyle.';
+	String get walkthroughSubitle2 => 'Every time you correct someone else\'s essay once, your essay will be corrected once by a native speaker.';
+	String get walkthroughSubitle3 => 'You can ask native speakers as many questions as you have answered other learners\' questions.';
 }
 
 // Path: <root>
@@ -201,6 +207,12 @@ class _StringsJa implements _StringsEn {
 	@override String get updateCorrection => '添削を修正する';
 	@override String get save => '保存';
 	@override String get yourComment => 'あなたのコメント';
+	@override String get walkthroughTitle1 => '外国語で作文を書こう！';
+	@override String get walkthroughTitle2 => 'あなたの母語を学ぶ人が書いた作文を添削しよう！';
+	@override String get walkthroughTitle3 => 'ネイティブに質問しよう！';
+	@override String get walkthroughSubitle1 => '毎日の出来事、将来の夢や目標、仕事やライフスタイルなど色々なテーマの作文で、外国語のライティング能力を高めましょう。';
+	@override String get walkthroughSubitle2 => '他の人の作文を1回添削する毎に、あなたの作文をネイティブが1回添削してくれます。';
+	@override String get walkthroughSubitle3 => 'あなたが他の学習者の質問に回答した数だけ、ネイティブに質問することができます。';
 }
 
 /// Flat map(s) containing all translations.
@@ -222,6 +234,12 @@ extension on _StringsEn {
 			case 'updateCorrection': return 'Update correction';
 			case 'save': return 'Save';
 			case 'yourComment': return 'Your comment';
+			case 'walkthroughTitle1': return 'Write essays\n in foreign languages!';
+			case 'walkthroughTitle2': return 'Correct essays written in your native language!';
+			case 'walkthroughTitle3': return 'Ask native speakers!';
+			case 'walkthroughSubitle1': return 'Improve your writing skills by writing essays on various topics such as daily events, future dreams and goals, work and lifestyle.';
+			case 'walkthroughSubitle2': return 'Every time you correct someone else\'s essay once, your essay will be corrected once by a native speaker.';
+			case 'walkthroughSubitle3': return 'You can ask native speakers as many questions as you have answered other learners\' questions.';
 			default: return null;
 		}
 	}
@@ -243,6 +261,12 @@ extension on _StringsJa {
 			case 'updateCorrection': return '添削を修正する';
 			case 'save': return '保存';
 			case 'yourComment': return 'あなたのコメント';
+			case 'walkthroughTitle1': return '外国語で作文を書こう！';
+			case 'walkthroughTitle2': return 'あなたの母語を学ぶ人が書いた作文を添削しよう！';
+			case 'walkthroughTitle3': return 'ネイティブに質問しよう！';
+			case 'walkthroughSubitle1': return '毎日の出来事、将来の夢や目標、仕事やライフスタイルなど色々なテーマの作文で、外国語のライティング能力を高めましょう。';
+			case 'walkthroughSubitle2': return '他の人の作文を1回添削する毎に、あなたの作文をネイティブが1回添削してくれます。';
+			case 'walkthroughSubitle3': return 'あなたが他の学習者の質問に回答した数だけ、ネイティブに質問することができます。';
 			default: return null;
 		}
 	}
