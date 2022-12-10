@@ -16,9 +16,7 @@ class WalkthroughViewModel extends StateNotifier<WalkthroughState> {
 
   void onPageChanged(int index) {
     state = state.copyWith(currentPageIndex: index);
-    if (index == 2) {
-      state = state.copyWith(isLastpage: true);
-    }
+    state = state.copyWith(isLastpage: index == 2 ? true : false);
   }
 }
 
