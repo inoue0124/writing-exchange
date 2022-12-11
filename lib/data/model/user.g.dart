@@ -7,15 +7,19 @@ part of 'user.dart';
 // **************************************************************************
 
 _$_User _$$_UserFromJson(Map<String, dynamic> json) => _$_User(
-      userId: json['userId'] as String?,
+      userId: json['userId'] as String? ?? "",
       name: json['name'] as String,
-      iconUrl: json['iconUrl'] as String,
+      iconUrl: json['iconUrl'] as String?,
       country: _$JsonConverterFromJson<String, Country>(
           json['country'], const CountryCodeConverter().fromJson),
-      nativeLanguages: const LanguageListConverter()
-          .fromJson(json['nativeLanguages'] as List<String>),
-      targetLanguages: const LanguageListConverter()
-          .fromJson(json['targetLanguages'] as List<String>),
+      nativeLanguages: (json['nativeLanguages'] as List<dynamic>?)
+              ?.map((e) => const LanguageConverter().fromJson(e as String))
+              .toList() ??
+          const [],
+      targetLanguages: (json['targetLanguages'] as List<dynamic>?)
+              ?.map((e) => const LanguageConverter().fromJson(e as String))
+              .toList() ??
+          const [],
       reviewValue: (json['reviewValue'] as num?)?.toDouble() ?? 0,
       correctionCount: json['correctionCount'] as int? ?? 0,
       postCount: json['postCount'] as int? ?? 0,
@@ -32,10 +36,12 @@ Map<String, dynamic> _$$_UserToJson(_$_User instance) => <String, dynamic>{
       'iconUrl': instance.iconUrl,
       'country': _$JsonConverterToJson<String, Country>(
           instance.country, const CountryCodeConverter().toJson),
-      'nativeLanguages':
-          const LanguageListConverter().toJson(instance.nativeLanguages),
-      'targetLanguages':
-          const LanguageListConverter().toJson(instance.targetLanguages),
+      'nativeLanguages': instance.nativeLanguages
+          .map(const LanguageConverter().toJson)
+          .toList(),
+      'targetLanguages': instance.targetLanguages
+          .map(const LanguageConverter().toJson)
+          .toList(),
       'reviewValue': instance.reviewValue,
       'correctionCount': instance.correctionCount,
       'postCount': instance.postCount,

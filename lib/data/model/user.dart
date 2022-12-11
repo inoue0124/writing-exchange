@@ -15,16 +15,18 @@ part 'user.g.dart';
 class User with _$User {
   const User._();
   const factory User({
-    @JsonKey(name: 'userId') String? userId,
+    @JsonKey(name: 'userId') @Default("") String userId,
     @JsonKey(name: 'name') required String name,
-    @JsonKey(name: 'iconUrl') required String iconUrl,
+    @JsonKey(name: 'iconUrl') String? iconUrl,
     @JsonKey(name: 'country') @CountryCodeConverter() Country? country,
     @JsonKey(name: 'nativeLanguages')
-    @LanguageListConverter()
-        required List<Language> nativeLanguages,
+    @LanguageConverter()
+    @Default([])
+        List<Language> nativeLanguages,
     @JsonKey(name: 'targetLanguages')
-    @LanguageListConverter()
-        required List<Language> targetLanguages,
+    @LanguageConverter()
+    @Default([])
+        List<Language> targetLanguages,
     @JsonKey(name: 'reviewValue') @Default(0) double reviewValue,
     @JsonKey(name: 'correctionCount') @Default(0) int correctionCount,
     @JsonKey(name: 'postCount') @Default(0) int postCount,

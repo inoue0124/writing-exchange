@@ -24,8 +24,8 @@ class OnboardingViewModel extends StateNotifier<OnboardingState> {
         if (state.nativeLanguage3 != null) state.nativeLanguage3!,
       ],
     );
-    await _authService.register(user);
-    await _userRepository.upsert(user);
+    final registerdUser = await _authService.register(user);
+    await _userRepository.upsert(registerdUser);
   }
 
   void onPageChanged(int index) {

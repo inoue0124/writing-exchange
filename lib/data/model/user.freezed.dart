@@ -24,20 +24,20 @@ class _$UserTearOff {
 
   _User call(
       {@JsonKey(name: 'userId')
-          String? userId,
+          String userId = "",
       @JsonKey(name: 'name')
           required String name,
       @JsonKey(name: 'iconUrl')
-          required String iconUrl,
+          String? iconUrl,
       @JsonKey(name: 'country')
       @CountryCodeConverter()
           Country? country,
       @JsonKey(name: 'nativeLanguages')
-      @LanguageListConverter()
-          required List<Language> nativeLanguages,
+      @LanguageConverter()
+          List<Language> nativeLanguages = const [],
       @JsonKey(name: 'targetLanguages')
-      @LanguageListConverter()
-          required List<Language> targetLanguages,
+      @LanguageConverter()
+          List<Language> targetLanguages = const [],
       @JsonKey(name: 'reviewValue')
           double reviewValue = 0,
       @JsonKey(name: 'correctionCount')
@@ -76,19 +76,19 @@ const $User = _$UserTearOff();
 /// @nodoc
 mixin _$User {
   @JsonKey(name: 'userId')
-  String? get userId => throw _privateConstructorUsedError;
+  String get userId => throw _privateConstructorUsedError;
   @JsonKey(name: 'name')
   String get name => throw _privateConstructorUsedError;
   @JsonKey(name: 'iconUrl')
-  String get iconUrl => throw _privateConstructorUsedError;
+  String? get iconUrl => throw _privateConstructorUsedError;
   @JsonKey(name: 'country')
   @CountryCodeConverter()
   Country? get country => throw _privateConstructorUsedError;
   @JsonKey(name: 'nativeLanguages')
-  @LanguageListConverter()
+  @LanguageConverter()
   List<Language> get nativeLanguages => throw _privateConstructorUsedError;
   @JsonKey(name: 'targetLanguages')
-  @LanguageListConverter()
+  @LanguageConverter()
   List<Language> get targetLanguages => throw _privateConstructorUsedError;
   @JsonKey(name: 'reviewValue')
   double get reviewValue => throw _privateConstructorUsedError;
@@ -114,19 +114,19 @@ abstract class $UserCopyWith<$Res> {
       _$UserCopyWithImpl<$Res>;
   $Res call(
       {@JsonKey(name: 'userId')
-          String? userId,
+          String userId,
       @JsonKey(name: 'name')
           String name,
       @JsonKey(name: 'iconUrl')
-          String iconUrl,
+          String? iconUrl,
       @JsonKey(name: 'country')
       @CountryCodeConverter()
           Country? country,
       @JsonKey(name: 'nativeLanguages')
-      @LanguageListConverter()
+      @LanguageConverter()
           List<Language> nativeLanguages,
       @JsonKey(name: 'targetLanguages')
-      @LanguageListConverter()
+      @LanguageConverter()
           List<Language> targetLanguages,
       @JsonKey(name: 'reviewValue')
           double reviewValue,
@@ -168,7 +168,7 @@ class _$UserCopyWithImpl<$Res> implements $UserCopyWith<$Res> {
       userId: userId == freezed
           ? _value.userId
           : userId // ignore: cast_nullable_to_non_nullable
-              as String?,
+              as String,
       name: name == freezed
           ? _value.name
           : name // ignore: cast_nullable_to_non_nullable
@@ -176,7 +176,7 @@ class _$UserCopyWithImpl<$Res> implements $UserCopyWith<$Res> {
       iconUrl: iconUrl == freezed
           ? _value.iconUrl
           : iconUrl // ignore: cast_nullable_to_non_nullable
-              as String,
+              as String?,
       country: country == freezed
           ? _value.country
           : country // ignore: cast_nullable_to_non_nullable
@@ -220,19 +220,19 @@ abstract class _$UserCopyWith<$Res> implements $UserCopyWith<$Res> {
   @override
   $Res call(
       {@JsonKey(name: 'userId')
-          String? userId,
+          String userId,
       @JsonKey(name: 'name')
           String name,
       @JsonKey(name: 'iconUrl')
-          String iconUrl,
+          String? iconUrl,
       @JsonKey(name: 'country')
       @CountryCodeConverter()
           Country? country,
       @JsonKey(name: 'nativeLanguages')
-      @LanguageListConverter()
+      @LanguageConverter()
           List<Language> nativeLanguages,
       @JsonKey(name: 'targetLanguages')
-      @LanguageListConverter()
+      @LanguageConverter()
           List<Language> targetLanguages,
       @JsonKey(name: 'reviewValue')
           double reviewValue,
@@ -275,7 +275,7 @@ class __$UserCopyWithImpl<$Res> extends _$UserCopyWithImpl<$Res>
       userId: userId == freezed
           ? _value.userId
           : userId // ignore: cast_nullable_to_non_nullable
-              as String?,
+              as String,
       name: name == freezed
           ? _value.name
           : name // ignore: cast_nullable_to_non_nullable
@@ -283,7 +283,7 @@ class __$UserCopyWithImpl<$Res> extends _$UserCopyWithImpl<$Res>
       iconUrl: iconUrl == freezed
           ? _value.iconUrl
           : iconUrl // ignore: cast_nullable_to_non_nullable
-              as String,
+              as String?,
       country: country == freezed
           ? _value.country
           : country // ignore: cast_nullable_to_non_nullable
@@ -325,20 +325,20 @@ class __$UserCopyWithImpl<$Res> extends _$UserCopyWithImpl<$Res>
 class _$_User extends _User {
   const _$_User(
       {@JsonKey(name: 'userId')
-          this.userId,
+          this.userId = "",
       @JsonKey(name: 'name')
           required this.name,
       @JsonKey(name: 'iconUrl')
-          required this.iconUrl,
+          this.iconUrl,
       @JsonKey(name: 'country')
       @CountryCodeConverter()
           this.country,
       @JsonKey(name: 'nativeLanguages')
-      @LanguageListConverter()
-          required this.nativeLanguages,
+      @LanguageConverter()
+          this.nativeLanguages = const [],
       @JsonKey(name: 'targetLanguages')
-      @LanguageListConverter()
-          required this.targetLanguages,
+      @LanguageConverter()
+          this.targetLanguages = const [],
       @JsonKey(name: 'reviewValue')
           this.reviewValue = 0,
       @JsonKey(name: 'correctionCount')
@@ -357,24 +357,24 @@ class _$_User extends _User {
 
   @override
   @JsonKey(name: 'userId')
-  final String? userId;
+  final String userId;
   @override
   @JsonKey(name: 'name')
   final String name;
   @override
   @JsonKey(name: 'iconUrl')
-  final String iconUrl;
+  final String? iconUrl;
   @override
   @JsonKey(name: 'country')
   @CountryCodeConverter()
   final Country? country;
   @override
   @JsonKey(name: 'nativeLanguages')
-  @LanguageListConverter()
+  @LanguageConverter()
   final List<Language> nativeLanguages;
   @override
   @JsonKey(name: 'targetLanguages')
-  @LanguageListConverter()
+  @LanguageConverter()
   final List<Language> targetLanguages;
   @override
   @JsonKey(name: 'reviewValue')
@@ -450,20 +450,20 @@ class _$_User extends _User {
 abstract class _User extends User {
   const factory _User(
       {@JsonKey(name: 'userId')
-          String? userId,
+          String userId,
       @JsonKey(name: 'name')
           required String name,
       @JsonKey(name: 'iconUrl')
-          required String iconUrl,
+          String? iconUrl,
       @JsonKey(name: 'country')
       @CountryCodeConverter()
           Country? country,
       @JsonKey(name: 'nativeLanguages')
-      @LanguageListConverter()
-          required List<Language> nativeLanguages,
+      @LanguageConverter()
+          List<Language> nativeLanguages,
       @JsonKey(name: 'targetLanguages')
-      @LanguageListConverter()
-          required List<Language> targetLanguages,
+      @LanguageConverter()
+          List<Language> targetLanguages,
       @JsonKey(name: 'reviewValue')
           double reviewValue,
       @JsonKey(name: 'correctionCount')
@@ -482,24 +482,24 @@ abstract class _User extends User {
 
   @override
   @JsonKey(name: 'userId')
-  String? get userId;
+  String get userId;
   @override
   @JsonKey(name: 'name')
   String get name;
   @override
   @JsonKey(name: 'iconUrl')
-  String get iconUrl;
+  String? get iconUrl;
   @override
   @JsonKey(name: 'country')
   @CountryCodeConverter()
   Country? get country;
   @override
   @JsonKey(name: 'nativeLanguages')
-  @LanguageListConverter()
+  @LanguageConverter()
   List<Language> get nativeLanguages;
   @override
   @JsonKey(name: 'targetLanguages')
-  @LanguageListConverter()
+  @LanguageConverter()
   List<Language> get targetLanguages;
   @override
   @JsonKey(name: 'reviewValue')

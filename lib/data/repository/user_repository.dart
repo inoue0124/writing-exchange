@@ -41,7 +41,7 @@ class UserRepository implements UserRepositoryInterface {
       // キャッシュ作成
       SharedPreferences prefs =
           await _ref.read(sharedPreferenceProvider.future);
-      prefs.setString(PrefKeys.loggedInUser, user.toJson().toString());
+      prefs.setString(PrefKeys.loggedInUser, jsonEncode(user));
     } on FirebaseException catch (e) {
       throw e.toString();
     }
@@ -95,7 +95,7 @@ class UserRepository implements UserRepositoryInterface {
     // キャッシュがなければfirestoreから取得してキャッシュ作成
     final user = await getById(userId);
     if (user == null) return null;
-    prefs.setString(PrefKeys.loggedInUser, user.toJson().toString());
+    prefs.setString(PrefKeys.loggedInUser, jsonEncode(user));
 
     return user;
   }

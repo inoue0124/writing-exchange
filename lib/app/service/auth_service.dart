@@ -4,7 +4,7 @@ import 'package:writing_exchange/app/utils/providers.dart';
 import 'package:writing_exchange/data/model/user.dart';
 
 abstract class AuthServiceInterface {
-  Future<void> register(User user);
+  Future<User> register(User user);
   Future<String?> getUserId();
 }
 
@@ -14,11 +14,12 @@ class AuthService implements AuthServiceInterface {
   final Ref _ref;
 
   @override
-  Future<void> register(User user) async {
+  Future<User> register(User user) async {
     try {
       final credential =
           await _ref.read(firebaseAuthProvider).signInAnonymously();
-      user = user.copyWith(userId: credential.user?.uid);
+      user = user.copyWith(userId: credential.user!.uid);
+      return user;
     } on FirebaseException catch (e) {
       throw e.toString();
     }

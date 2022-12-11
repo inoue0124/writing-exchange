@@ -14,19 +14,3 @@ class LanguageConverter implements JsonConverter<Language, String> {
     return language.isoCode;
   }
 }
-
-class LanguageListConverter
-    implements JsonConverter<List<Language>, List<String>> {
-  const LanguageListConverter();
-  final languageConverter = const LanguageConverter();
-
-  @override
-  List<Language> fromJson(List<String> json) {
-    return json.map((e) => languageConverter.fromJson(e)).toList();
-  }
-
-  @override
-  List<String> toJson(List<Language> language) {
-    return language.map((e) => languageConverter.toJson(e)).toList();
-  }
-}

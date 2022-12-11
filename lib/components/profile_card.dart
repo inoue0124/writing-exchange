@@ -21,10 +21,15 @@ class ProfileCard extends StatelessWidget {
               style: Theme.of(context).textTheme.headline4,
             ),
             const Spacer(),
-            AvatarIcon(
-              iconUrl: user.iconUrl,
-              countryCode: user.country!.countryCode,
-            )
+            user.iconUrl == null
+                ? const CircleAvatar(
+                    radius: 30,
+                    child: Text("No Image"),
+                  )
+                : AvatarIcon(
+                    iconUrl: user.iconUrl!,
+                    countryCode: user.country!.countryCode,
+                  )
           ],
         ),
         Row(
