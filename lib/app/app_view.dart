@@ -44,11 +44,11 @@ class AppView extends ConsumerWidget {
       onWillPop: () async {
         return false;
       },
-      child: state.isOnboarding
-          ? OnboardingNavigator(
+      child: state.isFinishedOnboarding
+          ? mainView()
+          : OnboardingNavigator(
               onFinishOnboarding: viewModel.onFinishOnboarding,
-            )
-          : mainView(),
+            ),
     );
   }
 }

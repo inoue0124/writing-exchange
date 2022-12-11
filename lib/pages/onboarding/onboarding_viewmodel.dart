@@ -2,14 +2,19 @@ import 'package:country_picker/country_picker.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:language_picker/languages.dart';
 import 'package:writing_exchange/app/service/auth_service.dart';
+import 'package:writing_exchange/data/repository/user_repository.dart';
 import 'package:writing_exchange/pages/onboarding/onboarding_state.dart';
 
 class OnboardingViewModel extends StateNotifier<OnboardingState> {
-  OnboardingViewModel({required AuthServiceInterface authService})
-      : _authService = authService,
+  OnboardingViewModel({
+    required AuthServiceInterface authService,
+    required UserRepositoryInterface userRepository,
+  })  : _authService = authService,
+        _userRepository = userRepository,
         super(const OnboardingState());
 
   final AuthServiceInterface _authService;
+  final UserRepositoryInterface _userRepository;
 
   Future<void> createUser() async {
     final user = state.user.copyWith(
@@ -20,6 +25,7 @@ class OnboardingViewModel extends StateNotifier<OnboardingState> {
       ],
     );
     await _authService.register(user);
+    await _userRepository.upsert(user);
   }
 
   void onPageChanged(int index) {
@@ -63,5 +69,6 @@ final onboardingViewModelProvider =
     StateNotifierProvider.autoDispose<OnboardingViewModel, OnboardingState>(
   (ref) => OnboardingViewModel(
     authService: ref.watch(authServiceProvider),
+    userRepository: ref.watch(userRepositoryProvider),
   ),
 );

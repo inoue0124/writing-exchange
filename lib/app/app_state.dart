@@ -7,6 +7,6 @@ part 'app_state.freezed.dart';
 class AppState with _$AppState {
   const factory AppState({
     @Default(TabItem.writing) TabItem currentTabIndex,
-    @Default(true) bool isOnboarding,
+    @Default(false) bool isFinishedOnboarding,
   }) = _AppState;
 }

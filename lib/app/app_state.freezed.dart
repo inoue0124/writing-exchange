@@ -19,10 +19,11 @@ class _$AppStateTearOff {
   const _$AppStateTearOff();
 
   _AppState call(
-      {TabItem currentTabIndex = TabItem.writing, bool isOnboarding = true}) {
+      {TabItem currentTabIndex = TabItem.writing,
+      bool isFinishedOnboarding = false}) {
     return _AppState(
       currentTabIndex: currentTabIndex,
-      isOnboarding: isOnboarding,
+      isFinishedOnboarding: isFinishedOnboarding,
     );
   }
 }
@@ -33,7 +34,7 @@ const $AppState = _$AppStateTearOff();
 /// @nodoc
 mixin _$AppState {
   TabItem get currentTabIndex => throw _privateConstructorUsedError;
-  bool get isOnboarding => throw _privateConstructorUsedError;
+  bool get isFinishedOnboarding => throw _privateConstructorUsedError;
 
   @JsonKey(ignore: true)
   $AppStateCopyWith<AppState> get copyWith =>
@@ -44,7 +45,7 @@ mixin _$AppState {
 abstract class $AppStateCopyWith<$Res> {
   factory $AppStateCopyWith(AppState value, $Res Function(AppState) then) =
       _$AppStateCopyWithImpl<$Res>;
-  $Res call({TabItem currentTabIndex, bool isOnboarding});
+  $Res call({TabItem currentTabIndex, bool isFinishedOnboarding});
 }
 
 /// @nodoc
@@ -58,16 +59,16 @@ class _$AppStateCopyWithImpl<$Res> implements $AppStateCopyWith<$Res> {
   @override
   $Res call({
     Object? currentTabIndex = freezed,
-    Object? isOnboarding = freezed,
+    Object? isFinishedOnboarding = freezed,
   }) {
     return _then(_value.copyWith(
       currentTabIndex: currentTabIndex == freezed
           ? _value.currentTabIndex
           : currentTabIndex // ignore: cast_nullable_to_non_nullable
               as TabItem,
-      isOnboarding: isOnboarding == freezed
-          ? _value.isOnboarding
-          : isOnboarding // ignore: cast_nullable_to_non_nullable
+      isFinishedOnboarding: isFinishedOnboarding == freezed
+          ? _value.isFinishedOnboarding
+          : isFinishedOnboarding // ignore: cast_nullable_to_non_nullable
               as bool,
     ));
   }
@@ -78,7 +79,7 @@ abstract class _$AppStateCopyWith<$Res> implements $AppStateCopyWith<$Res> {
   factory _$AppStateCopyWith(_AppState value, $Res Function(_AppState) then) =
       __$AppStateCopyWithImpl<$Res>;
   @override
-  $Res call({TabItem currentTabIndex, bool isOnboarding});
+  $Res call({TabItem currentTabIndex, bool isFinishedOnboarding});
 }
 
 /// @nodoc
@@ -93,16 +94,16 @@ class __$AppStateCopyWithImpl<$Res> extends _$AppStateCopyWithImpl<$Res>
   @override
   $Res call({
     Object? currentTabIndex = freezed,
-    Object? isOnboarding = freezed,
+    Object? isFinishedOnboarding = freezed,
   }) {
     return _then(_AppState(
       currentTabIndex: currentTabIndex == freezed
           ? _value.currentTabIndex
           : currentTabIndex // ignore: cast_nullable_to_non_nullable
               as TabItem,
-      isOnboarding: isOnboarding == freezed
-          ? _value.isOnboarding
-          : isOnboarding // ignore: cast_nullable_to_non_nullable
+      isFinishedOnboarding: isFinishedOnboarding == freezed
+          ? _value.isFinishedOnboarding
+          : isFinishedOnboarding // ignore: cast_nullable_to_non_nullable
               as bool,
     ));
   }
@@ -112,18 +113,19 @@ class __$AppStateCopyWithImpl<$Res> extends _$AppStateCopyWithImpl<$Res>
 
 class _$_AppState implements _AppState {
   const _$_AppState(
-      {this.currentTabIndex = TabItem.writing, this.isOnboarding = true});
+      {this.currentTabIndex = TabItem.writing,
+      this.isFinishedOnboarding = false});
 
   @JsonKey()
   @override
   final TabItem currentTabIndex;
   @JsonKey()
   @override
-  final bool isOnboarding;
+  final bool isFinishedOnboarding;
 
   @override
   String toString() {
-    return 'AppState(currentTabIndex: $currentTabIndex, isOnboarding: $isOnboarding)';
+    return 'AppState(currentTabIndex: $currentTabIndex, isFinishedOnboarding: $isFinishedOnboarding)';
   }
 
   @override
@@ -134,14 +136,14 @@ class _$_AppState implements _AppState {
             const DeepCollectionEquality()
                 .equals(other.currentTabIndex, currentTabIndex) &&
             const DeepCollectionEquality()
-                .equals(other.isOnboarding, isOnboarding));
+                .equals(other.isFinishedOnboarding, isFinishedOnboarding));
   }
 
   @override
   int get hashCode => Object.hash(
       runtimeType,
       const DeepCollectionEquality().hash(currentTabIndex),
-      const DeepCollectionEquality().hash(isOnboarding));
+      const DeepCollectionEquality().hash(isFinishedOnboarding));
 
   @JsonKey(ignore: true)
   @override
@@ -150,13 +152,13 @@ class _$_AppState implements _AppState {
 }
 
 abstract class _AppState implements AppState {
-  const factory _AppState({TabItem currentTabIndex, bool isOnboarding}) =
-      _$_AppState;
+  const factory _AppState(
+      {TabItem currentTabIndex, bool isFinishedOnboarding}) = _$_AppState;
 
   @override
   TabItem get currentTabIndex;
   @override
-  bool get isOnboarding;
+  bool get isFinishedOnboarding;
   @override
   @JsonKey(ignore: true)
   _$AppStateCopyWith<_AppState> get copyWith =>
