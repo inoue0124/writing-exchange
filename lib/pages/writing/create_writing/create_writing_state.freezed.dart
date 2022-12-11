@@ -25,7 +25,9 @@ class _$CreateWritingStateTearOff {
       String audioUrl = "",
       PostStatus status = PostStatus.active,
       bool isPostSuccess = false,
-      bool isSaveDraftSuccess = false}) {
+      bool isSaveDraftSuccess = false,
+      bool isLoading = false,
+      Language? language = null}) {
     return _CreateWritingState(
       title: title,
       content: content,
@@ -34,6 +36,8 @@ class _$CreateWritingStateTearOff {
       status: status,
       isPostSuccess: isPostSuccess,
       isSaveDraftSuccess: isSaveDraftSuccess,
+      isLoading: isLoading,
+      language: language,
     );
   }
 }
@@ -50,6 +54,8 @@ mixin _$CreateWritingState {
   PostStatus get status => throw _privateConstructorUsedError;
   bool get isPostSuccess => throw _privateConstructorUsedError;
   bool get isSaveDraftSuccess => throw _privateConstructorUsedError;
+  bool get isLoading => throw _privateConstructorUsedError;
+  Language? get language => throw _privateConstructorUsedError;
 
   @JsonKey(ignore: true)
   $CreateWritingStateCopyWith<CreateWritingState> get copyWith =>
@@ -68,7 +74,9 @@ abstract class $CreateWritingStateCopyWith<$Res> {
       String audioUrl,
       PostStatus status,
       bool isPostSuccess,
-      bool isSaveDraftSuccess});
+      bool isSaveDraftSuccess,
+      bool isLoading,
+      Language? language});
 }
 
 /// @nodoc
@@ -89,6 +97,8 @@ class _$CreateWritingStateCopyWithImpl<$Res>
     Object? status = freezed,
     Object? isPostSuccess = freezed,
     Object? isSaveDraftSuccess = freezed,
+    Object? isLoading = freezed,
+    Object? language = freezed,
   }) {
     return _then(_value.copyWith(
       title: title == freezed
@@ -119,6 +129,14 @@ class _$CreateWritingStateCopyWithImpl<$Res>
           ? _value.isSaveDraftSuccess
           : isSaveDraftSuccess // ignore: cast_nullable_to_non_nullable
               as bool,
+      isLoading: isLoading == freezed
+          ? _value.isLoading
+          : isLoading // ignore: cast_nullable_to_non_nullable
+              as bool,
+      language: language == freezed
+          ? _value.language
+          : language // ignore: cast_nullable_to_non_nullable
+              as Language?,
     ));
   }
 }
@@ -137,7 +155,9 @@ abstract class _$CreateWritingStateCopyWith<$Res>
       String audioUrl,
       PostStatus status,
       bool isPostSuccess,
-      bool isSaveDraftSuccess});
+      bool isSaveDraftSuccess,
+      bool isLoading,
+      Language? language});
 }
 
 /// @nodoc
@@ -160,6 +180,8 @@ class __$CreateWritingStateCopyWithImpl<$Res>
     Object? status = freezed,
     Object? isPostSuccess = freezed,
     Object? isSaveDraftSuccess = freezed,
+    Object? isLoading = freezed,
+    Object? language = freezed,
   }) {
     return _then(_CreateWritingState(
       title: title == freezed
@@ -190,6 +212,14 @@ class __$CreateWritingStateCopyWithImpl<$Res>
           ? _value.isSaveDraftSuccess
           : isSaveDraftSuccess // ignore: cast_nullable_to_non_nullable
               as bool,
+      isLoading: isLoading == freezed
+          ? _value.isLoading
+          : isLoading // ignore: cast_nullable_to_non_nullable
+              as bool,
+      language: language == freezed
+          ? _value.language
+          : language // ignore: cast_nullable_to_non_nullable
+              as Language?,
     ));
   }
 }
@@ -204,7 +234,9 @@ class _$_CreateWritingState implements _CreateWritingState {
       this.audioUrl = "",
       this.status = PostStatus.active,
       this.isPostSuccess = false,
-      this.isSaveDraftSuccess = false});
+      this.isSaveDraftSuccess = false,
+      this.isLoading = false,
+      this.language = null});
 
   @JsonKey()
   @override
@@ -227,10 +259,16 @@ class _$_CreateWritingState implements _CreateWritingState {
   @JsonKey()
   @override
   final bool isSaveDraftSuccess;
+  @JsonKey()
+  @override
+  final bool isLoading;
+  @JsonKey()
+  @override
+  final Language? language;
 
   @override
   String toString() {
-    return 'CreateWritingState(title: $title, content: $content, imageUrls: $imageUrls, audioUrl: $audioUrl, status: $status, isPostSuccess: $isPostSuccess, isSaveDraftSuccess: $isSaveDraftSuccess)';
+    return 'CreateWritingState(title: $title, content: $content, imageUrls: $imageUrls, audioUrl: $audioUrl, status: $status, isPostSuccess: $isPostSuccess, isSaveDraftSuccess: $isSaveDraftSuccess, isLoading: $isLoading, language: $language)';
   }
 
   @override
@@ -246,7 +284,9 @@ class _$_CreateWritingState implements _CreateWritingState {
             const DeepCollectionEquality()
                 .equals(other.isPostSuccess, isPostSuccess) &&
             const DeepCollectionEquality()
-                .equals(other.isSaveDraftSuccess, isSaveDraftSuccess));
+                .equals(other.isSaveDraftSuccess, isSaveDraftSuccess) &&
+            const DeepCollectionEquality().equals(other.isLoading, isLoading) &&
+            const DeepCollectionEquality().equals(other.language, language));
   }
 
   @override
@@ -258,7 +298,9 @@ class _$_CreateWritingState implements _CreateWritingState {
       const DeepCollectionEquality().hash(audioUrl),
       const DeepCollectionEquality().hash(status),
       const DeepCollectionEquality().hash(isPostSuccess),
-      const DeepCollectionEquality().hash(isSaveDraftSuccess));
+      const DeepCollectionEquality().hash(isSaveDraftSuccess),
+      const DeepCollectionEquality().hash(isLoading),
+      const DeepCollectionEquality().hash(language));
 
   @JsonKey(ignore: true)
   @override
@@ -274,7 +316,9 @@ abstract class _CreateWritingState implements CreateWritingState {
       String audioUrl,
       PostStatus status,
       bool isPostSuccess,
-      bool isSaveDraftSuccess}) = _$_CreateWritingState;
+      bool isSaveDraftSuccess,
+      bool isLoading,
+      Language? language}) = _$_CreateWritingState;
 
   @override
   String get title;
@@ -290,6 +334,10 @@ abstract class _CreateWritingState implements CreateWritingState {
   bool get isPostSuccess;
   @override
   bool get isSaveDraftSuccess;
+  @override
+  bool get isLoading;
+  @override
+  Language? get language;
   @override
   @JsonKey(ignore: true)
   _$CreateWritingStateCopyWith<_CreateWritingState> get copyWith =>

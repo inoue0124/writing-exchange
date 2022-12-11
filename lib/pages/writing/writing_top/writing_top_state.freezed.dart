@@ -18,7 +18,8 @@ final _privateConstructorUsedError = UnsupportedError(
 class _$WritingTopStateTearOff {
   const _$WritingTopStateTearOff();
 
-  _WritingTopState call({List<Post> writings = const [], User? user = null}) {
+  _WritingTopState call(
+      {List<Post> writings = const [], User user = const User()}) {
     return _WritingTopState(
       writings: writings,
       user: user,
@@ -32,7 +33,7 @@ const $WritingTopState = _$WritingTopStateTearOff();
 /// @nodoc
 mixin _$WritingTopState {
   List<Post> get writings => throw _privateConstructorUsedError;
-  User? get user => throw _privateConstructorUsedError;
+  User get user => throw _privateConstructorUsedError;
 
   @JsonKey(ignore: true)
   $WritingTopStateCopyWith<WritingTopState> get copyWith =>
@@ -44,9 +45,9 @@ abstract class $WritingTopStateCopyWith<$Res> {
   factory $WritingTopStateCopyWith(
           WritingTopState value, $Res Function(WritingTopState) then) =
       _$WritingTopStateCopyWithImpl<$Res>;
-  $Res call({List<Post> writings, User? user});
+  $Res call({List<Post> writings, User user});
 
-  $UserCopyWith<$Res>? get user;
+  $UserCopyWith<$Res> get user;
 }
 
 /// @nodoc
@@ -71,17 +72,13 @@ class _$WritingTopStateCopyWithImpl<$Res>
       user: user == freezed
           ? _value.user
           : user // ignore: cast_nullable_to_non_nullable
-              as User?,
+              as User,
     ));
   }
 
   @override
-  $UserCopyWith<$Res>? get user {
-    if (_value.user == null) {
-      return null;
-    }
-
-    return $UserCopyWith<$Res>(_value.user!, (value) {
+  $UserCopyWith<$Res> get user {
+    return $UserCopyWith<$Res>(_value.user, (value) {
       return _then(_value.copyWith(user: value));
     });
   }
@@ -94,10 +91,10 @@ abstract class _$WritingTopStateCopyWith<$Res>
           _WritingTopState value, $Res Function(_WritingTopState) then) =
       __$WritingTopStateCopyWithImpl<$Res>;
   @override
-  $Res call({List<Post> writings, User? user});
+  $Res call({List<Post> writings, User user});
 
   @override
-  $UserCopyWith<$Res>? get user;
+  $UserCopyWith<$Res> get user;
 }
 
 /// @nodoc
@@ -124,7 +121,7 @@ class __$WritingTopStateCopyWithImpl<$Res>
       user: user == freezed
           ? _value.user
           : user // ignore: cast_nullable_to_non_nullable
-              as User?,
+              as User,
     ));
   }
 }
@@ -132,14 +129,15 @@ class __$WritingTopStateCopyWithImpl<$Res>
 /// @nodoc
 
 class _$_WritingTopState implements _WritingTopState {
-  const _$_WritingTopState({this.writings = const [], this.user = null});
+  const _$_WritingTopState(
+      {this.writings = const [], this.user = const User()});
 
   @JsonKey()
   @override
   final List<Post> writings;
   @JsonKey()
   @override
-  final User? user;
+  final User user;
 
   @override
   String toString() {
@@ -168,13 +166,13 @@ class _$_WritingTopState implements _WritingTopState {
 }
 
 abstract class _WritingTopState implements WritingTopState {
-  const factory _WritingTopState({List<Post> writings, User? user}) =
+  const factory _WritingTopState({List<Post> writings, User user}) =
       _$_WritingTopState;
 
   @override
   List<Post> get writings;
   @override
-  User? get user;
+  User get user;
   @override
   @JsonKey(ignore: true)
   _$WritingTopStateCopyWith<_WritingTopState> get copyWith =>

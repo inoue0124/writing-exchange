@@ -16,7 +16,7 @@ class User with _$User {
   const User._();
   const factory User({
     @JsonKey(name: 'userId') @Default("") String userId,
-    @JsonKey(name: 'name') required String name,
+    @JsonKey(name: 'name') @Default("UserName") String name,
     @JsonKey(name: 'iconUrl') String? iconUrl,
     @JsonKey(name: 'country') @CountryCodeConverter() Country? country,
     @JsonKey(name: 'nativeLanguages')

@@ -8,7 +8,7 @@ part of 'user.dart';
 
 _$_User _$$_UserFromJson(Map<String, dynamic> json) => _$_User(
       userId: json['userId'] as String? ?? "",
-      name: json['name'] as String,
+      name: json['name'] as String? ?? "UserName",
       iconUrl: json['iconUrl'] as String?,
       country: _$JsonConverterFromJson<String, Country>(
           json['country'], const CountryCodeConverter().fromJson),

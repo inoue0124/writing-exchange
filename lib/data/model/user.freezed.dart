@@ -26,7 +26,7 @@ class _$UserTearOff {
       {@JsonKey(name: 'userId')
           String userId = "",
       @JsonKey(name: 'name')
-          required String name,
+          String name = "UserName",
       @JsonKey(name: 'iconUrl')
           String? iconUrl,
       @JsonKey(name: 'country')
@@ -327,7 +327,7 @@ class _$_User extends _User {
       {@JsonKey(name: 'userId')
           this.userId = "",
       @JsonKey(name: 'name')
-          required this.name,
+          this.name = "UserName",
       @JsonKey(name: 'iconUrl')
           this.iconUrl,
       @JsonKey(name: 'country')
@@ -452,7 +452,7 @@ abstract class _User extends User {
       {@JsonKey(name: 'userId')
           String userId,
       @JsonKey(name: 'name')
-          required String name,
+          String name,
       @JsonKey(name: 'iconUrl')
           String? iconUrl,
       @JsonKey(name: 'country')

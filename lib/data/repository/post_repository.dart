@@ -1,15 +1,15 @@
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
+import 'package:language_picker/languages.dart';
 import 'package:writing_exchange/app/utils/providers.dart';
 import 'package:writing_exchange/data/model/post.dart';
-import 'package:writing_exchange/data/model/post_status.dart';
-import 'package:writing_exchange/data/model/post_status_converter.dart';
 import 'package:writing_exchange/data/repository/firestore_refs.dart';
 
 abstract class PostRepositoryInterface {
   Future<void> upsert(Post post);
   Future<Post?> getById(String postId);
-  Future<List<Post>> getListByUserId(String userId);
+  Future<List<Post>> getList({String? userId, Language? language});
+  Future<List<Post>> getMyList({String? userId, Language? language});
   Future<void> deleteById(String postId);
 }
 
@@ -66,12 +66,28 @@ class PostRepository implements PostRepositoryInterface {
   }
 
   @override
-  Future<List<Post>> getListByUserId(String userId) async {
+  Future<List<Post>> getList({String? userId, Language? language}) async {
     try {
       final snaps = await _ref
           .read(firebaseFirestoreProvider)
           .postsRef()
           .where('userId', isEqualTo: userId)
+          .where('language', isEqualTo: language?.isoCode)
+          .get();
+      return snaps.docs.map((doc) => Post.fromJson(doc.data())).toList();
+    } on FirebaseException catch (e) {
+      throw e.toString();
+    }
+  }
+
+  @override
+  Future<List<Post>> getMyList({String? userId, Language? language}) async {
+    try {
+      final snaps = await _ref
+          .read(firebaseFirestoreProvider)
+          .postsRef()
+          .where('userId', isEqualTo: userId)
+          .where('language', isEqualTo: language?.isoCode)
           .get();
       return snaps.docs.map((doc) => Post.fromJson(doc.data())).toList();
     } on FirebaseException catch (e) {

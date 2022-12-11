@@ -20,7 +20,7 @@ class _$AppStateTearOff {
 
   _AppState call(
       {TabItem currentTabIndex = TabItem.writing,
-      bool isFinishedOnboarding = false}) {
+      bool isFinishedOnboarding = true}) {
     return _AppState(
       currentTabIndex: currentTabIndex,
       isFinishedOnboarding: isFinishedOnboarding,
@@ -114,7 +114,7 @@ class __$AppStateCopyWithImpl<$Res> extends _$AppStateCopyWithImpl<$Res>
 class _$_AppState implements _AppState {
   const _$_AppState(
       {this.currentTabIndex = TabItem.writing,
-      this.isFinishedOnboarding = false});
+      this.isFinishedOnboarding = true});
 
   @JsonKey()
   @override

@@ -7,7 +7,7 @@ class RoundedButton extends StatelessWidget {
     required this.title,
   });
 
-  final Function() onPressed;
+  final VoidCallback? onPressed;
   final String title;
 
   @override

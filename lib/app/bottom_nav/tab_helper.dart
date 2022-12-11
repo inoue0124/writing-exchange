@@ -33,7 +33,7 @@ Map<TabItem, Icon> tabIcons = {
 };
 
 Map<TabItem, Icon> tabActiveIcons = {
-  TabItem.writing: const Icon(Icons.article),
-  TabItem.question: const Icon(Icons.question_answer),
-  TabItem.profile: const Icon(Icons.person),
+  TabItem.writing: const Icon(Icons.article_outlined),
+  TabItem.question: const Icon(Icons.question_answer_outlined),
+  TabItem.profile: const Icon(Icons.person_outlined),
 };

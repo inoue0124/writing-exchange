@@ -1,11 +1,12 @@
 import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
+import 'package:writing_exchange/app/utils/app_exception.dart';
 import 'package:writing_exchange/app/utils/providers.dart';
 import 'package:writing_exchange/data/model/user.dart';
 
 abstract class AuthServiceInterface {
   Future<User> register(User user);
-  Future<String?> getUserId();
+  Future<String> getUserId();
 }
 
 class AuthService implements AuthServiceInterface {
@@ -26,9 +27,10 @@ class AuthService implements AuthServiceInterface {
   }
 
   @override
-  Future<String?> getUserId() async {
+  Future<String> getUserId() async {
     final credential = _ref.read(firebaseAuthProvider).currentUser;
-    return credential?.uid;
+    if (credential == null) throw AuthException();
+    return credential.uid;
   }
 }
 

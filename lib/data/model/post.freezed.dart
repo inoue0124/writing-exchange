@@ -36,6 +36,9 @@ class _$PostTearOff {
           required PostStatus status,
       @JsonKey(name: 'userId')
           required String userId,
+      @JsonKey(name: 'language')
+      @LanguageConverter()
+          required Language language,
       @JsonKey(name: 'correctionCount')
           int correctionCount = 0,
       @JsonKey(name: 'postedAt')
@@ -50,6 +53,7 @@ class _$PostTearOff {
       imageUrls: imageUrls,
       status: status,
       userId: userId,
+      language: language,
       correctionCount: correctionCount,
       postedAt: postedAt,
       user: user,
@@ -79,6 +83,9 @@ mixin _$Post {
   PostStatus get status => throw _privateConstructorUsedError;
   @JsonKey(name: 'userId')
   String get userId => throw _privateConstructorUsedError;
+  @JsonKey(name: 'language')
+  @LanguageConverter()
+  Language get language => throw _privateConstructorUsedError;
   @JsonKey(name: 'correctionCount')
   int get correctionCount => throw _privateConstructorUsedError;
   @JsonKey(name: 'postedAt')
@@ -103,6 +110,7 @@ abstract class $PostCopyWith<$Res> {
       @JsonKey(name: 'imageUrls') List<String> imageUrls,
       @JsonKey(name: 'status') @PostStatusConverter() PostStatus status,
       @JsonKey(name: 'userId') String userId,
+      @JsonKey(name: 'language') @LanguageConverter() Language language,
       @JsonKey(name: 'correctionCount') int correctionCount,
       @JsonKey(name: 'postedAt') @DateTimeConverter() DateTime? postedAt,
       @JsonKey(ignore: true) User? user});
@@ -126,6 +134,7 @@ class _$PostCopyWithImpl<$Res> implements $PostCopyWith<$Res> {
     Object? imageUrls = freezed,
     Object? status = freezed,
     Object? userId = freezed,
+    Object? language = freezed,
     Object? correctionCount = freezed,
     Object? postedAt = freezed,
     Object? user = freezed,
@@ -155,6 +164,10 @@ class _$PostCopyWithImpl<$Res> implements $PostCopyWith<$Res> {
           ? _value.userId
           : userId // ignore: cast_nullable_to_non_nullable
               as String,
+      language: language == freezed
+          ? _value.language
+          : language // ignore: cast_nullable_to_non_nullable
+              as Language,
       correctionCount: correctionCount == freezed
           ? _value.correctionCount
           : correctionCount // ignore: cast_nullable_to_non_nullable
@@ -194,6 +207,7 @@ abstract class _$PostCopyWith<$Res> implements $PostCopyWith<$Res> {
       @JsonKey(name: 'imageUrls') List<String> imageUrls,
       @JsonKey(name: 'status') @PostStatusConverter() PostStatus status,
       @JsonKey(name: 'userId') String userId,
+      @JsonKey(name: 'language') @LanguageConverter() Language language,
       @JsonKey(name: 'correctionCount') int correctionCount,
       @JsonKey(name: 'postedAt') @DateTimeConverter() DateTime? postedAt,
       @JsonKey(ignore: true) User? user});
@@ -219,6 +233,7 @@ class __$PostCopyWithImpl<$Res> extends _$PostCopyWithImpl<$Res>
     Object? imageUrls = freezed,
     Object? status = freezed,
     Object? userId = freezed,
+    Object? language = freezed,
     Object? correctionCount = freezed,
     Object? postedAt = freezed,
     Object? user = freezed,
@@ -248,6 +263,10 @@ class __$PostCopyWithImpl<$Res> extends _$PostCopyWithImpl<$Res>
           ? _value.userId
           : userId // ignore: cast_nullable_to_non_nullable
               as String,
+      language: language == freezed
+          ? _value.language
+          : language // ignore: cast_nullable_to_non_nullable
+              as Language,
       correctionCount: correctionCount == freezed
           ? _value.correctionCount
           : correctionCount // ignore: cast_nullable_to_non_nullable
@@ -274,6 +293,7 @@ class _$_Post extends _Post {
       @JsonKey(name: 'imageUrls') required this.imageUrls,
       @JsonKey(name: 'status') @PostStatusConverter() required this.status,
       @JsonKey(name: 'userId') required this.userId,
+      @JsonKey(name: 'language') @LanguageConverter() required this.language,
       @JsonKey(name: 'correctionCount') this.correctionCount = 0,
       @JsonKey(name: 'postedAt') @DateTimeConverter() this.postedAt,
       @JsonKey(ignore: true) this.user})
@@ -301,6 +321,10 @@ class _$_Post extends _Post {
   @JsonKey(name: 'userId')
   final String userId;
   @override
+  @JsonKey(name: 'language')
+  @LanguageConverter()
+  final Language language;
+  @override
   @JsonKey(name: 'correctionCount')
   final int correctionCount;
   @override
@@ -313,7 +337,7 @@ class _$_Post extends _Post {
 
   @override
   String toString() {
-    return 'Post(title: $title, content: $content, audioUrl: $audioUrl, imageUrls: $imageUrls, status: $status, userId: $userId, correctionCount: $correctionCount, postedAt: $postedAt, user: $user)';
+    return 'Post(title: $title, content: $content, audioUrl: $audioUrl, imageUrls: $imageUrls, status: $status, userId: $userId, language: $language, correctionCount: $correctionCount, postedAt: $postedAt, user: $user)';
   }
 
   @override
@@ -327,6 +351,7 @@ class _$_Post extends _Post {
             const DeepCollectionEquality().equals(other.imageUrls, imageUrls) &&
             const DeepCollectionEquality().equals(other.status, status) &&
             const DeepCollectionEquality().equals(other.userId, userId) &&
+            const DeepCollectionEquality().equals(other.language, language) &&
             const DeepCollectionEquality()
                 .equals(other.correctionCount, correctionCount) &&
             const DeepCollectionEquality().equals(other.postedAt, postedAt) &&
@@ -342,6 +367,7 @@ class _$_Post extends _Post {
       const DeepCollectionEquality().hash(imageUrls),
       const DeepCollectionEquality().hash(status),
       const DeepCollectionEquality().hash(userId),
+      const DeepCollectionEquality().hash(language),
       const DeepCollectionEquality().hash(correctionCount),
       const DeepCollectionEquality().hash(postedAt),
       const DeepCollectionEquality().hash(user));
@@ -372,6 +398,9 @@ abstract class _Post extends Post {
           required PostStatus status,
       @JsonKey(name: 'userId')
           required String userId,
+      @JsonKey(name: 'language')
+      @LanguageConverter()
+          required Language language,
       @JsonKey(name: 'correctionCount')
           int correctionCount,
       @JsonKey(name: 'postedAt')
@@ -402,6 +431,10 @@ abstract class _Post extends Post {
   @override
   @JsonKey(name: 'userId')
   String get userId;
+  @override
+  @JsonKey(name: 'language')
+  @LanguageConverter()
+  Language get language;
   @override
   @JsonKey(name: 'correctionCount')
   int get correctionCount;

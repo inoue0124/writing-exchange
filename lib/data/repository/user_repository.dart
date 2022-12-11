@@ -4,6 +4,7 @@ import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 import 'package:writing_exchange/app/service/auth_service.dart';
+import 'package:writing_exchange/app/utils/app_exception.dart';
 import 'package:writing_exchange/app/utils/pref_keys.dart';
 import 'package:writing_exchange/app/utils/providers.dart';
 import 'package:writing_exchange/data/model/user.dart';
@@ -12,7 +13,7 @@ import 'package:writing_exchange/data/repository/firestore_refs.dart';
 
 abstract class UserRepositoryInterface {
   Future<void> upsert(User user);
-  Future<User?> getMe();
+  Future<User> getMe();
   Future<User?> getById(String userId);
   Future<void> deleteById(String userId);
 }
@@ -80,21 +81,20 @@ class UserRepository implements UserRepositoryInterface {
   }
 
   @override
-  Future<User?> getMe() async {
+  Future<User> getMe() async {
     final userId = await _authService.getUserId();
-    // 未ログイン
-    if (userId == null) return null;
-
-    // キャッシュがあればキャッシュから返す
     SharedPreferences prefs = await _ref.read(sharedPreferenceProvider.future);
-    final cachedUser = prefs.getString(PrefKeys.loggedInUser);
-    if (cachedUser != null) {
-      return User.fromJson(jsonDecode(cachedUser));
-    }
+
+    // TODO: コメントアウト外す
+    // キャッシュがあればキャッシュから返す
+    // final cachedUser = prefs.getString(PrefKeys.loggedInUser);
+    // if (cachedUser != null) {
+    //   return User.fromJson(jsonDecode(cachedUser));
+    // }
 
     // キャッシュがなければfirestoreから取得してキャッシュ作成
     final user = await getById(userId);
-    if (user == null) return null;
+    if (user == null) throw NotFoundMeException();
     prefs.setString(PrefKeys.loggedInUser, jsonEncode(user));
 
     return user;
