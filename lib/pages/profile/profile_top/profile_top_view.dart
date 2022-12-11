@@ -29,7 +29,7 @@ class ProfileTopView extends ConsumerWidget {
                 name: "testuser",
                 iconUrl:
                     "https://cdn.dribbble.com/users/970912/avatars/small/8c3a8dfc6410c1a52e86b2b99ac433f5.jpg?1604405129",
-                nationality: const CountryCodeConverter().fromJson('JP'),
+                country: const CountryCodeConverter().fromJson('JP'),
                 targetLanguages: [Language.fromIsoCode('en')],
                 nativeLanguages: [Language.fromIsoCode('ja')],
               ),

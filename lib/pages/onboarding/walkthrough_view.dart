@@ -1,10 +1,9 @@
-import 'package:country_list_pick/country_list_pick.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:smooth_page_indicator/smooth_page_indicator.dart';
 import 'package:writing_exchange/components/walkthrough_page.dart';
 import 'package:writing_exchange/i18n/strings.g.dart';
-import 'package:writing_exchange/pages/onboarding/walkthrough/walkthrough_viewmodel.dart';
+import 'package:writing_exchange/pages/onboarding/onboarding_viewmodel.dart';
 
 class WalkthroughView extends ConsumerWidget {
   WalkthroughView({
@@ -17,8 +16,8 @@ class WalkthroughView extends ConsumerWidget {
 
   @override
   Widget build(BuildContext context, WidgetRef ref) {
-    final viewModel = ref.watch(walkthroughViewModelProvider.notifier);
-    final state = ref.watch(walkthroughViewModelProvider);
+    final viewModel = ref.watch(onboardingViewModelProvider.notifier);
+    final state = ref.watch(onboardingViewModelProvider);
 
     return Scaffold(
       backgroundColor: Theme.of(context).backgroundColor,
@@ -94,7 +93,7 @@ class WalkthroughView extends ConsumerWidget {
             TextButton(
               child: const Text('NEXT'),
               onPressed: () {
-                if (state.isLastpage) {
+                if (state.isLastPage) {
                   onFinishPaging();
                 } else {
                   pageController.nextPage(
@@ -108,64 +107,5 @@ class WalkthroughView extends ConsumerWidget {
         ),
       ),
     );
-
-    //   return Scaffold(
-    //     body: Column(
-    //       children: [
-    //         ElevatedButton(
-    //           onPressed: () => {viewModel.onGetStarted(() {})},
-    //           child: const Text("Get Started"),
-    //         ),
-    //         CountryListPick(
-    //           appBar: AppBar(
-    //             elevation: 0,
-    //             backgroundColor: Theme.of(context).backgroundColor,
-    //             title: Text(
-    //               'Select your nationality',
-    //               style: Theme.of(context).textTheme.headline5,
-    //             ),
-    //             iconTheme: IconThemeData(
-    //               color: Theme.of(context).primaryColor,
-    //             ),
-    //           ),
-
-    //           // if you need custome picker use this
-    //           pickerBuilder: (context, CountryCode? countryCode) {
-    //             return Row(
-    //               children: [
-    //                 Image.asset(
-    //                   countryCode!.flagUri!,
-    //                   package: 'country_list_pick',
-    //                 ),
-    //                 Text(countryCode.code!),
-    //                 Text(countryCode.dialCode!),
-    //               ],
-    //             );
-    //           },
-
-    //           // To disable option set to false
-    //           theme: CountryTheme(
-    //             isShowFlag: false,
-    //             isShowTitle: true,
-    //             isShowCode: false,
-    //             isDownIcon: false,
-    //             showEnglishName: true,
-    //           ),
-    //           initialSelection: 'US',
-    //           onChanged: (CountryCode? code) {
-    //             print(code!.name);
-    //             print(code.code);
-    //             print(code.dialCode);
-    //             print(code.flagUri);
-    //           },
-    //           // Whether to allow the widget to set a custom UI overlay
-    //           useUiOverlay: true,
-    //           // Whether the country list should be wrapped in a SafeArea
-    //           useSafeArea: false,
-    //         ),
-    //       ],
-    //     ),
-    //   );
-    // }
   }
 }

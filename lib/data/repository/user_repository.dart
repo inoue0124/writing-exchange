@@ -25,7 +25,11 @@ class UserRepository implements UserRepositoryInterface {
   @override
   Future<void> upsert(User user) async {
     try {
-      await _ref.read(firebaseFirestoreProvider).usersRef().add(user.toJson());
+      await _ref
+          .read(firebaseFirestoreProvider)
+          .usersRef()
+          .doc(user.userId)
+          .set(user.toJson(), SetOptions(merge: true));
       (await prefs).setString('user', user.toJson().toString());
       return;
     } on FirebaseException catch (e) {

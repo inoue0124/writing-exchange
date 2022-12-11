@@ -10,8 +10,8 @@ _$_User _$$_UserFromJson(Map<String, dynamic> json) => _$_User(
       userId: json['userId'] as String?,
       name: json['name'] as String,
       iconUrl: json['iconUrl'] as String,
-      nationality:
-          const CountryCodeConverter().fromJson(json['nationality'] as String),
+      country: _$JsonConverterFromJson<String, Country>(
+          json['country'], const CountryCodeConverter().fromJson),
       nativeLanguages: const LanguageListConverter()
           .fromJson(json['nativeLanguages'] as List<String>),
       targetLanguages: const LanguageListConverter()
@@ -30,7 +30,8 @@ Map<String, dynamic> _$$_UserToJson(_$_User instance) => <String, dynamic>{
       'userId': instance.userId,
       'name': instance.name,
       'iconUrl': instance.iconUrl,
-      'nationality': const CountryCodeConverter().toJson(instance.nationality),
+      'country': _$JsonConverterToJson<String, Country>(
+          instance.country, const CountryCodeConverter().toJson),
       'nativeLanguages':
           const LanguageListConverter().toJson(instance.nativeLanguages),
       'targetLanguages':

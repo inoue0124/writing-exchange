@@ -1,7 +1,6 @@
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:writing_exchange/app/app_state.dart';
 import 'package:writing_exchange/app/bottom_nav/tab_helper.dart';
-import 'package:writing_exchange/app/service/auth_service.dart';
 
 class AppViewModel extends StateNotifier<AppState> {
   AppViewModel() : super(const AppState());

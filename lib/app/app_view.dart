@@ -4,7 +4,7 @@ import 'package:writing_exchange/app/app_viewmodel.dart';
 import 'package:writing_exchange/app/bottom_nav/bottom_navigator.dart';
 import 'package:writing_exchange/app/bottom_nav/tab_helper.dart';
 import 'package:writing_exchange/app/bottom_nav/tab_navigator.dart';
-import 'package:writing_exchange/pages/onboarding/walkthrough/walkthrough_view.dart';
+import 'package:writing_exchange/pages/onboarding/onboarding_navigator.dart';
 
 class AppView extends ConsumerWidget {
   const AppView({super.key});
@@ -45,7 +45,9 @@ class AppView extends ConsumerWidget {
         return false;
       },
       child: state.isOnboarding
-          ? WalkthroughView(onFinishPaging: viewModel.onFinishOnboarding)
+          ? OnboardingNavigator(
+              onFinishOnboarding: viewModel.onFinishOnboarding,
+            )
           : mainView(),
     );
   }

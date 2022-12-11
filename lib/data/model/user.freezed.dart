@@ -24,24 +24,18 @@ class _$UserTearOff {
 
   _User call(
       {@JsonKey(name: 'userId')
-      @HiveField(0)
           String? userId,
       @JsonKey(name: 'name')
-      @HiveField(1)
           required String name,
       @JsonKey(name: 'iconUrl')
-      @HiveField(2)
           required String iconUrl,
-      @JsonKey(name: 'nationality')
-      @HiveField(3)
+      @JsonKey(name: 'country')
       @CountryCodeConverter()
-          required CountryCode nationality,
+          Country? country,
       @JsonKey(name: 'nativeLanguages')
-      @HiveField(4)
       @LanguageListConverter()
           required List<Language> nativeLanguages,
       @JsonKey(name: 'targetLanguages')
-      @HiveField(5)
       @LanguageListConverter()
           required List<Language> targetLanguages,
       @JsonKey(name: 'reviewValue')
@@ -60,7 +54,7 @@ class _$UserTearOff {
       userId: userId,
       name: name,
       iconUrl: iconUrl,
-      nationality: nationality,
+      country: country,
       nativeLanguages: nativeLanguages,
       targetLanguages: targetLanguages,
       reviewValue: reviewValue,
@@ -82,24 +76,18 @@ const $User = _$UserTearOff();
 /// @nodoc
 mixin _$User {
   @JsonKey(name: 'userId')
-  @HiveField(0)
   String? get userId => throw _privateConstructorUsedError;
   @JsonKey(name: 'name')
-  @HiveField(1)
   String get name => throw _privateConstructorUsedError;
   @JsonKey(name: 'iconUrl')
-  @HiveField(2)
   String get iconUrl => throw _privateConstructorUsedError;
-  @JsonKey(name: 'nationality')
-  @HiveField(3)
+  @JsonKey(name: 'country')
   @CountryCodeConverter()
-  CountryCode get nationality => throw _privateConstructorUsedError;
+  Country? get country => throw _privateConstructorUsedError;
   @JsonKey(name: 'nativeLanguages')
-  @HiveField(4)
   @LanguageListConverter()
   List<Language> get nativeLanguages => throw _privateConstructorUsedError;
   @JsonKey(name: 'targetLanguages')
-  @HiveField(5)
   @LanguageListConverter()
   List<Language> get targetLanguages => throw _privateConstructorUsedError;
   @JsonKey(name: 'reviewValue')
@@ -126,24 +114,18 @@ abstract class $UserCopyWith<$Res> {
       _$UserCopyWithImpl<$Res>;
   $Res call(
       {@JsonKey(name: 'userId')
-      @HiveField(0)
           String? userId,
       @JsonKey(name: 'name')
-      @HiveField(1)
           String name,
       @JsonKey(name: 'iconUrl')
-      @HiveField(2)
           String iconUrl,
-      @JsonKey(name: 'nationality')
-      @HiveField(3)
+      @JsonKey(name: 'country')
       @CountryCodeConverter()
-          CountryCode nationality,
+          Country? country,
       @JsonKey(name: 'nativeLanguages')
-      @HiveField(4)
       @LanguageListConverter()
           List<Language> nativeLanguages,
       @JsonKey(name: 'targetLanguages')
-      @HiveField(5)
       @LanguageListConverter()
           List<Language> targetLanguages,
       @JsonKey(name: 'reviewValue')
@@ -173,7 +155,7 @@ class _$UserCopyWithImpl<$Res> implements $UserCopyWith<$Res> {
     Object? userId = freezed,
     Object? name = freezed,
     Object? iconUrl = freezed,
-    Object? nationality = freezed,
+    Object? country = freezed,
     Object? nativeLanguages = freezed,
     Object? targetLanguages = freezed,
     Object? reviewValue = freezed,
@@ -195,10 +177,10 @@ class _$UserCopyWithImpl<$Res> implements $UserCopyWith<$Res> {
           ? _value.iconUrl
           : iconUrl // ignore: cast_nullable_to_non_nullable
               as String,
-      nationality: nationality == freezed
-          ? _value.nationality
-          : nationality // ignore: cast_nullable_to_non_nullable
-              as CountryCode,
+      country: country == freezed
+          ? _value.country
+          : country // ignore: cast_nullable_to_non_nullable
+              as Country?,
       nativeLanguages: nativeLanguages == freezed
           ? _value.nativeLanguages
           : nativeLanguages // ignore: cast_nullable_to_non_nullable
@@ -238,24 +220,18 @@ abstract class _$UserCopyWith<$Res> implements $UserCopyWith<$Res> {
   @override
   $Res call(
       {@JsonKey(name: 'userId')
-      @HiveField(0)
           String? userId,
       @JsonKey(name: 'name')
-      @HiveField(1)
           String name,
       @JsonKey(name: 'iconUrl')
-      @HiveField(2)
           String iconUrl,
-      @JsonKey(name: 'nationality')
-      @HiveField(3)
+      @JsonKey(name: 'country')
       @CountryCodeConverter()
-          CountryCode nationality,
+          Country? country,
       @JsonKey(name: 'nativeLanguages')
-      @HiveField(4)
       @LanguageListConverter()
           List<Language> nativeLanguages,
       @JsonKey(name: 'targetLanguages')
-      @HiveField(5)
       @LanguageListConverter()
           List<Language> targetLanguages,
       @JsonKey(name: 'reviewValue')
@@ -286,7 +262,7 @@ class __$UserCopyWithImpl<$Res> extends _$UserCopyWithImpl<$Res>
     Object? userId = freezed,
     Object? name = freezed,
     Object? iconUrl = freezed,
-    Object? nationality = freezed,
+    Object? country = freezed,
     Object? nativeLanguages = freezed,
     Object? targetLanguages = freezed,
     Object? reviewValue = freezed,
@@ -308,10 +284,10 @@ class __$UserCopyWithImpl<$Res> extends _$UserCopyWithImpl<$Res>
           ? _value.iconUrl
           : iconUrl // ignore: cast_nullable_to_non_nullable
               as String,
-      nationality: nationality == freezed
-          ? _value.nationality
-          : nationality // ignore: cast_nullable_to_non_nullable
-              as CountryCode,
+      country: country == freezed
+          ? _value.country
+          : country // ignore: cast_nullable_to_non_nullable
+              as Country?,
       nativeLanguages: nativeLanguages == freezed
           ? _value.nativeLanguages
           : nativeLanguages // ignore: cast_nullable_to_non_nullable
@@ -349,24 +325,18 @@ class __$UserCopyWithImpl<$Res> extends _$UserCopyWithImpl<$Res>
 class _$_User extends _User {
   const _$_User(
       {@JsonKey(name: 'userId')
-      @HiveField(0)
           this.userId,
       @JsonKey(name: 'name')
-      @HiveField(1)
           required this.name,
       @JsonKey(name: 'iconUrl')
-      @HiveField(2)
           required this.iconUrl,
-      @JsonKey(name: 'nationality')
-      @HiveField(3)
+      @JsonKey(name: 'country')
       @CountryCodeConverter()
-          required this.nationality,
+          this.country,
       @JsonKey(name: 'nativeLanguages')
-      @HiveField(4)
       @LanguageListConverter()
           required this.nativeLanguages,
       @JsonKey(name: 'targetLanguages')
-      @HiveField(5)
       @LanguageListConverter()
           required this.targetLanguages,
       @JsonKey(name: 'reviewValue')
@@ -387,29 +357,23 @@ class _$_User extends _User {
 
   @override
   @JsonKey(name: 'userId')
-  @HiveField(0)
   final String? userId;
   @override
   @JsonKey(name: 'name')
-  @HiveField(1)
   final String name;
   @override
   @JsonKey(name: 'iconUrl')
-  @HiveField(2)
   final String iconUrl;
   @override
-  @JsonKey(name: 'nationality')
-  @HiveField(3)
+  @JsonKey(name: 'country')
   @CountryCodeConverter()
-  final CountryCode nationality;
+  final Country? country;
   @override
   @JsonKey(name: 'nativeLanguages')
-  @HiveField(4)
   @LanguageListConverter()
   final List<Language> nativeLanguages;
   @override
   @JsonKey(name: 'targetLanguages')
-  @HiveField(5)
   @LanguageListConverter()
   final List<Language> targetLanguages;
   @override
@@ -432,7 +396,7 @@ class _$_User extends _User {
 
   @override
   String toString() {
-    return 'User(userId: $userId, name: $name, iconUrl: $iconUrl, nationality: $nationality, nativeLanguages: $nativeLanguages, targetLanguages: $targetLanguages, reviewValue: $reviewValue, correctionCount: $correctionCount, postCount: $postCount, status: $status, createdAt: $createdAt)';
+    return 'User(userId: $userId, name: $name, iconUrl: $iconUrl, country: $country, nativeLanguages: $nativeLanguages, targetLanguages: $targetLanguages, reviewValue: $reviewValue, correctionCount: $correctionCount, postCount: $postCount, status: $status, createdAt: $createdAt)';
   }
 
   @override
@@ -443,8 +407,7 @@ class _$_User extends _User {
             const DeepCollectionEquality().equals(other.userId, userId) &&
             const DeepCollectionEquality().equals(other.name, name) &&
             const DeepCollectionEquality().equals(other.iconUrl, iconUrl) &&
-            const DeepCollectionEquality()
-                .equals(other.nationality, nationality) &&
+            const DeepCollectionEquality().equals(other.country, country) &&
             const DeepCollectionEquality()
                 .equals(other.nativeLanguages, nativeLanguages) &&
             const DeepCollectionEquality()
@@ -464,7 +427,7 @@ class _$_User extends _User {
       const DeepCollectionEquality().hash(userId),
       const DeepCollectionEquality().hash(name),
       const DeepCollectionEquality().hash(iconUrl),
-      const DeepCollectionEquality().hash(nationality),
+      const DeepCollectionEquality().hash(country),
       const DeepCollectionEquality().hash(nativeLanguages),
       const DeepCollectionEquality().hash(targetLanguages),
       const DeepCollectionEquality().hash(reviewValue),
@@ -487,24 +450,18 @@ class _$_User extends _User {
 abstract class _User extends User {
   const factory _User(
       {@JsonKey(name: 'userId')
-      @HiveField(0)
           String? userId,
       @JsonKey(name: 'name')
-      @HiveField(1)
           required String name,
       @JsonKey(name: 'iconUrl')
-      @HiveField(2)
           required String iconUrl,
-      @JsonKey(name: 'nationality')
-      @HiveField(3)
+      @JsonKey(name: 'country')
       @CountryCodeConverter()
-          required CountryCode nationality,
+          Country? country,
       @JsonKey(name: 'nativeLanguages')
-      @HiveField(4)
       @LanguageListConverter()
           required List<Language> nativeLanguages,
       @JsonKey(name: 'targetLanguages')
-      @HiveField(5)
       @LanguageListConverter()
           required List<Language> targetLanguages,
       @JsonKey(name: 'reviewValue')
@@ -525,29 +482,23 @@ abstract class _User extends User {
 
   @override
   @JsonKey(name: 'userId')
-  @HiveField(0)
   String? get userId;
   @override
   @JsonKey(name: 'name')
-  @HiveField(1)
   String get name;
   @override
   @JsonKey(name: 'iconUrl')
-  @HiveField(2)
   String get iconUrl;
   @override
-  @JsonKey(name: 'nationality')
-  @HiveField(3)
+  @JsonKey(name: 'country')
   @CountryCodeConverter()
-  CountryCode get nationality;
+  Country? get country;
   @override
   @JsonKey(name: 'nativeLanguages')
-  @HiveField(4)
   @LanguageListConverter()
   List<Language> get nativeLanguages;
   @override
   @JsonKey(name: 'targetLanguages')
-  @HiveField(5)
   @LanguageListConverter()
   List<Language> get targetLanguages;
   @override

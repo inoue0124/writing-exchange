@@ -23,7 +23,7 @@ class ProfileCard extends StatelessWidget {
             const Spacer(),
             AvatarIcon(
               iconUrl: user.iconUrl,
-              countryCode: user.nationality.code!,
+              countryCode: user.country!.countryCode,
             )
           ],
         ),

@@ -30,7 +30,7 @@ class AvatarIcon extends StatelessWidget {
               borderRadius: BorderRadius.circular(90.0),
             ),
             child: CircleFlag(
-              countryCode,
+              'jp',
               size: 16,
             ),
           ),

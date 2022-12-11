@@ -1,4 +1,4 @@
-class Routes {
+class AppRoutes {
   static const String writingTop = '/';
   static const String createWriting = '/writing/new';
 
