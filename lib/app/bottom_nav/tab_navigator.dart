@@ -1,10 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:writing_exchange/app/bottom_nav/tab_helper.dart';
-import 'package:writing_exchange/app/app_routes.dart';
-import 'package:writing_exchange/pages/profile/profile_top/profile_top_view.dart';
-import 'package:writing_exchange/pages/question/question_top/question_top_view.dart';
-import 'package:writing_exchange/pages/writing/create_writing/create_writing_view.dart';
-import 'package:writing_exchange/pages/writing/writing_top/writing_top_view.dart';
+import 'package:writing_exchange/pages/profile/profile_flow.dart';
+import 'package:writing_exchange/pages/question/question_flow.dart';
+import 'package:writing_exchange/pages/writing/writing_flow.dart';
 
 class TabNavigator extends StatelessWidget {
   const TabNavigator({
@@ -26,18 +24,9 @@ class TabNavigator extends StatelessWidget {
 
   Map<String, WidgetBuilder> _routeBuilders(BuildContext context) {
     return {
-      AppRoutes.writingTop: (context) => WritingTopView(
-            onPressCreateNew: () => {
-              _push(context, AppRoutes.createWriting),
-            },
-          ),
-      AppRoutes.createWriting: (context) => CreateWritingView(
-            onPostSuccess: () => {
-              Navigator.pop(context),
-            },
-          ),
-      AppRoutes.questionTop: (context) => QuestionTopView(),
-      AppRoutes.profileTop: (context) => ProfileTopView(),
+      ...writingFlow(context, _push),
+      ...questionFlow(context, _push),
+      ...profileFlow(context, _push),
     };
   }
 
