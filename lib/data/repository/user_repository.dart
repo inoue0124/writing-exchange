@@ -82,22 +82,28 @@ class UserRepository implements UserRepositoryInterface {
 
   @override
   Future<User> getMe() async {
-    final userId = await _authService.getUserId();
-    SharedPreferences prefs = await _ref.read(sharedPreferenceProvider.future);
+    try {
+      final userId = await _authService.getUserId();
 
-    // TODO: コメントアウト外す
-    // キャッシュがあればキャッシュから返す
-    // final cachedUser = prefs.getString(PrefKeys.loggedInUser);
-    // if (cachedUser != null) {
-    //   return User.fromJson(jsonDecode(cachedUser));
-    // }
+      SharedPreferences prefs =
+          await _ref.read(sharedPreferenceProvider.future);
 
-    // キャッシュがなければfirestoreから取得してキャッシュ作成
-    final user = await getById(userId);
-    if (user == null) throw NotFoundMeException();
-    prefs.setString(PrefKeys.loggedInUser, jsonEncode(user));
+      // TODO: コメントアウト外す
+      // キャッシュがあればキャッシュから返す
+      // final cachedUser = prefs.getString(PrefKeys.loggedInUser);
+      // if (cachedUser != null) {
+      //   return User.fromJson(jsonDecode(cachedUser));
+      // }
 
-    return user;
+      // キャッシュがなければfirestoreから取得してキャッシュ作成
+      final user = await getById(userId);
+      if (user == null) throw NotFoundMeException();
+      prefs.setString(PrefKeys.loggedInUser, jsonEncode(user));
+
+      return user;
+    } catch (e) {
+      rethrow;
+    }
   }
 }
 

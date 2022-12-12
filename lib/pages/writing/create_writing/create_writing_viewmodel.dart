@@ -10,9 +10,14 @@ class CreateWritingViewModel extends StateNotifier<CreateWritingState> {
   CreateWritingViewModel({
     required PostRepositoryInterface postRepository,
     required AuthServiceInterface authService,
+    Language? selectedLanguage,
   })  : _postRepository = postRepository,
         _authService = authService,
-        super(const CreateWritingState());
+        super(const CreateWritingState()) {
+    if (selectedLanguage != null) {
+      state = state.copyWith(language: selectedLanguage);
+    }
+  }
 
   final PostRepositoryInterface _postRepository;
   final AuthServiceInterface _authService;
@@ -26,7 +31,7 @@ class CreateWritingViewModel extends StateNotifier<CreateWritingState> {
       audioUrl: state.audioUrl,
       imageUrls: state.imageUrls,
       userId: userId,
-      language: Language.fromIsoCode('en'), // TODO: 修正
+      language: state.language!,
       status: PostStatus.active,
     );
     await _postRepository.upsert(post);
@@ -41,10 +46,14 @@ class CreateWritingViewModel extends StateNotifier<CreateWritingState> {
       audioUrl: state.audioUrl,
       imageUrls: state.imageUrls,
       userId: userId,
-      language: Language.fromIsoCode('en'), // TODO: 修正
+      language: state.language!,
       status: PostStatus.draft,
     );
     await _postRepository.upsert(post);
+  }
+
+  void onChangeLanguage(Language language) {
+    state = state.copyWith(language: language);
   }
 
   void onChangeTitle(String value) {
@@ -56,10 +65,11 @@ class CreateWritingViewModel extends StateNotifier<CreateWritingState> {
   }
 }
 
-final createWritingViewModelProvider = StateNotifierProvider.autoDispose<
-    CreateWritingViewModel, CreateWritingState>(
-  (ref) => CreateWritingViewModel(
+final createWritingViewModelProvider = AutoDisposeStateNotifierProviderFamily<
+    CreateWritingViewModel, CreateWritingState, Language?>(
+  (ref, selectedLanguage) => CreateWritingViewModel(
     postRepository: ref.watch(postRepositoryProvider),
     authService: ref.watch(authServiceProvider),
+    selectedLanguage: selectedLanguage,
   ),
 );

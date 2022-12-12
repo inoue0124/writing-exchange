@@ -25,30 +25,30 @@ class AppView extends ConsumerWidget {
     }
 
     Widget mainView() {
-      return Scaffold(
-        body: Stack(
-          children: <Widget>[
-            buildOffstageNavigator(TabItem.writing),
-            buildOffstageNavigator(TabItem.question),
-            buildOffstageNavigator(TabItem.profile),
-          ],
-        ),
-        bottomNavigationBar: BottomNavigation(
-          currentTab: state.currentTabIndex,
-          onSelectTab: viewModel.onTabChanged,
+      return WillPopScope(
+        onWillPop: () async {
+          return false;
+        },
+        child: Scaffold(
+          body: Stack(
+            children: <Widget>[
+              buildOffstageNavigator(TabItem.writing),
+              buildOffstageNavigator(TabItem.question),
+              buildOffstageNavigator(TabItem.profile),
+            ],
+          ),
+          bottomNavigationBar: BottomNavigation(
+            currentTab: state.currentTabIndex,
+            onSelectTab: viewModel.onTabChanged,
+          ),
         ),
       );
     }
 
-    return WillPopScope(
-      onWillPop: () async {
-        return false;
-      },
-      child: state.isFinishedOnboarding
-          ? mainView()
-          : OnboardingNavigator(
-              onFinishOnboarding: viewModel.onFinishOnboarding,
-            ),
-    );
+    return state.isFinishedOnboarding
+        ? mainView()
+        : OnboardingNavigator(
+            onFinishOnboarding: viewModel.onFinishOnboarding,
+          );
   }
 }

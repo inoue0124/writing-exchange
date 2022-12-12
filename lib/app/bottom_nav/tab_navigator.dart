@@ -13,13 +13,17 @@ class TabNavigator extends StatelessWidget {
   final GlobalKey<NavigatorState> navigatorKey;
   final TabItem tabItem;
 
-  void _push(BuildContext context, String destination) {
+  void _push(
+    BuildContext context,
+    String destination, {
+    Function? callback,
+  }) {
     Navigator.push<Widget>(
       context,
       MaterialPageRoute(
         builder: (context) => _routeBuilders(context)[destination]!(context),
       ),
-    );
+    ).then((value) => callback?.call());
   }
 
   Map<String, WidgetBuilder> _routeBuilders(BuildContext context) {

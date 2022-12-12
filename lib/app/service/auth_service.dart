@@ -7,6 +7,8 @@ import 'package:writing_exchange/data/model/user.dart';
 abstract class AuthServiceInterface {
   Future<User> register(User user);
   Future<String> getUserId();
+  Future<bool> isLoggedIn();
+  Future<void> logout();
 }
 
 class AuthService implements AuthServiceInterface {
@@ -31,6 +33,16 @@ class AuthService implements AuthServiceInterface {
     final credential = _ref.read(firebaseAuthProvider).currentUser;
     if (credential == null) throw AuthException();
     return credential.uid;
+  }
+
+  @override
+  Future<bool> isLoggedIn() async {
+    return _ref.read(firebaseAuthProvider).currentUser != null;
+  }
+
+  @override
+  Future<void> logout() async {
+    await _ref.read(firebaseAuthProvider).signOut();
   }
 }
 

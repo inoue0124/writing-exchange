@@ -25,17 +25,21 @@ class WritingListViewModel extends StateNotifier<AsyncValue<WritingListState>> {
     final user = await _userRepository.getMe();
     final writings = await _postRepository.getMyList(
       userId: user.userId,
-      language: _language,
+      targetLanguage: _language,
     );
     state = AsyncData(
       WritingListState(
         writings: writings,
       ),
     );
+
+    print(
+      await _postRepository.getCorrectionNeeded(Language.fromIsoCode('ja')),
+    );
   }
 }
 
-final writingListViewModelProvider = AutoDisposeStateNotifierProviderFamily<
+final writingListViewModelProvider = StateNotifierProviderFamily<
     WritingListViewModel, AsyncValue<WritingListState>, Language>(
   (ref, language) => WritingListViewModel(
     postRepository: ref.watch(postRepositoryProvider),

@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:writing_exchange/components/language_selector.dart';
 import 'package:writing_exchange/pages/onboarding/onboarding_viewmodel.dart';
+import 'package:writing_exchange/pages/writing/writing_top/writing_top_viewmodel.dart';
 
 class SelectTargetLanguageView extends ConsumerWidget {
   const SelectTargetLanguageView({
@@ -14,6 +15,7 @@ class SelectTargetLanguageView extends ConsumerWidget {
   @override
   Widget build(BuildContext context, WidgetRef ref) {
     final viewModel = ref.watch(onboardingViewModelProvider.notifier);
+    final writingTopViewModel = ref.watch(writingTopViewModelProvider.notifier);
     final state = ref.watch(onboardingViewModelProvider);
 
     return Scaffold(
@@ -56,6 +58,7 @@ class SelectTargetLanguageView extends ConsumerWidget {
                   ? null
                   : () async {
                       await viewModel.createUser();
+                      await writingTopViewModel.initialFetch();
                       onFinishSelection();
                     },
               child: const Text('Get started!'),
