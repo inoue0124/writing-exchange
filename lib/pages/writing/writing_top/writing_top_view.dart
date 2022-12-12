@@ -30,18 +30,26 @@ class WritingTopView extends ConsumerWidget {
             'Writing',
             style: Theme.of(context).textTheme.headline6,
           ),
-          bottom: TabBar(
-            tabs: state.value?.user.targetLanguages
-                    .map(
-                      (targetLanguage) => Padding(
-                          padding: const EdgeInsets.all(8),
-                          child: Text(targetLanguage.isoCode.toUpperCase())),
-                    )
-                    .toList() ??
-                [],
-            labelColor: Theme.of(context).primaryColor,
-            unselectedLabelColor: Theme.of(context).disabledColor,
-            indicatorColor: Theme.of(context).primaryColor,
+          bottom: PreferredSize(
+            preferredSize: const Size.fromHeight(40),
+            child: Container(
+              alignment: Alignment.topLeft,
+              child: TabBar(
+                isScrollable: true,
+                tabs: state.value?.user.targetLanguages
+                        .map(
+                          (targetLanguage) => Padding(
+                            padding: const EdgeInsets.all(8),
+                            child: Text(targetLanguage.name),
+                          ),
+                        )
+                        .toList() ??
+                    [],
+                labelColor: Theme.of(context).primaryColor,
+                unselectedLabelColor: Theme.of(context).disabledColor,
+                indicatorColor: Theme.of(context).primaryColor,
+              ),
+            ),
           ),
           actions: [
             IconButton(

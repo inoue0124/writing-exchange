@@ -29,8 +29,8 @@ class WritingTopViewModel extends StateNotifier<AsyncValue<WritingTopState>> {
   }
 }
 
-final writingTopViewModelProvider = StateNotifierProvider.autoDispose<
-    WritingTopViewModel, AsyncValue<WritingTopState>>(
+final writingTopViewModelProvider =
+    StateNotifierProvider<WritingTopViewModel, AsyncValue<WritingTopState>>(
   (ref) => WritingTopViewModel(
     postRepository: ref.watch(postRepositoryProvider),
     userRepository: ref.watch(userRepositoryProvider),
