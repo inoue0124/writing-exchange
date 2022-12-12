@@ -17,7 +17,7 @@ class AppViewModel extends StateNotifier<AppState> {
   final AuthServiceInterface _authService;
 
   Future<void> checkIsFinishedOnboarding() async {
-    await _authService.logout(); // TODO: 後に削除する
+    // await _authService.logout(); // TODO: 後に削除する
     final isLoggedIn = await _authService.isLoggedIn();
     if (!isLoggedIn) {
       state = state.copyWith(isFinishedOnboarding: false);

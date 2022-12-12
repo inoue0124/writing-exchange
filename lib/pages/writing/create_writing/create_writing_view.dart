@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:language_picker/languages.dart';
+import 'package:writing_exchange/components/multiple_image_upload.dart';
 import 'package:writing_exchange/components/rounded_button.dart';
 import 'package:writing_exchange/pages/writing/create_writing/create_writing_viewmodel.dart';
 import 'package:writing_exchange/pages/writing/writing_top/writing_list_viewmodel.dart';
@@ -78,6 +79,7 @@ class CreateWritingView extends ConsumerWidget {
           ),
           TextField(onChanged: viewModel.onChangeTitle),
           TextField(onChanged: viewModel.onChangeContent),
+          MultipleImageUpload()
         ],
       ),
     );
