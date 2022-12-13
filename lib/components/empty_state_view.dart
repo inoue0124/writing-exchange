@@ -23,7 +23,7 @@ class EmptyStateView extends StatelessWidget {
           Text(title),
           RoundedButton(
             onPressed: onPressedActionButton,
-            title: actionText,
+            text: actionText,
           )
         ],
       ),

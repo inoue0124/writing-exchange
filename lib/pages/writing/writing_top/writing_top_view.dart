@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
+import 'package:writing_exchange/components/app_dialog.dart';
 import 'package:writing_exchange/components/loading_state_view.dart';
 import 'package:writing_exchange/pages/writing/writing_top/writing_list_view.dart';
 import 'package:writing_exchange/pages/writing/writing_top/writing_top_viewmodel.dart';
@@ -54,7 +55,32 @@ class WritingTopView extends ConsumerWidget {
               ),
               actions: [
                 IconButton(
-                  onPressed: () => onPressCreateNew(),
+                  // onPressed: () => onPressCreateNew(),
+                  onPressed: () => showDialog<void>(
+                    context: context,
+                    builder: (context) {
+                      return AppDialog(
+                        title: 'こんにちは',
+                        buttons: [
+                          DialogButton(
+                            "確定",
+                            type: DialogButtonType.main,
+                            onPressed: () {},
+                          ),
+                          DialogButton(
+                            "別の方法",
+                            type: DialogButtonType.sub,
+                            onPressed: () {},
+                          ),
+                          DialogButton(
+                            "キャンセル",
+                            type: DialogButtonType.cancel,
+                            onPressed: () {},
+                          )
+                        ],
+                      );
+                    },
+                  ),
                   icon: const Icon(Icons.create_outlined),
                   color: Theme.of(context).primaryColor,
                 )

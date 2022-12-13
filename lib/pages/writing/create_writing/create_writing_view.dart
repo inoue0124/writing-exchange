@@ -53,7 +53,7 @@ class CreateWritingView extends ConsumerWidget {
                     await topListViewModel.fetch();
                     onPostSuccess();
                   },
-            title: "投稿",
+            text: "投稿",
           ),
         ],
         backgroundColor: Theme.of(context).backgroundColor,
