@@ -7,7 +7,11 @@ Map<String, WidgetBuilder> writingFlow(BuildContext context, Function push) {
   return {
     AppRoutes.writingTop: (context) => WritingTopView(
           onPressCreateNew: () => {
-            push(context, AppRoutes.createWriting),
+            push(
+              context,
+              AppRoutes.createWriting,
+              pushModaly: true,
+            ),
           },
         ),
     AppRoutes.createWriting: (context) => CreateWritingView(

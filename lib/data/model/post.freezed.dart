@@ -35,7 +35,7 @@ class _$PostTearOff {
       @PostStatusConverter()
           required PostStatus status,
       @JsonKey(name: 'userId')
-          required String userId,
+          String? userId,
       @JsonKey(name: 'language')
       @LanguageConverter()
           required Language language,
@@ -82,7 +82,7 @@ mixin _$Post {
   @PostStatusConverter()
   PostStatus get status => throw _privateConstructorUsedError;
   @JsonKey(name: 'userId')
-  String get userId => throw _privateConstructorUsedError;
+  String? get userId => throw _privateConstructorUsedError;
   @JsonKey(name: 'language')
   @LanguageConverter()
   Language get language => throw _privateConstructorUsedError;
@@ -109,7 +109,7 @@ abstract class $PostCopyWith<$Res> {
       @JsonKey(name: 'audioUrl') String audioUrl,
       @JsonKey(name: 'imageUrls') List<String> imageUrls,
       @JsonKey(name: 'status') @PostStatusConverter() PostStatus status,
-      @JsonKey(name: 'userId') String userId,
+      @JsonKey(name: 'userId') String? userId,
       @JsonKey(name: 'language') @LanguageConverter() Language language,
       @JsonKey(name: 'correctionCount') int correctionCount,
       @JsonKey(name: 'postedAt') @DateTimeConverter() DateTime? postedAt,
@@ -163,7 +163,7 @@ class _$PostCopyWithImpl<$Res> implements $PostCopyWith<$Res> {
       userId: userId == freezed
           ? _value.userId
           : userId // ignore: cast_nullable_to_non_nullable
-              as String,
+              as String?,
       language: language == freezed
           ? _value.language
           : language // ignore: cast_nullable_to_non_nullable
@@ -206,7 +206,7 @@ abstract class _$PostCopyWith<$Res> implements $PostCopyWith<$Res> {
       @JsonKey(name: 'audioUrl') String audioUrl,
       @JsonKey(name: 'imageUrls') List<String> imageUrls,
       @JsonKey(name: 'status') @PostStatusConverter() PostStatus status,
-      @JsonKey(name: 'userId') String userId,
+      @JsonKey(name: 'userId') String? userId,
       @JsonKey(name: 'language') @LanguageConverter() Language language,
       @JsonKey(name: 'correctionCount') int correctionCount,
       @JsonKey(name: 'postedAt') @DateTimeConverter() DateTime? postedAt,
@@ -262,7 +262,7 @@ class __$PostCopyWithImpl<$Res> extends _$PostCopyWithImpl<$Res>
       userId: userId == freezed
           ? _value.userId
           : userId // ignore: cast_nullable_to_non_nullable
-              as String,
+              as String?,
       language: language == freezed
           ? _value.language
           : language // ignore: cast_nullable_to_non_nullable
@@ -292,7 +292,7 @@ class _$_Post extends _Post {
       @JsonKey(name: 'audioUrl') required this.audioUrl,
       @JsonKey(name: 'imageUrls') required this.imageUrls,
       @JsonKey(name: 'status') @PostStatusConverter() required this.status,
-      @JsonKey(name: 'userId') required this.userId,
+      @JsonKey(name: 'userId') this.userId,
       @JsonKey(name: 'language') @LanguageConverter() required this.language,
       @JsonKey(name: 'correctionCount') this.correctionCount = 0,
       @JsonKey(name: 'postedAt') @DateTimeConverter() this.postedAt,
@@ -319,7 +319,7 @@ class _$_Post extends _Post {
   final PostStatus status;
   @override
   @JsonKey(name: 'userId')
-  final String userId;
+  final String? userId;
   @override
   @JsonKey(name: 'language')
   @LanguageConverter()
@@ -397,7 +397,7 @@ abstract class _Post extends Post {
       @PostStatusConverter()
           required PostStatus status,
       @JsonKey(name: 'userId')
-          required String userId,
+          String? userId,
       @JsonKey(name: 'language')
       @LanguageConverter()
           required Language language,
@@ -430,7 +430,7 @@ abstract class _Post extends Post {
   PostStatus get status;
   @override
   @JsonKey(name: 'userId')
-  String get userId;
+  String? get userId;
   @override
   @JsonKey(name: 'language')
   @LanguageConverter()

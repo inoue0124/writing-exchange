@@ -60,28 +60,71 @@ class CreateWritingView extends ConsumerWidget {
         bottomOpacity: 0.0,
         elevation: 0.0,
       ),
-      body: Column(
-        children: [
-          DropdownButton<Language>(
-            value: state.language,
-            onChanged: (language) {
-              if (language != null) viewModel.onChangeLanguage(language);
-            },
-            items: topState.value?.user.targetLanguages
-                    .map(
-                      (Language language) => DropdownMenuItem(
-                        value: language,
-                        child: Text(language.name),
-                      ),
-                    )
-                    .toList() ??
-                [],
-          ),
-          TextField(onChanged: viewModel.onChangeTitle),
-          TextField(onChanged: viewModel.onChangeContent),
-          MultipleImageUpload()
-        ],
+      body: Container(
+        padding: const EdgeInsets.only(bottom: 110),
+        child: Column(
+          children: [
+            Container(
+              padding: const EdgeInsets.symmetric(horizontal: 8.0),
+              decoration: BoxDecoration(
+                borderRadius: BorderRadius.circular(30),
+                border: Border.all(
+                  color: Theme.of(context).primaryColor,
+                  style: BorderStyle.solid,
+                  width: 0.80,
+                ),
+                color: Theme.of(context).primaryColor,
+              ),
+              child: DropdownButtonHideUnderline(
+                child: DropdownButton<Language>(
+                  onChanged: (language) {
+                    if (language != null) viewModel.onChangeLanguage(language);
+                  },
+                  isDense: true,
+                  value: state.language,
+                  style: Theme.of(context).textTheme.caption,
+                  focusColor: Theme.of(context).canvasColor,
+                  dropdownColor: Theme.of(context).canvasColor,
+                  items: topState.value?.user.targetLanguages
+                          .map(
+                            (Language language) => DropdownMenuItem(
+                              value: language,
+                              child: Text(language.name),
+                            ),
+                          )
+                          .toList() ??
+                      [],
+                ),
+              ),
+            ),
+            Padding(
+              padding: const EdgeInsets.symmetric(horizontal: 16),
+              child: TextField(
+                onChanged: viewModel.onChangeTitle,
+                decoration:
+                    const InputDecoration.collapsed(hintText: 'タイトルをつけましょう。'),
+              ),
+            ),
+            Expanded(
+              child: Padding(
+                padding: const EdgeInsets.fromLTRB(16, 16, 16, 0),
+                child: TextField(
+                  onChanged: viewModel.onChangeContent,
+                  keyboardType: TextInputType.multiline,
+                  maxLines: null,
+                  decoration:
+                      const InputDecoration.collapsed(hintText: '何を書きますか？'),
+                ),
+              ),
+            ),
+          ],
+        ),
       ),
+      bottomSheet: Container(
+          color: Theme.of(context).scaffoldBackgroundColor,
+          padding: const EdgeInsets.symmetric(horizontal: 8),
+          height: 100,
+          child: MultipleImageUpload(onChange: viewModel.onChangeImage)),
     );
   }
 }

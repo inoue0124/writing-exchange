@@ -1,6 +1,7 @@
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:language_picker/languages.dart';
+import 'package:writing_exchange/app/service/auth_service.dart';
 import 'package:writing_exchange/app/utils/providers.dart';
 import 'package:writing_exchange/data/model/post.dart';
 import 'package:writing_exchange/data/model/post_status.dart';
@@ -17,13 +18,18 @@ abstract class PostRepositoryInterface {
 
 class PostRepository implements PostRepositoryInterface {
   final Ref _ref;
-  const PostRepository(this._ref);
+  const PostRepository(this._ref, {required AuthServiceInterface authService})
+      : _authService = authService;
+  final AuthServiceInterface _authService;
 
   @override
   Future<void> upsert(Post post) async {
     try {
+      final userId = await _authService.getUserId();
+
       final postMap = {
         ...post.toJson(),
+        'userId': userId,
         'postedAt': FieldValue.serverTimestamp(),
       };
       await _ref.read(firebaseFirestoreProvider).postsRef().add(postMap);
@@ -87,8 +93,10 @@ class PostRepository implements PostRepositoryInterface {
   }
 
   @override
-  Future<List<Post>> getMyList(
-      {String? userId, Language? targetLanguage}) async {
+  Future<List<Post>> getMyList({
+    String? userId,
+    Language? targetLanguage,
+  }) async {
     try {
       final snaps = await _ref
           .read(firebaseFirestoreProvider)
@@ -131,5 +139,8 @@ class PostRepository implements PostRepositoryInterface {
 }
 
 final postRepositoryProvider = Provider<PostRepositoryInterface>(
-  (ref) => PostRepository(ref),
+  (ref) => PostRepository(
+    ref,
+    authService: ref.read(authServiceProvider),
+  ),
 );

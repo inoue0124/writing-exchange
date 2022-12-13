@@ -21,7 +21,7 @@ class _$CreateWritingStateTearOff {
   _CreateWritingState call(
       {String title = "",
       String content = "",
-      List<String> imageUrls = const [],
+      List<XFile> images = const [],
       String audioUrl = "",
       PostStatus status = PostStatus.active,
       bool isPostSuccess = false,
@@ -31,7 +31,7 @@ class _$CreateWritingStateTearOff {
     return _CreateWritingState(
       title: title,
       content: content,
-      imageUrls: imageUrls,
+      images: images,
       audioUrl: audioUrl,
       status: status,
       isPostSuccess: isPostSuccess,
@@ -49,7 +49,7 @@ const $CreateWritingState = _$CreateWritingStateTearOff();
 mixin _$CreateWritingState {
   String get title => throw _privateConstructorUsedError;
   String get content => throw _privateConstructorUsedError;
-  List<String> get imageUrls => throw _privateConstructorUsedError;
+  List<XFile> get images => throw _privateConstructorUsedError;
   String get audioUrl => throw _privateConstructorUsedError;
   PostStatus get status => throw _privateConstructorUsedError;
   bool get isPostSuccess => throw _privateConstructorUsedError;
@@ -70,7 +70,7 @@ abstract class $CreateWritingStateCopyWith<$Res> {
   $Res call(
       {String title,
       String content,
-      List<String> imageUrls,
+      List<XFile> images,
       String audioUrl,
       PostStatus status,
       bool isPostSuccess,
@@ -92,7 +92,7 @@ class _$CreateWritingStateCopyWithImpl<$Res>
   $Res call({
     Object? title = freezed,
     Object? content = freezed,
-    Object? imageUrls = freezed,
+    Object? images = freezed,
     Object? audioUrl = freezed,
     Object? status = freezed,
     Object? isPostSuccess = freezed,
@@ -109,10 +109,10 @@ class _$CreateWritingStateCopyWithImpl<$Res>
           ? _value.content
           : content // ignore: cast_nullable_to_non_nullable
               as String,
-      imageUrls: imageUrls == freezed
-          ? _value.imageUrls
-          : imageUrls // ignore: cast_nullable_to_non_nullable
-              as List<String>,
+      images: images == freezed
+          ? _value.images
+          : images // ignore: cast_nullable_to_non_nullable
+              as List<XFile>,
       audioUrl: audioUrl == freezed
           ? _value.audioUrl
           : audioUrl // ignore: cast_nullable_to_non_nullable
@@ -151,7 +151,7 @@ abstract class _$CreateWritingStateCopyWith<$Res>
   $Res call(
       {String title,
       String content,
-      List<String> imageUrls,
+      List<XFile> images,
       String audioUrl,
       PostStatus status,
       bool isPostSuccess,
@@ -175,7 +175,7 @@ class __$CreateWritingStateCopyWithImpl<$Res>
   $Res call({
     Object? title = freezed,
     Object? content = freezed,
-    Object? imageUrls = freezed,
+    Object? images = freezed,
     Object? audioUrl = freezed,
     Object? status = freezed,
     Object? isPostSuccess = freezed,
@@ -192,10 +192,10 @@ class __$CreateWritingStateCopyWithImpl<$Res>
           ? _value.content
           : content // ignore: cast_nullable_to_non_nullable
               as String,
-      imageUrls: imageUrls == freezed
-          ? _value.imageUrls
-          : imageUrls // ignore: cast_nullable_to_non_nullable
-              as List<String>,
+      images: images == freezed
+          ? _value.images
+          : images // ignore: cast_nullable_to_non_nullable
+              as List<XFile>,
       audioUrl: audioUrl == freezed
           ? _value.audioUrl
           : audioUrl // ignore: cast_nullable_to_non_nullable
@@ -230,7 +230,7 @@ class _$_CreateWritingState implements _CreateWritingState {
   const _$_CreateWritingState(
       {this.title = "",
       this.content = "",
-      this.imageUrls = const [],
+      this.images = const [],
       this.audioUrl = "",
       this.status = PostStatus.active,
       this.isPostSuccess = false,
@@ -246,7 +246,7 @@ class _$_CreateWritingState implements _CreateWritingState {
   final String content;
   @JsonKey()
   @override
-  final List<String> imageUrls;
+  final List<XFile> images;
   @JsonKey()
   @override
   final String audioUrl;
@@ -268,7 +268,7 @@ class _$_CreateWritingState implements _CreateWritingState {
 
   @override
   String toString() {
-    return 'CreateWritingState(title: $title, content: $content, imageUrls: $imageUrls, audioUrl: $audioUrl, status: $status, isPostSuccess: $isPostSuccess, isSaveDraftSuccess: $isSaveDraftSuccess, isLoading: $isLoading, language: $language)';
+    return 'CreateWritingState(title: $title, content: $content, images: $images, audioUrl: $audioUrl, status: $status, isPostSuccess: $isPostSuccess, isSaveDraftSuccess: $isSaveDraftSuccess, isLoading: $isLoading, language: $language)';
   }
 
   @override
@@ -278,7 +278,7 @@ class _$_CreateWritingState implements _CreateWritingState {
             other is _CreateWritingState &&
             const DeepCollectionEquality().equals(other.title, title) &&
             const DeepCollectionEquality().equals(other.content, content) &&
-            const DeepCollectionEquality().equals(other.imageUrls, imageUrls) &&
+            const DeepCollectionEquality().equals(other.images, images) &&
             const DeepCollectionEquality().equals(other.audioUrl, audioUrl) &&
             const DeepCollectionEquality().equals(other.status, status) &&
             const DeepCollectionEquality()
@@ -294,7 +294,7 @@ class _$_CreateWritingState implements _CreateWritingState {
       runtimeType,
       const DeepCollectionEquality().hash(title),
       const DeepCollectionEquality().hash(content),
-      const DeepCollectionEquality().hash(imageUrls),
+      const DeepCollectionEquality().hash(images),
       const DeepCollectionEquality().hash(audioUrl),
       const DeepCollectionEquality().hash(status),
       const DeepCollectionEquality().hash(isPostSuccess),
@@ -312,7 +312,7 @@ abstract class _CreateWritingState implements CreateWritingState {
   const factory _CreateWritingState(
       {String title,
       String content,
-      List<String> imageUrls,
+      List<XFile> images,
       String audioUrl,
       PostStatus status,
       bool isPostSuccess,
@@ -325,7 +325,7 @@ abstract class _CreateWritingState implements CreateWritingState {
   @override
   String get content;
   @override
-  List<String> get imageUrls;
+  List<XFile> get images;
   @override
   String get audioUrl;
   @override

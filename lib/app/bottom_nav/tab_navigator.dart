@@ -17,11 +17,13 @@ class TabNavigator extends StatelessWidget {
     BuildContext context,
     String destination, {
     Function? callback,
+    bool pushModaly = false,
   }) {
     Navigator.push<Widget>(
       context,
       MaterialPageRoute(
         builder: (context) => _routeBuilders(context)[destination]!(context),
+        fullscreenDialog: pushModaly,
       ),
     ).then((value) => callback?.call());
   }
@@ -36,13 +38,13 @@ class TabNavigator extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    final routeBuilders = _routeBuilders(context);
     return Navigator(
       key: navigatorKey,
       initialRoute: initialRoutes[tabItem],
       onGenerateRoute: (routeSettings) {
         return MaterialPageRoute<Widget>(
-          builder: (context) => routeBuilders[routeSettings.name]!(context),
+          builder: (context) =>
+              _routeBuilders(context)[routeSettings.name]!(context),
         );
       },
     );

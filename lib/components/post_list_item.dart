@@ -33,7 +33,16 @@ class PostListItem extends StatelessWidget {
                   ? SizedBox(
                       height: 100,
                       width: double.infinity,
-                      child: Image.network(imageUrls[0], fit: BoxFit.cover),
+                      child: Image.network(
+                        imageUrls[0],
+                        fit: BoxFit.cover,
+                        errorBuilder: (c, o, s) {
+                          return const Icon(
+                            Icons.error,
+                            color: Colors.red,
+                          );
+                        },
+                      ),
                     )
                   : SizedBox(
                       height: 100,
@@ -45,6 +54,12 @@ class PostListItem extends StatelessWidget {
                           return Image.network(
                             imageUrls[index],
                             fit: BoxFit.cover,
+                            errorBuilder: (c, o, s) {
+                              return const Icon(
+                                Icons.error,
+                                color: Colors.red,
+                              );
+                            },
                           );
                         },
                       ),

@@ -19,7 +19,7 @@ class Post with _$Post {
     @JsonKey(name: 'audioUrl') required String audioUrl,
     @JsonKey(name: 'imageUrls') required List<String> imageUrls,
     @JsonKey(name: 'status') @PostStatusConverter() required PostStatus status,
-    @JsonKey(name: 'userId') required String userId,
+    @JsonKey(name: 'userId') String? userId,
     @JsonKey(name: 'language') @LanguageConverter() required Language language,
     @JsonKey(name: 'correctionCount') @Default(0) int correctionCount,
     @JsonKey(name: 'postedAt') @DateTimeConverter() DateTime? postedAt,

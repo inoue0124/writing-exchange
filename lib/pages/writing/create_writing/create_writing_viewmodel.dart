@@ -1,6 +1,9 @@
+import 'dart:io';
+
 import 'package:flutter_riverpod/flutter_riverpod.dart';
+import 'package:image_picker/image_picker.dart';
 import 'package:language_picker/languages.dart';
-import 'package:writing_exchange/app/service/auth_service.dart';
+import 'package:writing_exchange/app/service/storage_service.dart';
 import 'package:writing_exchange/data/model/post.dart';
 import 'package:writing_exchange/data/model/post_status.dart';
 import 'package:writing_exchange/data/repository/post_repository.dart';
@@ -9,10 +12,10 @@ import 'package:writing_exchange/pages/writing/create_writing/create_writing_sta
 class CreateWritingViewModel extends StateNotifier<CreateWritingState> {
   CreateWritingViewModel({
     required PostRepositoryInterface postRepository,
-    required AuthServiceInterface authService,
+    required StorageServiceInterface storageService,
     Language? selectedLanguage,
   })  : _postRepository = postRepository,
-        _authService = authService,
+        _storageService = storageService,
         super(const CreateWritingState()) {
     if (selectedLanguage != null) {
       state = state.copyWith(language: selectedLanguage);
@@ -20,34 +23,30 @@ class CreateWritingViewModel extends StateNotifier<CreateWritingState> {
   }
 
   final PostRepositoryInterface _postRepository;
-  final AuthServiceInterface _authService;
+  final StorageServiceInterface _storageService;
 
   Future<void> postWriting() async {
     state = state.copyWith(isLoading: true);
-    final userId = await _authService.getUserId();
-    final post = Post(
-      title: state.title,
-      content: state.content,
-      audioUrl: state.audioUrl,
-      imageUrls: state.imageUrls,
-      userId: userId,
-      language: state.language!,
-      status: PostStatus.active,
-    );
-    await _postRepository.upsert(post);
+    await (_uploadImageAndSaveData(PostStatus.active));
   }
 
   Future<void> saveAsDraft() async {
     state = state.copyWith(isLoading: true);
-    final userId = await _authService.getUserId();
+    await (_uploadImageAndSaveData(PostStatus.draft));
+  }
+
+  Future<void> _uploadImageAndSaveData(PostStatus status) async {
+    final imageUrls = await Future.wait(
+      state.images.map((image) => _storageService.upload(File(image.path))),
+    );
+
     final post = Post(
       title: state.title,
       content: state.content,
       audioUrl: state.audioUrl,
-      imageUrls: state.imageUrls,
-      userId: userId,
+      imageUrls: imageUrls,
       language: state.language!,
-      status: PostStatus.draft,
+      status: status,
     );
     await _postRepository.upsert(post);
   }
@@ -63,13 +62,17 @@ class CreateWritingViewModel extends StateNotifier<CreateWritingState> {
   void onChangeContent(String value) {
     state = state.copyWith(content: value);
   }
+
+  void onChangeImage(List<XFile> value) {
+    state = state.copyWith(images: value);
+  }
 }
 
 final createWritingViewModelProvider = AutoDisposeStateNotifierProviderFamily<
     CreateWritingViewModel, CreateWritingState, Language?>(
   (ref, selectedLanguage) => CreateWritingViewModel(
     postRepository: ref.watch(postRepositoryProvider),
-    authService: ref.watch(authServiceProvider),
+    storageService: ref.watch(storageServiceProvider),
     selectedLanguage: selectedLanguage,
   ),
 );

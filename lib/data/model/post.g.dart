@@ -13,7 +13,7 @@ _$_Post _$$_PostFromJson(Map<String, dynamic> json) => _$_Post(
       imageUrls:
           (json['imageUrls'] as List<dynamic>).map((e) => e as String).toList(),
       status: const PostStatusConverter().fromJson(json['status'] as String),
-      userId: json['userId'] as String,
+      userId: json['userId'] as String?,
       language: const LanguageConverter().fromJson(json['language'] as String),
       correctionCount: json['correctionCount'] as int? ?? 0,
       postedAt: _$JsonConverterFromJson<Timestamp, DateTime>(

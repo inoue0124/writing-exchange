@@ -29,6 +29,8 @@ dependencies:
   country_picker: ^2.0.18
   image_picker: ^0.8.6
   dotted_border: ^2.0.0+3
+  uuid: ^3.0.7
+  path: ^1.8.2
 
 dev_dependencies:
   flutter_test:
