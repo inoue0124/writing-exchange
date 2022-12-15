@@ -2,6 +2,7 @@ import 'package:country_picker/country_picker.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:language_picker/languages.dart';
 import 'package:writing_exchange/app/service/auth_service.dart';
+import 'package:writing_exchange/data/repository/correction_ticket_repository.dart';
 import 'package:writing_exchange/data/repository/user_repository.dart';
 import 'package:writing_exchange/pages/onboarding/onboarding_state.dart';
 
@@ -9,12 +10,15 @@ class OnboardingViewModel extends StateNotifier<OnboardingState> {
   OnboardingViewModel({
     required AuthServiceInterface authService,
     required UserRepositoryInterface userRepository,
+    required CorrectionTicketRepositoryInterface correctionTicketRepository,
   })  : _authService = authService,
         _userRepository = userRepository,
+        _correctionTicketRepository = correctionTicketRepository,
         super(const OnboardingState());
 
   final AuthServiceInterface _authService;
   final UserRepositoryInterface _userRepository;
+  final CorrectionTicketRepositoryInterface _correctionTicketRepository;
 
   Future<void> createUser() async {
     final user = state.user.copyWith(
@@ -26,6 +30,7 @@ class OnboardingViewModel extends StateNotifier<OnboardingState> {
     );
     final registerdUser = await _authService.register(user);
     await _userRepository.upsert(registerdUser);
+    await _correctionTicketRepository.createNew();
   }
 
   void onPageChanged(int index) {
@@ -70,5 +75,6 @@ final onboardingViewModelProvider =
   (ref) => OnboardingViewModel(
     authService: ref.watch(authServiceProvider),
     userRepository: ref.watch(userRepositoryProvider),
+    correctionTicketRepository: ref.watch(correctionTicketRepositoryProvider),
   ),
 );

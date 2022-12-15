@@ -7,9 +7,6 @@ enum DialogButtonType {
 
   /// 白抜き
   sub,
-
-  /// 白抜きかつ押したらダイアログ閉じる
-  cancel,
 }
 
 class DialogButton extends StatelessWidget {
@@ -17,12 +14,12 @@ class DialogButton extends StatelessWidget {
     this.text, {
     super.key,
     this.type = DialogButtonType.main,
-    required this.onPressed,
+    this.onPressed,
   });
 
   final String text;
   final DialogButtonType type;
-  final Function onPressed;
+  final Function? onPressed;
 
   @override
   Widget build(BuildContext context) {
@@ -30,23 +27,20 @@ class DialogButton extends StatelessWidget {
       case DialogButtonType.main:
         return SizedBox(
           width: double.infinity,
-          child: RoundedButton(onPressed: () => onPressed(), text: text),
+          child: RoundedButton(
+            onPressed: () {
+              onPressed?.call();
+              Navigator.of(context).pop();
+            },
+            text: text,
+          ),
         );
       case DialogButtonType.sub:
         return SizedBox(
           width: double.infinity,
           child: RoundedButton(
-            onPressed: () => onPressed(),
-            text: text,
-            isOutlined: true,
-          ),
-        );
-      case DialogButtonType.cancel:
-        return SizedBox(
-          width: double.infinity,
-          child: RoundedButton(
             onPressed: () {
-              onPressed();
+              onPressed?.call();
               Navigator.of(context).pop();
             },
             text: text,
@@ -84,7 +78,8 @@ class AppDialog extends StatelessWidget {
             const SizedBox(height: 16),
             Text(
               title,
-              style: const TextStyle(fontSize: 22, fontWeight: FontWeight.w600),
+              style: Theme.of(context).textTheme.headline6,
+              textAlign: TextAlign.center,
             ),
             const SizedBox(height: 16),
 
@@ -94,7 +89,7 @@ class AppDialog extends StatelessWidget {
                 children: [
                   Text(
                     message!,
-                    style: Theme.of(context).textTheme.headline4,
+                    style: Theme.of(context).textTheme.bodyText1,
                     textAlign: TextAlign.center,
                   ),
                   const SizedBox(height: 16),
@@ -106,10 +101,10 @@ class AppDialog extends StatelessWidget {
               (button) => Column(
                 children: [
                   button,
-                  const SizedBox(height: 8),
                 ],
               ),
-            )
+            ),
+            if (buttons.isNotEmpty) const SizedBox(height: 16)
           ],
         ),
       ),

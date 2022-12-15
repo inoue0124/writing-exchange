@@ -9,6 +9,8 @@ part 'writing_top_state.freezed.dart';
 class WritingTopState with _$WritingTopState {
   const factory WritingTopState({
     @Default(User()) User user,
-    Language? selectedLanguage,
+    @Default(null) Language? selectedLanguage,
+    @Default(null) Post? needCorrectionPost,
+    @Default(0) int correctionTicketCount,
   }) = _WritingTopState;
 }

@@ -19,10 +19,15 @@ class _$WritingTopStateTearOff {
   const _$WritingTopStateTearOff();
 
   _WritingTopState call(
-      {User user = const User(), Language? selectedLanguage}) {
+      {User user = const User(),
+      Language? selectedLanguage = null,
+      Post? needCorrectionPost = null,
+      int correctionTicketCount = 0}) {
     return _WritingTopState(
       user: user,
       selectedLanguage: selectedLanguage,
+      needCorrectionPost: needCorrectionPost,
+      correctionTicketCount: correctionTicketCount,
     );
   }
 }
@@ -34,6 +39,8 @@ const $WritingTopState = _$WritingTopStateTearOff();
 mixin _$WritingTopState {
   User get user => throw _privateConstructorUsedError;
   Language? get selectedLanguage => throw _privateConstructorUsedError;
+  Post? get needCorrectionPost => throw _privateConstructorUsedError;
+  int get correctionTicketCount => throw _privateConstructorUsedError;
 
   @JsonKey(ignore: true)
   $WritingTopStateCopyWith<WritingTopState> get copyWith =>
@@ -45,9 +52,14 @@ abstract class $WritingTopStateCopyWith<$Res> {
   factory $WritingTopStateCopyWith(
           WritingTopState value, $Res Function(WritingTopState) then) =
       _$WritingTopStateCopyWithImpl<$Res>;
-  $Res call({User user, Language? selectedLanguage});
+  $Res call(
+      {User user,
+      Language? selectedLanguage,
+      Post? needCorrectionPost,
+      int correctionTicketCount});
 
   $UserCopyWith<$Res> get user;
+  $PostCopyWith<$Res>? get needCorrectionPost;
 }
 
 /// @nodoc
@@ -63,6 +75,8 @@ class _$WritingTopStateCopyWithImpl<$Res>
   $Res call({
     Object? user = freezed,
     Object? selectedLanguage = freezed,
+    Object? needCorrectionPost = freezed,
+    Object? correctionTicketCount = freezed,
   }) {
     return _then(_value.copyWith(
       user: user == freezed
@@ -73,6 +87,14 @@ class _$WritingTopStateCopyWithImpl<$Res>
           ? _value.selectedLanguage
           : selectedLanguage // ignore: cast_nullable_to_non_nullable
               as Language?,
+      needCorrectionPost: needCorrectionPost == freezed
+          ? _value.needCorrectionPost
+          : needCorrectionPost // ignore: cast_nullable_to_non_nullable
+              as Post?,
+      correctionTicketCount: correctionTicketCount == freezed
+          ? _value.correctionTicketCount
+          : correctionTicketCount // ignore: cast_nullable_to_non_nullable
+              as int,
     ));
   }
 
@@ -80,6 +102,17 @@ class _$WritingTopStateCopyWithImpl<$Res>
   $UserCopyWith<$Res> get user {
     return $UserCopyWith<$Res>(_value.user, (value) {
       return _then(_value.copyWith(user: value));
+    });
+  }
+
+  @override
+  $PostCopyWith<$Res>? get needCorrectionPost {
+    if (_value.needCorrectionPost == null) {
+      return null;
+    }
+
+    return $PostCopyWith<$Res>(_value.needCorrectionPost!, (value) {
+      return _then(_value.copyWith(needCorrectionPost: value));
     });
   }
 }
@@ -91,10 +124,16 @@ abstract class _$WritingTopStateCopyWith<$Res>
           _WritingTopState value, $Res Function(_WritingTopState) then) =
       __$WritingTopStateCopyWithImpl<$Res>;
   @override
-  $Res call({User user, Language? selectedLanguage});
+  $Res call(
+      {User user,
+      Language? selectedLanguage,
+      Post? needCorrectionPost,
+      int correctionTicketCount});
 
   @override
   $UserCopyWith<$Res> get user;
+  @override
+  $PostCopyWith<$Res>? get needCorrectionPost;
 }
 
 /// @nodoc
@@ -112,6 +151,8 @@ class __$WritingTopStateCopyWithImpl<$Res>
   $Res call({
     Object? user = freezed,
     Object? selectedLanguage = freezed,
+    Object? needCorrectionPost = freezed,
+    Object? correctionTicketCount = freezed,
   }) {
     return _then(_WritingTopState(
       user: user == freezed
@@ -122,6 +163,14 @@ class __$WritingTopStateCopyWithImpl<$Res>
           ? _value.selectedLanguage
           : selectedLanguage // ignore: cast_nullable_to_non_nullable
               as Language?,
+      needCorrectionPost: needCorrectionPost == freezed
+          ? _value.needCorrectionPost
+          : needCorrectionPost // ignore: cast_nullable_to_non_nullable
+              as Post?,
+      correctionTicketCount: correctionTicketCount == freezed
+          ? _value.correctionTicketCount
+          : correctionTicketCount // ignore: cast_nullable_to_non_nullable
+              as int,
     ));
   }
 }
@@ -129,17 +178,28 @@ class __$WritingTopStateCopyWithImpl<$Res>
 /// @nodoc
 
 class _$_WritingTopState implements _WritingTopState {
-  const _$_WritingTopState({this.user = const User(), this.selectedLanguage});
+  const _$_WritingTopState(
+      {this.user = const User(),
+      this.selectedLanguage = null,
+      this.needCorrectionPost = null,
+      this.correctionTicketCount = 0});
 
   @JsonKey()
   @override
   final User user;
+  @JsonKey()
   @override
   final Language? selectedLanguage;
+  @JsonKey()
+  @override
+  final Post? needCorrectionPost;
+  @JsonKey()
+  @override
+  final int correctionTicketCount;
 
   @override
   String toString() {
-    return 'WritingTopState(user: $user, selectedLanguage: $selectedLanguage)';
+    return 'WritingTopState(user: $user, selectedLanguage: $selectedLanguage, needCorrectionPost: $needCorrectionPost, correctionTicketCount: $correctionTicketCount)';
   }
 
   @override
@@ -149,14 +209,20 @@ class _$_WritingTopState implements _WritingTopState {
             other is _WritingTopState &&
             const DeepCollectionEquality().equals(other.user, user) &&
             const DeepCollectionEquality()
-                .equals(other.selectedLanguage, selectedLanguage));
+                .equals(other.selectedLanguage, selectedLanguage) &&
+            const DeepCollectionEquality()
+                .equals(other.needCorrectionPost, needCorrectionPost) &&
+            const DeepCollectionEquality()
+                .equals(other.correctionTicketCount, correctionTicketCount));
   }
 
   @override
   int get hashCode => Object.hash(
       runtimeType,
       const DeepCollectionEquality().hash(user),
-      const DeepCollectionEquality().hash(selectedLanguage));
+      const DeepCollectionEquality().hash(selectedLanguage),
+      const DeepCollectionEquality().hash(needCorrectionPost),
+      const DeepCollectionEquality().hash(correctionTicketCount));
 
   @JsonKey(ignore: true)
   @override
@@ -165,13 +231,20 @@ class _$_WritingTopState implements _WritingTopState {
 }
 
 abstract class _WritingTopState implements WritingTopState {
-  const factory _WritingTopState({User user, Language? selectedLanguage}) =
-      _$_WritingTopState;
+  const factory _WritingTopState(
+      {User user,
+      Language? selectedLanguage,
+      Post? needCorrectionPost,
+      int correctionTicketCount}) = _$_WritingTopState;
 
   @override
   User get user;
   @override
   Language? get selectedLanguage;
+  @override
+  Post? get needCorrectionPost;
+  @override
+  int get correctionTicketCount;
   @override
   @JsonKey(ignore: true)
   _$WritingTopStateCopyWith<_WritingTopState> get copyWith =>

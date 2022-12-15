@@ -23,32 +23,19 @@ class _$CorrectionTearOff {
   const _$CorrectionTearOff();
 
   _Correction call(
-      {@JsonKey(name: 'originalTexts')
-          required List<String> originalTexts,
-      @JsonKey(name: 'correctedTexts')
-          required List<String> correctedTexts,
-      @JsonKey(name: 'comment')
-          required String comment,
-      @JsonKey(name: 'audioUrl')
-          required String audioUrl,
-      @JsonKey(name: 'messages')
-          required List<CorrectionMessage> messages,
-      @JsonKey(name: 'review')
-      @ReviewConverter()
-          required Review review,
-      @JsonKey(name: 'vocabularyScore')
-          required int vocabularyScore,
-      @JsonKey(name: 'grammarScore')
-          required int grammarScore,
-      @JsonKey(name: 'fluencyScore')
-          required int fluencyScore,
-      @JsonKey(name: 'pronunciationScore')
-          required int pronunciationScore,
-      @JsonKey(name: 'crrectedUser')
-          required User crrectedUser,
-      @JsonKey(name: 'correctedAt')
-      @DateTimeConverter()
-          required DateTime correctedAt}) {
+      {@JsonKey(name: 'originalTexts') required List<String> originalTexts,
+      @JsonKey(name: 'correctedTexts') required List<String> correctedTexts,
+      @JsonKey(name: 'comment') required String comment,
+      @JsonKey(name: 'audioUrl') required String audioUrl,
+      @JsonKey(name: 'messages') required List<CorrectionMessage> messages,
+      @JsonKey(name: 'review') @ReviewConverter() required Review review,
+      @JsonKey(name: 'vocabularyScore') required int vocabularyScore,
+      @JsonKey(name: 'grammarScore') required int grammarScore,
+      @JsonKey(name: 'fluencyScore') required int fluencyScore,
+      @JsonKey(name: 'pronunciationScore') required int pronunciationScore,
+      @JsonKey(name: 'correctedUserId') String? correctedUserId,
+      @JsonKey(name: 'correctedAt') @DateTimeConverter() DateTime? correctedAt,
+      @JsonKey(ignore: true) User? correctedUser}) {
     return _Correction(
       originalTexts: originalTexts,
       correctedTexts: correctedTexts,
@@ -60,8 +47,9 @@ class _$CorrectionTearOff {
       grammarScore: grammarScore,
       fluencyScore: fluencyScore,
       pronunciationScore: pronunciationScore,
-      crrectedUser: crrectedUser,
+      correctedUserId: correctedUserId,
       correctedAt: correctedAt,
+      correctedUser: correctedUser,
     );
   }
 
@@ -96,11 +84,13 @@ mixin _$Correction {
   int get fluencyScore => throw _privateConstructorUsedError;
   @JsonKey(name: 'pronunciationScore')
   int get pronunciationScore => throw _privateConstructorUsedError;
-  @JsonKey(name: 'crrectedUser')
-  User get crrectedUser => throw _privateConstructorUsedError;
+  @JsonKey(name: 'correctedUserId')
+  String? get correctedUserId => throw _privateConstructorUsedError;
   @JsonKey(name: 'correctedAt')
   @DateTimeConverter()
-  DateTime get correctedAt => throw _privateConstructorUsedError;
+  DateTime? get correctedAt => throw _privateConstructorUsedError;
+  @JsonKey(ignore: true)
+  User? get correctedUser => throw _privateConstructorUsedError;
 
   Map<String, dynamic> toJson() => throw _privateConstructorUsedError;
   @JsonKey(ignore: true)
@@ -124,10 +114,11 @@ abstract class $CorrectionCopyWith<$Res> {
       @JsonKey(name: 'grammarScore') int grammarScore,
       @JsonKey(name: 'fluencyScore') int fluencyScore,
       @JsonKey(name: 'pronunciationScore') int pronunciationScore,
-      @JsonKey(name: 'crrectedUser') User crrectedUser,
-      @JsonKey(name: 'correctedAt') @DateTimeConverter() DateTime correctedAt});
+      @JsonKey(name: 'correctedUserId') String? correctedUserId,
+      @JsonKey(name: 'correctedAt') @DateTimeConverter() DateTime? correctedAt,
+      @JsonKey(ignore: true) User? correctedUser});
 
-  $UserCopyWith<$Res> get crrectedUser;
+  $UserCopyWith<$Res>? get correctedUser;
 }
 
 /// @nodoc
@@ -150,8 +141,9 @@ class _$CorrectionCopyWithImpl<$Res> implements $CorrectionCopyWith<$Res> {
     Object? grammarScore = freezed,
     Object? fluencyScore = freezed,
     Object? pronunciationScore = freezed,
-    Object? crrectedUser = freezed,
+    Object? correctedUserId = freezed,
     Object? correctedAt = freezed,
+    Object? correctedUser = freezed,
   }) {
     return _then(_value.copyWith(
       originalTexts: originalTexts == freezed
@@ -194,21 +186,29 @@ class _$CorrectionCopyWithImpl<$Res> implements $CorrectionCopyWith<$Res> {
           ? _value.pronunciationScore
           : pronunciationScore // ignore: cast_nullable_to_non_nullable
               as int,
-      crrectedUser: crrectedUser == freezed
-          ? _value.crrectedUser
-          : crrectedUser // ignore: cast_nullable_to_non_nullable
-              as User,
+      correctedUserId: correctedUserId == freezed
+          ? _value.correctedUserId
+          : correctedUserId // ignore: cast_nullable_to_non_nullable
+              as String?,
       correctedAt: correctedAt == freezed
           ? _value.correctedAt
           : correctedAt // ignore: cast_nullable_to_non_nullable
-              as DateTime,
+              as DateTime?,
+      correctedUser: correctedUser == freezed
+          ? _value.correctedUser
+          : correctedUser // ignore: cast_nullable_to_non_nullable
+              as User?,
     ));
   }
 
   @override
-  $UserCopyWith<$Res> get crrectedUser {
-    return $UserCopyWith<$Res>(_value.crrectedUser, (value) {
-      return _then(_value.copyWith(crrectedUser: value));
+  $UserCopyWith<$Res>? get correctedUser {
+    if (_value.correctedUser == null) {
+      return null;
+    }
+
+    return $UserCopyWith<$Res>(_value.correctedUser!, (value) {
+      return _then(_value.copyWith(correctedUser: value));
     });
   }
 }
@@ -230,11 +230,12 @@ abstract class _$CorrectionCopyWith<$Res> implements $CorrectionCopyWith<$Res> {
       @JsonKey(name: 'grammarScore') int grammarScore,
       @JsonKey(name: 'fluencyScore') int fluencyScore,
       @JsonKey(name: 'pronunciationScore') int pronunciationScore,
-      @JsonKey(name: 'crrectedUser') User crrectedUser,
-      @JsonKey(name: 'correctedAt') @DateTimeConverter() DateTime correctedAt});
+      @JsonKey(name: 'correctedUserId') String? correctedUserId,
+      @JsonKey(name: 'correctedAt') @DateTimeConverter() DateTime? correctedAt,
+      @JsonKey(ignore: true) User? correctedUser});
 
   @override
-  $UserCopyWith<$Res> get crrectedUser;
+  $UserCopyWith<$Res>? get correctedUser;
 }
 
 /// @nodoc
@@ -259,8 +260,9 @@ class __$CorrectionCopyWithImpl<$Res> extends _$CorrectionCopyWithImpl<$Res>
     Object? grammarScore = freezed,
     Object? fluencyScore = freezed,
     Object? pronunciationScore = freezed,
-    Object? crrectedUser = freezed,
+    Object? correctedUserId = freezed,
     Object? correctedAt = freezed,
+    Object? correctedUser = freezed,
   }) {
     return _then(_Correction(
       originalTexts: originalTexts == freezed
@@ -303,14 +305,18 @@ class __$CorrectionCopyWithImpl<$Res> extends _$CorrectionCopyWithImpl<$Res>
           ? _value.pronunciationScore
           : pronunciationScore // ignore: cast_nullable_to_non_nullable
               as int,
-      crrectedUser: crrectedUser == freezed
-          ? _value.crrectedUser
-          : crrectedUser // ignore: cast_nullable_to_non_nullable
-              as User,
+      correctedUserId: correctedUserId == freezed
+          ? _value.correctedUserId
+          : correctedUserId // ignore: cast_nullable_to_non_nullable
+              as String?,
       correctedAt: correctedAt == freezed
           ? _value.correctedAt
           : correctedAt // ignore: cast_nullable_to_non_nullable
-              as DateTime,
+              as DateTime?,
+      correctedUser: correctedUser == freezed
+          ? _value.correctedUser
+          : correctedUser // ignore: cast_nullable_to_non_nullable
+              as User?,
     ));
   }
 }
@@ -319,32 +325,19 @@ class __$CorrectionCopyWithImpl<$Res> extends _$CorrectionCopyWithImpl<$Res>
 @JsonSerializable()
 class _$_Correction extends _Correction {
   const _$_Correction(
-      {@JsonKey(name: 'originalTexts')
-          required this.originalTexts,
-      @JsonKey(name: 'correctedTexts')
-          required this.correctedTexts,
-      @JsonKey(name: 'comment')
-          required this.comment,
-      @JsonKey(name: 'audioUrl')
-          required this.audioUrl,
-      @JsonKey(name: 'messages')
-          required this.messages,
-      @JsonKey(name: 'review')
-      @ReviewConverter()
-          required this.review,
-      @JsonKey(name: 'vocabularyScore')
-          required this.vocabularyScore,
-      @JsonKey(name: 'grammarScore')
-          required this.grammarScore,
-      @JsonKey(name: 'fluencyScore')
-          required this.fluencyScore,
-      @JsonKey(name: 'pronunciationScore')
-          required this.pronunciationScore,
-      @JsonKey(name: 'crrectedUser')
-          required this.crrectedUser,
-      @JsonKey(name: 'correctedAt')
-      @DateTimeConverter()
-          required this.correctedAt})
+      {@JsonKey(name: 'originalTexts') required this.originalTexts,
+      @JsonKey(name: 'correctedTexts') required this.correctedTexts,
+      @JsonKey(name: 'comment') required this.comment,
+      @JsonKey(name: 'audioUrl') required this.audioUrl,
+      @JsonKey(name: 'messages') required this.messages,
+      @JsonKey(name: 'review') @ReviewConverter() required this.review,
+      @JsonKey(name: 'vocabularyScore') required this.vocabularyScore,
+      @JsonKey(name: 'grammarScore') required this.grammarScore,
+      @JsonKey(name: 'fluencyScore') required this.fluencyScore,
+      @JsonKey(name: 'pronunciationScore') required this.pronunciationScore,
+      @JsonKey(name: 'correctedUserId') this.correctedUserId,
+      @JsonKey(name: 'correctedAt') @DateTimeConverter() this.correctedAt,
+      @JsonKey(ignore: true) this.correctedUser})
       : super._();
 
   factory _$_Correction.fromJson(Map<String, dynamic> json) =>
@@ -382,16 +375,19 @@ class _$_Correction extends _Correction {
   @JsonKey(name: 'pronunciationScore')
   final int pronunciationScore;
   @override
-  @JsonKey(name: 'crrectedUser')
-  final User crrectedUser;
+  @JsonKey(name: 'correctedUserId')
+  final String? correctedUserId;
   @override
   @JsonKey(name: 'correctedAt')
   @DateTimeConverter()
-  final DateTime correctedAt;
+  final DateTime? correctedAt;
+  @override
+  @JsonKey(ignore: true)
+  final User? correctedUser;
 
   @override
   String toString() {
-    return 'Correction(originalTexts: $originalTexts, correctedTexts: $correctedTexts, comment: $comment, audioUrl: $audioUrl, messages: $messages, review: $review, vocabularyScore: $vocabularyScore, grammarScore: $grammarScore, fluencyScore: $fluencyScore, pronunciationScore: $pronunciationScore, crrectedUser: $crrectedUser, correctedAt: $correctedAt)';
+    return 'Correction(originalTexts: $originalTexts, correctedTexts: $correctedTexts, comment: $comment, audioUrl: $audioUrl, messages: $messages, review: $review, vocabularyScore: $vocabularyScore, grammarScore: $grammarScore, fluencyScore: $fluencyScore, pronunciationScore: $pronunciationScore, correctedUserId: $correctedUserId, correctedAt: $correctedAt, correctedUser: $correctedUser)';
   }
 
   @override
@@ -416,9 +412,11 @@ class _$_Correction extends _Correction {
             const DeepCollectionEquality()
                 .equals(other.pronunciationScore, pronunciationScore) &&
             const DeepCollectionEquality()
-                .equals(other.crrectedUser, crrectedUser) &&
+                .equals(other.correctedUserId, correctedUserId) &&
             const DeepCollectionEquality()
-                .equals(other.correctedAt, correctedAt));
+                .equals(other.correctedAt, correctedAt) &&
+            const DeepCollectionEquality()
+                .equals(other.correctedUser, correctedUser));
   }
 
   @override
@@ -434,8 +432,9 @@ class _$_Correction extends _Correction {
       const DeepCollectionEquality().hash(grammarScore),
       const DeepCollectionEquality().hash(fluencyScore),
       const DeepCollectionEquality().hash(pronunciationScore),
-      const DeepCollectionEquality().hash(crrectedUser),
-      const DeepCollectionEquality().hash(correctedAt));
+      const DeepCollectionEquality().hash(correctedUserId),
+      const DeepCollectionEquality().hash(correctedAt),
+      const DeepCollectionEquality().hash(correctedUser));
 
   @JsonKey(ignore: true)
   @override
@@ -450,32 +449,19 @@ class _$_Correction extends _Correction {
 
 abstract class _Correction extends Correction {
   const factory _Correction(
-      {@JsonKey(name: 'originalTexts')
-          required List<String> originalTexts,
-      @JsonKey(name: 'correctedTexts')
-          required List<String> correctedTexts,
-      @JsonKey(name: 'comment')
-          required String comment,
-      @JsonKey(name: 'audioUrl')
-          required String audioUrl,
-      @JsonKey(name: 'messages')
-          required List<CorrectionMessage> messages,
-      @JsonKey(name: 'review')
-      @ReviewConverter()
-          required Review review,
-      @JsonKey(name: 'vocabularyScore')
-          required int vocabularyScore,
-      @JsonKey(name: 'grammarScore')
-          required int grammarScore,
-      @JsonKey(name: 'fluencyScore')
-          required int fluencyScore,
-      @JsonKey(name: 'pronunciationScore')
-          required int pronunciationScore,
-      @JsonKey(name: 'crrectedUser')
-          required User crrectedUser,
-      @JsonKey(name: 'correctedAt')
-      @DateTimeConverter()
-          required DateTime correctedAt}) = _$_Correction;
+      {@JsonKey(name: 'originalTexts') required List<String> originalTexts,
+      @JsonKey(name: 'correctedTexts') required List<String> correctedTexts,
+      @JsonKey(name: 'comment') required String comment,
+      @JsonKey(name: 'audioUrl') required String audioUrl,
+      @JsonKey(name: 'messages') required List<CorrectionMessage> messages,
+      @JsonKey(name: 'review') @ReviewConverter() required Review review,
+      @JsonKey(name: 'vocabularyScore') required int vocabularyScore,
+      @JsonKey(name: 'grammarScore') required int grammarScore,
+      @JsonKey(name: 'fluencyScore') required int fluencyScore,
+      @JsonKey(name: 'pronunciationScore') required int pronunciationScore,
+      @JsonKey(name: 'correctedUserId') String? correctedUserId,
+      @JsonKey(name: 'correctedAt') @DateTimeConverter() DateTime? correctedAt,
+      @JsonKey(ignore: true) User? correctedUser}) = _$_Correction;
   const _Correction._() : super._();
 
   factory _Correction.fromJson(Map<String, dynamic> json) =
@@ -513,12 +499,15 @@ abstract class _Correction extends Correction {
   @JsonKey(name: 'pronunciationScore')
   int get pronunciationScore;
   @override
-  @JsonKey(name: 'crrectedUser')
-  User get crrectedUser;
+  @JsonKey(name: 'correctedUserId')
+  String? get correctedUserId;
   @override
   @JsonKey(name: 'correctedAt')
   @DateTimeConverter()
-  DateTime get correctedAt;
+  DateTime? get correctedAt;
+  @override
+  @JsonKey(ignore: true)
+  User? get correctedUser;
   @override
   @JsonKey(ignore: true)
   _$CorrectionCopyWith<_Correction> get copyWith =>

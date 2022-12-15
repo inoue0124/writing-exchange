@@ -34,7 +34,7 @@ class UserRepository implements UserRepositoryInterface {
           .set(
         {
           ...user.toJson(),
-          'createAt': FieldValue.serverTimestamp(),
+          'createdAt': FieldValue.serverTimestamp(),
         },
         SetOptions(merge: true),
       );
@@ -90,10 +90,10 @@ class UserRepository implements UserRepositoryInterface {
 
       // TODO: コメントアウト外す
       // キャッシュがあればキャッシュから返す
-      // final cachedUser = prefs.getString(PrefKeys.loggedInUser);
-      // if (cachedUser != null) {
-      //   return User.fromJson(jsonDecode(cachedUser));
-      // }
+      final cachedUser = prefs.getString(PrefKeys.loggedInUser);
+      if (cachedUser != null) {
+        return User.fromJson(jsonDecode(cachedUser));
+      }
 
       // キャッシュがなければfirestoreから取得してキャッシュ作成
       final user = await getById(userId);

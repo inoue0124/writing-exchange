@@ -18,10 +18,16 @@ final _privateConstructorUsedError = UnsupportedError(
 class _$CorrectionEditStateTearOff {
   const _$CorrectionEditStateTearOff();
 
-  _CorrectionEditState call({String editedText = "", String comment = ""}) {
+  _CorrectionEditState call(
+      {List<String> correctedTexts = const [],
+      List<String> originalTexts = const [],
+      String comment = "",
+      Post? post = null}) {
     return _CorrectionEditState(
-      editedText: editedText,
+      correctedTexts: correctedTexts,
+      originalTexts: originalTexts,
       comment: comment,
+      post: post,
     );
   }
 }
@@ -31,8 +37,10 @@ const $CorrectionEditState = _$CorrectionEditStateTearOff();
 
 /// @nodoc
 mixin _$CorrectionEditState {
-  String get editedText => throw _privateConstructorUsedError;
+  List<String> get correctedTexts => throw _privateConstructorUsedError;
+  List<String> get originalTexts => throw _privateConstructorUsedError;
   String get comment => throw _privateConstructorUsedError;
+  Post? get post => throw _privateConstructorUsedError;
 
   @JsonKey(ignore: true)
   $CorrectionEditStateCopyWith<CorrectionEditState> get copyWith =>
@@ -44,7 +52,13 @@ abstract class $CorrectionEditStateCopyWith<$Res> {
   factory $CorrectionEditStateCopyWith(
           CorrectionEditState value, $Res Function(CorrectionEditState) then) =
       _$CorrectionEditStateCopyWithImpl<$Res>;
-  $Res call({String editedText, String comment});
+  $Res call(
+      {List<String> correctedTexts,
+      List<String> originalTexts,
+      String comment,
+      Post? post});
+
+  $PostCopyWith<$Res>? get post;
 }
 
 /// @nodoc
@@ -58,19 +72,40 @@ class _$CorrectionEditStateCopyWithImpl<$Res>
 
   @override
   $Res call({
-    Object? editedText = freezed,
+    Object? correctedTexts = freezed,
+    Object? originalTexts = freezed,
     Object? comment = freezed,
+    Object? post = freezed,
   }) {
     return _then(_value.copyWith(
-      editedText: editedText == freezed
-          ? _value.editedText
-          : editedText // ignore: cast_nullable_to_non_nullable
-              as String,
+      correctedTexts: correctedTexts == freezed
+          ? _value.correctedTexts
+          : correctedTexts // ignore: cast_nullable_to_non_nullable
+              as List<String>,
+      originalTexts: originalTexts == freezed
+          ? _value.originalTexts
+          : originalTexts // ignore: cast_nullable_to_non_nullable
+              as List<String>,
       comment: comment == freezed
           ? _value.comment
           : comment // ignore: cast_nullable_to_non_nullable
               as String,
+      post: post == freezed
+          ? _value.post
+          : post // ignore: cast_nullable_to_non_nullable
+              as Post?,
     ));
+  }
+
+  @override
+  $PostCopyWith<$Res>? get post {
+    if (_value.post == null) {
+      return null;
+    }
+
+    return $PostCopyWith<$Res>(_value.post!, (value) {
+      return _then(_value.copyWith(post: value));
+    });
   }
 }
 
@@ -81,7 +116,14 @@ abstract class _$CorrectionEditStateCopyWith<$Res>
           $Res Function(_CorrectionEditState) then) =
       __$CorrectionEditStateCopyWithImpl<$Res>;
   @override
-  $Res call({String editedText, String comment});
+  $Res call(
+      {List<String> correctedTexts,
+      List<String> originalTexts,
+      String comment,
+      Post? post});
+
+  @override
+  $PostCopyWith<$Res>? get post;
 }
 
 /// @nodoc
@@ -97,18 +139,28 @@ class __$CorrectionEditStateCopyWithImpl<$Res>
 
   @override
   $Res call({
-    Object? editedText = freezed,
+    Object? correctedTexts = freezed,
+    Object? originalTexts = freezed,
     Object? comment = freezed,
+    Object? post = freezed,
   }) {
     return _then(_CorrectionEditState(
-      editedText: editedText == freezed
-          ? _value.editedText
-          : editedText // ignore: cast_nullable_to_non_nullable
-              as String,
+      correctedTexts: correctedTexts == freezed
+          ? _value.correctedTexts
+          : correctedTexts // ignore: cast_nullable_to_non_nullable
+              as List<String>,
+      originalTexts: originalTexts == freezed
+          ? _value.originalTexts
+          : originalTexts // ignore: cast_nullable_to_non_nullable
+              as List<String>,
       comment: comment == freezed
           ? _value.comment
           : comment // ignore: cast_nullable_to_non_nullable
               as String,
+      post: post == freezed
+          ? _value.post
+          : post // ignore: cast_nullable_to_non_nullable
+              as Post?,
     ));
   }
 }
@@ -116,18 +168,28 @@ class __$CorrectionEditStateCopyWithImpl<$Res>
 /// @nodoc
 
 class _$_CorrectionEditState implements _CorrectionEditState {
-  const _$_CorrectionEditState({this.editedText = "", this.comment = ""});
+  const _$_CorrectionEditState(
+      {this.correctedTexts = const [],
+      this.originalTexts = const [],
+      this.comment = "",
+      this.post = null});
 
   @JsonKey()
   @override
-  final String editedText;
+  final List<String> correctedTexts;
+  @JsonKey()
+  @override
+  final List<String> originalTexts;
   @JsonKey()
   @override
   final String comment;
+  @JsonKey()
+  @override
+  final Post? post;
 
   @override
   String toString() {
-    return 'CorrectionEditState(editedText: $editedText, comment: $comment)';
+    return 'CorrectionEditState(correctedTexts: $correctedTexts, originalTexts: $originalTexts, comment: $comment, post: $post)';
   }
 
   @override
@@ -136,15 +198,20 @@ class _$_CorrectionEditState implements _CorrectionEditState {
         (other.runtimeType == runtimeType &&
             other is _CorrectionEditState &&
             const DeepCollectionEquality()
-                .equals(other.editedText, editedText) &&
-            const DeepCollectionEquality().equals(other.comment, comment));
+                .equals(other.correctedTexts, correctedTexts) &&
+            const DeepCollectionEquality()
+                .equals(other.originalTexts, originalTexts) &&
+            const DeepCollectionEquality().equals(other.comment, comment) &&
+            const DeepCollectionEquality().equals(other.post, post));
   }
 
   @override
   int get hashCode => Object.hash(
       runtimeType,
-      const DeepCollectionEquality().hash(editedText),
-      const DeepCollectionEquality().hash(comment));
+      const DeepCollectionEquality().hash(correctedTexts),
+      const DeepCollectionEquality().hash(originalTexts),
+      const DeepCollectionEquality().hash(comment),
+      const DeepCollectionEquality().hash(post));
 
   @JsonKey(ignore: true)
   @override
@@ -154,13 +221,20 @@ class _$_CorrectionEditState implements _CorrectionEditState {
 }
 
 abstract class _CorrectionEditState implements CorrectionEditState {
-  const factory _CorrectionEditState({String editedText, String comment}) =
-      _$_CorrectionEditState;
+  const factory _CorrectionEditState(
+      {List<String> correctedTexts,
+      List<String> originalTexts,
+      String comment,
+      Post? post}) = _$_CorrectionEditState;
 
   @override
-  String get editedText;
+  List<String> get correctedTexts;
+  @override
+  List<String> get originalTexts;
   @override
   String get comment;
+  @override
+  Post? get post;
   @override
   @JsonKey(ignore: true)
   _$CorrectionEditStateCopyWith<_CorrectionEditState> get copyWith =>

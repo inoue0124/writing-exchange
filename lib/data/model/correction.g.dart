@@ -24,9 +24,9 @@ _$_Correction _$$_CorrectionFromJson(Map<String, dynamic> json) =>
       grammarScore: json['grammarScore'] as int,
       fluencyScore: json['fluencyScore'] as int,
       pronunciationScore: json['pronunciationScore'] as int,
-      crrectedUser: User.fromJson(json['crrectedUser'] as Map<String, dynamic>),
-      correctedAt:
-          const DateTimeConverter().fromJson(json['correctedAt'] as Timestamp),
+      correctedUserId: json['correctedUserId'] as String?,
+      correctedAt: _$JsonConverterFromJson<Timestamp, DateTime>(
+          json['correctedAt'], const DateTimeConverter().fromJson),
     );
 
 Map<String, dynamic> _$$_CorrectionToJson(_$_Correction instance) =>
@@ -41,6 +41,19 @@ Map<String, dynamic> _$$_CorrectionToJson(_$_Correction instance) =>
       'grammarScore': instance.grammarScore,
       'fluencyScore': instance.fluencyScore,
       'pronunciationScore': instance.pronunciationScore,
-      'crrectedUser': instance.crrectedUser,
-      'correctedAt': const DateTimeConverter().toJson(instance.correctedAt),
+      'correctedUserId': instance.correctedUserId,
+      'correctedAt': _$JsonConverterToJson<Timestamp, DateTime>(
+          instance.correctedAt, const DateTimeConverter().toJson),
     };
+
+Value? _$JsonConverterFromJson<Json, Value>(
+  Object? json,
+  Value? Function(Json json) fromJson,
+) =>
+    json == null ? null : fromJson(json as Json);
+
+Json? _$JsonConverterToJson<Json, Value>(
+  Value? value,
+  Json? Function(Value value) toJson,
+) =>
+    value == null ? null : toJson(value);

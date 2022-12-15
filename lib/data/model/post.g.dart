@@ -8,7 +8,8 @@ part of 'post.dart';
 
 _$_Post _$$_PostFromJson(Map<String, dynamic> json) => _$_Post(
       title: json['title'] as String,
-      content: json['content'] as String,
+      content:
+          const NewLineStringConverter().fromJson(json['content'] as String),
       audioUrl: json['audioUrl'] as String,
       imageUrls:
           (json['imageUrls'] as List<dynamic>).map((e) => e as String).toList(),
@@ -22,7 +23,7 @@ _$_Post _$$_PostFromJson(Map<String, dynamic> json) => _$_Post(
 
 Map<String, dynamic> _$$_PostToJson(_$_Post instance) => <String, dynamic>{
       'title': instance.title,
-      'content': instance.content,
+      'content': const NewLineStringConverter().toJson(instance.content),
       'audioUrl': instance.audioUrl,
       'imageUrls': instance.imageUrls,
       'status': const PostStatusConverter().toJson(instance.status),

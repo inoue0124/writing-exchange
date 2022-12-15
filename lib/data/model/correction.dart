@@ -23,10 +23,9 @@ class Correction with _$Correction {
     @JsonKey(name: 'grammarScore') required int grammarScore,
     @JsonKey(name: 'fluencyScore') required int fluencyScore,
     @JsonKey(name: 'pronunciationScore') required int pronunciationScore,
-    @JsonKey(name: 'crrectedUser') required User crrectedUser,
-    @JsonKey(name: 'correctedAt')
-    @DateTimeConverter()
-        required DateTime correctedAt,
+    @JsonKey(name: 'correctedUserId') String? correctedUserId,
+    @JsonKey(name: 'correctedAt') @DateTimeConverter() DateTime? correctedAt,
+    @JsonKey(ignore: true) User? correctedUser,
   }) = _Correction;
 
   factory Correction.fromJson(Map<String, dynamic> json) =>

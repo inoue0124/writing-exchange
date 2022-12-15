@@ -5,9 +5,11 @@ class CorrectSentence extends StatefulWidget {
   const CorrectSentence({
     super.key,
     required this.sentence,
+    required this.onChangeText,
   });
 
   final String sentence;
+  final Function(String) onChangeText;
 
   @override
   CorrectSentenceState createState() => CorrectSentenceState();
@@ -16,15 +18,15 @@ class CorrectSentence extends StatefulWidget {
 class CorrectSentenceState extends State<CorrectSentence> {
   bool _isEditing = false;
   bool _isShowingDiff = false;
-  TextEditingController controller = TextEditingController();
+  final TextEditingController _controller = TextEditingController();
 
   void _onPressEdit() {
     setState(() {
       _isEditing = !_isEditing;
       _isShowingDiff = true;
     });
-    if (controller.text.isEmpty) {
-      controller.text = widget.sentence;
+    if (_controller.text.isEmpty) {
+      _controller.text = widget.sentence;
     }
   }
 
@@ -38,7 +40,7 @@ class CorrectSentenceState extends State<CorrectSentence> {
               child: _isShowingDiff
                   ? PrettyDiffText(
                       oldText: widget.sentence,
-                      newText: controller.text,
+                      newText: _controller.text,
                       addedTextStyle: const TextStyle(
                         backgroundColor: null,
                         color: Colors.green,
@@ -62,9 +64,10 @@ class CorrectSentenceState extends State<CorrectSentence> {
         Visibility(
           visible: _isEditing,
           child: TextField(
-            controller: controller,
+            controller: _controller,
             keyboardType: TextInputType.multiline,
             maxLines: null,
+            onChanged: widget.onChangeText,
           ),
         )
       ],

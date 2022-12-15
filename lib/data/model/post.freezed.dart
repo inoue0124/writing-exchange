@@ -26,6 +26,7 @@ class _$PostTearOff {
       {@JsonKey(name: 'title')
           required String title,
       @JsonKey(name: 'content')
+      @NewLineStringConverter()
           required String content,
       @JsonKey(name: 'audioUrl')
           required String audioUrl,
@@ -73,6 +74,7 @@ mixin _$Post {
   @JsonKey(name: 'title')
   String get title => throw _privateConstructorUsedError;
   @JsonKey(name: 'content')
+  @NewLineStringConverter()
   String get content => throw _privateConstructorUsedError;
   @JsonKey(name: 'audioUrl')
   String get audioUrl => throw _privateConstructorUsedError;
@@ -105,7 +107,7 @@ abstract class $PostCopyWith<$Res> {
       _$PostCopyWithImpl<$Res>;
   $Res call(
       {@JsonKey(name: 'title') String title,
-      @JsonKey(name: 'content') String content,
+      @JsonKey(name: 'content') @NewLineStringConverter() String content,
       @JsonKey(name: 'audioUrl') String audioUrl,
       @JsonKey(name: 'imageUrls') List<String> imageUrls,
       @JsonKey(name: 'status') @PostStatusConverter() PostStatus status,
@@ -202,7 +204,7 @@ abstract class _$PostCopyWith<$Res> implements $PostCopyWith<$Res> {
   @override
   $Res call(
       {@JsonKey(name: 'title') String title,
-      @JsonKey(name: 'content') String content,
+      @JsonKey(name: 'content') @NewLineStringConverter() String content,
       @JsonKey(name: 'audioUrl') String audioUrl,
       @JsonKey(name: 'imageUrls') List<String> imageUrls,
       @JsonKey(name: 'status') @PostStatusConverter() PostStatus status,
@@ -288,7 +290,7 @@ class __$PostCopyWithImpl<$Res> extends _$PostCopyWithImpl<$Res>
 class _$_Post extends _Post {
   const _$_Post(
       {@JsonKey(name: 'title') required this.title,
-      @JsonKey(name: 'content') required this.content,
+      @JsonKey(name: 'content') @NewLineStringConverter() required this.content,
       @JsonKey(name: 'audioUrl') required this.audioUrl,
       @JsonKey(name: 'imageUrls') required this.imageUrls,
       @JsonKey(name: 'status') @PostStatusConverter() required this.status,
@@ -306,6 +308,7 @@ class _$_Post extends _Post {
   final String title;
   @override
   @JsonKey(name: 'content')
+  @NewLineStringConverter()
   final String content;
   @override
   @JsonKey(name: 'audioUrl')
@@ -388,6 +391,7 @@ abstract class _Post extends Post {
       {@JsonKey(name: 'title')
           required String title,
       @JsonKey(name: 'content')
+      @NewLineStringConverter()
           required String content,
       @JsonKey(name: 'audioUrl')
           required String audioUrl,
@@ -417,6 +421,7 @@ abstract class _Post extends Post {
   String get title;
   @override
   @JsonKey(name: 'content')
+  @NewLineStringConverter()
   String get content;
   @override
   @JsonKey(name: 'audioUrl')
