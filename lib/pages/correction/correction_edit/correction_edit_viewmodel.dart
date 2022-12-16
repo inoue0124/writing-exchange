@@ -58,6 +58,7 @@ class CorrectionEditViewModel
       (value) async {
         // TODO: 必要なプロパティを揃える
         final correction = Correction(
+          id: "",
           originalTexts: value.originalTexts,
           correctedTexts: value.correctedTexts,
           comment: value.comment,

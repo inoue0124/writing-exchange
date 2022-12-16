@@ -23,7 +23,9 @@ class _$PostTearOff {
   const _$PostTearOff();
 
   _Post call(
-      {@JsonKey(name: 'title')
+      {@JsonKey(name: 'id')
+          required String id,
+      @JsonKey(name: 'title')
           required String title,
       @JsonKey(name: 'content')
       @NewLineStringConverter()
@@ -45,9 +47,13 @@ class _$PostTearOff {
       @JsonKey(name: 'postedAt')
       @DateTimeConverter()
           DateTime? postedAt,
+      @JsonKey(name: 'updatedAt')
+      @DateTimeConverter()
+          DateTime? updatedAt,
       @JsonKey(ignore: true)
           User? user}) {
     return _Post(
+      id: id,
       title: title,
       content: content,
       audioUrl: audioUrl,
@@ -57,6 +63,7 @@ class _$PostTearOff {
       language: language,
       correctionCount: correctionCount,
       postedAt: postedAt,
+      updatedAt: updatedAt,
       user: user,
     );
   }
@@ -71,6 +78,8 @@ const $Post = _$PostTearOff();
 
 /// @nodoc
 mixin _$Post {
+  @JsonKey(name: 'id')
+  String get id => throw _privateConstructorUsedError;
   @JsonKey(name: 'title')
   String get title => throw _privateConstructorUsedError;
   @JsonKey(name: 'content')
@@ -93,6 +102,9 @@ mixin _$Post {
   @JsonKey(name: 'postedAt')
   @DateTimeConverter()
   DateTime? get postedAt => throw _privateConstructorUsedError;
+  @JsonKey(name: 'updatedAt')
+  @DateTimeConverter()
+  DateTime? get updatedAt => throw _privateConstructorUsedError;
   @JsonKey(ignore: true)
   User? get user => throw _privateConstructorUsedError;
 
@@ -106,7 +118,8 @@ abstract class $PostCopyWith<$Res> {
   factory $PostCopyWith(Post value, $Res Function(Post) then) =
       _$PostCopyWithImpl<$Res>;
   $Res call(
-      {@JsonKey(name: 'title') String title,
+      {@JsonKey(name: 'id') String id,
+      @JsonKey(name: 'title') String title,
       @JsonKey(name: 'content') @NewLineStringConverter() String content,
       @JsonKey(name: 'audioUrl') String audioUrl,
       @JsonKey(name: 'imageUrls') List<String> imageUrls,
@@ -115,6 +128,7 @@ abstract class $PostCopyWith<$Res> {
       @JsonKey(name: 'language') @LanguageConverter() Language language,
       @JsonKey(name: 'correctionCount') int correctionCount,
       @JsonKey(name: 'postedAt') @DateTimeConverter() DateTime? postedAt,
+      @JsonKey(name: 'updatedAt') @DateTimeConverter() DateTime? updatedAt,
       @JsonKey(ignore: true) User? user});
 
   $UserCopyWith<$Res>? get user;
@@ -130,6 +144,7 @@ class _$PostCopyWithImpl<$Res> implements $PostCopyWith<$Res> {
 
   @override
   $Res call({
+    Object? id = freezed,
     Object? title = freezed,
     Object? content = freezed,
     Object? audioUrl = freezed,
@@ -139,9 +154,14 @@ class _$PostCopyWithImpl<$Res> implements $PostCopyWith<$Res> {
     Object? language = freezed,
     Object? correctionCount = freezed,
     Object? postedAt = freezed,
+    Object? updatedAt = freezed,
     Object? user = freezed,
   }) {
     return _then(_value.copyWith(
+      id: id == freezed
+          ? _value.id
+          : id // ignore: cast_nullable_to_non_nullable
+              as String,
       title: title == freezed
           ? _value.title
           : title // ignore: cast_nullable_to_non_nullable
@@ -177,6 +197,10 @@ class _$PostCopyWithImpl<$Res> implements $PostCopyWith<$Res> {
       postedAt: postedAt == freezed
           ? _value.postedAt
           : postedAt // ignore: cast_nullable_to_non_nullable
+              as DateTime?,
+      updatedAt: updatedAt == freezed
+          ? _value.updatedAt
+          : updatedAt // ignore: cast_nullable_to_non_nullable
               as DateTime?,
       user: user == freezed
           ? _value.user
@@ -203,7 +227,8 @@ abstract class _$PostCopyWith<$Res> implements $PostCopyWith<$Res> {
       __$PostCopyWithImpl<$Res>;
   @override
   $Res call(
-      {@JsonKey(name: 'title') String title,
+      {@JsonKey(name: 'id') String id,
+      @JsonKey(name: 'title') String title,
       @JsonKey(name: 'content') @NewLineStringConverter() String content,
       @JsonKey(name: 'audioUrl') String audioUrl,
       @JsonKey(name: 'imageUrls') List<String> imageUrls,
@@ -212,6 +237,7 @@ abstract class _$PostCopyWith<$Res> implements $PostCopyWith<$Res> {
       @JsonKey(name: 'language') @LanguageConverter() Language language,
       @JsonKey(name: 'correctionCount') int correctionCount,
       @JsonKey(name: 'postedAt') @DateTimeConverter() DateTime? postedAt,
+      @JsonKey(name: 'updatedAt') @DateTimeConverter() DateTime? updatedAt,
       @JsonKey(ignore: true) User? user});
 
   @override
@@ -229,6 +255,7 @@ class __$PostCopyWithImpl<$Res> extends _$PostCopyWithImpl<$Res>
 
   @override
   $Res call({
+    Object? id = freezed,
     Object? title = freezed,
     Object? content = freezed,
     Object? audioUrl = freezed,
@@ -238,9 +265,14 @@ class __$PostCopyWithImpl<$Res> extends _$PostCopyWithImpl<$Res>
     Object? language = freezed,
     Object? correctionCount = freezed,
     Object? postedAt = freezed,
+    Object? updatedAt = freezed,
     Object? user = freezed,
   }) {
     return _then(_Post(
+      id: id == freezed
+          ? _value.id
+          : id // ignore: cast_nullable_to_non_nullable
+              as String,
       title: title == freezed
           ? _value.title
           : title // ignore: cast_nullable_to_non_nullable
@@ -277,6 +309,10 @@ class __$PostCopyWithImpl<$Res> extends _$PostCopyWithImpl<$Res>
           ? _value.postedAt
           : postedAt // ignore: cast_nullable_to_non_nullable
               as DateTime?,
+      updatedAt: updatedAt == freezed
+          ? _value.updatedAt
+          : updatedAt // ignore: cast_nullable_to_non_nullable
+              as DateTime?,
       user: user == freezed
           ? _value.user
           : user // ignore: cast_nullable_to_non_nullable
@@ -289,7 +325,8 @@ class __$PostCopyWithImpl<$Res> extends _$PostCopyWithImpl<$Res>
 @JsonSerializable()
 class _$_Post extends _Post {
   const _$_Post(
-      {@JsonKey(name: 'title') required this.title,
+      {@JsonKey(name: 'id') required this.id,
+      @JsonKey(name: 'title') required this.title,
       @JsonKey(name: 'content') @NewLineStringConverter() required this.content,
       @JsonKey(name: 'audioUrl') required this.audioUrl,
       @JsonKey(name: 'imageUrls') required this.imageUrls,
@@ -298,11 +335,15 @@ class _$_Post extends _Post {
       @JsonKey(name: 'language') @LanguageConverter() required this.language,
       @JsonKey(name: 'correctionCount') this.correctionCount = 0,
       @JsonKey(name: 'postedAt') @DateTimeConverter() this.postedAt,
+      @JsonKey(name: 'updatedAt') @DateTimeConverter() this.updatedAt,
       @JsonKey(ignore: true) this.user})
       : super._();
 
   factory _$_Post.fromJson(Map<String, dynamic> json) => _$$_PostFromJson(json);
 
+  @override
+  @JsonKey(name: 'id')
+  final String id;
   @override
   @JsonKey(name: 'title')
   final String title;
@@ -335,12 +376,16 @@ class _$_Post extends _Post {
   @DateTimeConverter()
   final DateTime? postedAt;
   @override
+  @JsonKey(name: 'updatedAt')
+  @DateTimeConverter()
+  final DateTime? updatedAt;
+  @override
   @JsonKey(ignore: true)
   final User? user;
 
   @override
   String toString() {
-    return 'Post(title: $title, content: $content, audioUrl: $audioUrl, imageUrls: $imageUrls, status: $status, userId: $userId, language: $language, correctionCount: $correctionCount, postedAt: $postedAt, user: $user)';
+    return 'Post(id: $id, title: $title, content: $content, audioUrl: $audioUrl, imageUrls: $imageUrls, status: $status, userId: $userId, language: $language, correctionCount: $correctionCount, postedAt: $postedAt, updatedAt: $updatedAt, user: $user)';
   }
 
   @override
@@ -348,6 +393,7 @@ class _$_Post extends _Post {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
             other is _Post &&
+            const DeepCollectionEquality().equals(other.id, id) &&
             const DeepCollectionEquality().equals(other.title, title) &&
             const DeepCollectionEquality().equals(other.content, content) &&
             const DeepCollectionEquality().equals(other.audioUrl, audioUrl) &&
@@ -358,12 +404,14 @@ class _$_Post extends _Post {
             const DeepCollectionEquality()
                 .equals(other.correctionCount, correctionCount) &&
             const DeepCollectionEquality().equals(other.postedAt, postedAt) &&
+            const DeepCollectionEquality().equals(other.updatedAt, updatedAt) &&
             const DeepCollectionEquality().equals(other.user, user));
   }
 
   @override
   int get hashCode => Object.hash(
       runtimeType,
+      const DeepCollectionEquality().hash(id),
       const DeepCollectionEquality().hash(title),
       const DeepCollectionEquality().hash(content),
       const DeepCollectionEquality().hash(audioUrl),
@@ -373,6 +421,7 @@ class _$_Post extends _Post {
       const DeepCollectionEquality().hash(language),
       const DeepCollectionEquality().hash(correctionCount),
       const DeepCollectionEquality().hash(postedAt),
+      const DeepCollectionEquality().hash(updatedAt),
       const DeepCollectionEquality().hash(user));
 
   @JsonKey(ignore: true)
@@ -388,7 +437,9 @@ class _$_Post extends _Post {
 
 abstract class _Post extends Post {
   const factory _Post(
-      {@JsonKey(name: 'title')
+      {@JsonKey(name: 'id')
+          required String id,
+      @JsonKey(name: 'title')
           required String title,
       @JsonKey(name: 'content')
       @NewLineStringConverter()
@@ -410,12 +461,18 @@ abstract class _Post extends Post {
       @JsonKey(name: 'postedAt')
       @DateTimeConverter()
           DateTime? postedAt,
+      @JsonKey(name: 'updatedAt')
+      @DateTimeConverter()
+          DateTime? updatedAt,
       @JsonKey(ignore: true)
           User? user}) = _$_Post;
   const _Post._() : super._();
 
   factory _Post.fromJson(Map<String, dynamic> json) = _$_Post.fromJson;
 
+  @override
+  @JsonKey(name: 'id')
+  String get id;
   @override
   @JsonKey(name: 'title')
   String get title;
@@ -447,6 +504,10 @@ abstract class _Post extends Post {
   @JsonKey(name: 'postedAt')
   @DateTimeConverter()
   DateTime? get postedAt;
+  @override
+  @JsonKey(name: 'updatedAt')
+  @DateTimeConverter()
+  DateTime? get updatedAt;
   @override
   @JsonKey(ignore: true)
   User? get user;

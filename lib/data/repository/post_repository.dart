@@ -3,12 +3,22 @@ import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:language_picker/languages.dart';
 import 'package:writing_exchange/app/service/auth_service.dart';
 import 'package:writing_exchange/app/utils/providers.dart';
+import 'package:writing_exchange/data/model/language_converter.dart';
 import 'package:writing_exchange/data/model/post.dart';
 import 'package:writing_exchange/data/model/post_status.dart';
+import 'package:writing_exchange/data/model/post_status_converter.dart';
 import 'package:writing_exchange/data/repository/firestore_refs.dart';
 
 abstract class PostRepositoryInterface {
-  Future<void> upsert(Post post);
+  Future<void> create(
+    String title,
+    String content,
+    String audioUrl,
+    List<String> imageUrls,
+    PostStatus status,
+    Language language,
+  );
+  Future<void> update(Post post);
   Future<Post?> getById(String postId);
   Future<List<Post>> getList({String? userId, Language? targetLanguage});
   Future<List<Post>> getMyList({String? userId, Language? targetLanguage});
@@ -23,16 +33,51 @@ class PostRepository implements PostRepositoryInterface {
   final AuthServiceInterface _authService;
 
   @override
-  Future<void> upsert(Post post) async {
+  Future<void> create(
+    String title,
+    String content,
+    String audioUrl,
+    List<String> imageUrls,
+    PostStatus status,
+    Language language,
+  ) async {
     try {
       final userId = await _authService.getUserId();
+      final id = _ref.read(firebaseFirestoreProvider).postsRef().doc().id;
 
       final postMap = {
-        ...post.toJson(),
+        'id': id,
+        'title': title,
+        'content': content,
+        'audioUrl': audioUrl,
+        'imageUrls': imageUrls,
+        'status': const PostStatusConverter().toJson(status),
+        'language': const LanguageConverter().toJson(language),
         'userId': userId,
         'postedAt': FieldValue.serverTimestamp(),
       };
-      await _ref.read(firebaseFirestoreProvider).postsRef().add(postMap);
+      await _ref
+          .read(firebaseFirestoreProvider)
+          .postsRef()
+          .doc(id)
+          .set(postMap);
+      return;
+    } on FirebaseException catch (e) {
+      throw e.toString();
+    }
+  }
+
+  @override
+  Future<void> update(Post post) async {
+    try {
+      final postMap = {
+        ...post.toJson(),
+        'updatedAt': FieldValue.serverTimestamp(),
+      };
+      await _ref.read(firebaseFirestoreProvider).postsRef().doc(post.id).set(
+            postMap,
+            SetOptions(merge: true),
+          );
       return;
     } on FirebaseException catch (e) {
       throw e.toString();

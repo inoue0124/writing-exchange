@@ -13,6 +13,7 @@ part 'correction.g.dart';
 class Correction with _$Correction {
   const Correction._();
   const factory Correction({
+    @JsonKey(name: 'id') required String id,
     @JsonKey(name: 'originalTexts') required List<String> originalTexts,
     @JsonKey(name: 'correctedTexts') required List<String> correctedTexts,
     @JsonKey(name: 'comment') required String comment,

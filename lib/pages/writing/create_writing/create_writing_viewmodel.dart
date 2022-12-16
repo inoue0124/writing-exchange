@@ -4,7 +4,6 @@ import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:image_picker/image_picker.dart';
 import 'package:language_picker/languages.dart';
 import 'package:writing_exchange/app/service/storage_service.dart';
-import 'package:writing_exchange/data/model/post.dart';
 import 'package:writing_exchange/data/model/post_status.dart';
 import 'package:writing_exchange/data/repository/post_repository.dart';
 import 'package:writing_exchange/pages/writing/create_writing/create_writing_state.dart';
@@ -40,15 +39,14 @@ class CreateWritingViewModel extends StateNotifier<CreateWritingState> {
       state.images.map((image) => _storageService.upload(File(image.path))),
     );
 
-    final post = Post(
-      title: state.title,
-      content: state.content,
-      audioUrl: state.audioUrl,
-      imageUrls: imageUrls,
-      language: state.language!,
-      status: status,
+    await _postRepository.create(
+      state.title,
+      state.content,
+      state.audioUrl,
+      imageUrls,
+      status,
+      state.language!,
     );
-    await _postRepository.upsert(post);
   }
 
   void onChangeLanguage(Language language) {

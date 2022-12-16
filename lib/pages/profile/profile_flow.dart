@@ -2,7 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:writing_exchange/app/app_routes.dart';
 import 'package:writing_exchange/pages/profile/profile_top/profile_top_view.dart';
 
-Map<String, WidgetBuilder> profileFlow(BuildContext context, Function push) {
+Map<String, WidgetBuilder> profileFlow(BuildContext context) {
   return {
     AppRoutes.profileTop: (context) => ProfileTopView(),
   };

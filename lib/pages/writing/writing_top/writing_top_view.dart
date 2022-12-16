@@ -9,10 +9,12 @@ class WritingTopView extends ConsumerWidget {
     super.key,
     required this.onPressCreateNew,
     required this.onPressGoToCorrection,
+    required this.onTapCard,
   });
 
   final Function onPressCreateNew;
   final Function onPressGoToCorrection;
+  final Function(String) onTapCard;
 
   @override
   Widget build(BuildContext context, WidgetRef ref) {
@@ -21,7 +23,10 @@ class WritingTopView extends ConsumerWidget {
 
     return asyncState.when(
       loading: () => const LoadingStateView(),
-      error: (error, stacktrace) => Text(error.toString()),
+      error: (error, stacktrace) {
+        print(error);
+        return Text(error.toString());
+      },
       data: (state) {
         return DefaultTabController(
           initialIndex: 0,
@@ -84,6 +89,7 @@ class WritingTopView extends ConsumerWidget {
                             ),
                           },
                           language: targetLanguage,
+                          onTapCard: onTapCard,
                         ),
                       )
                       .toList(),

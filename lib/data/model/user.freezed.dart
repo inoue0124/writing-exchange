@@ -23,8 +23,8 @@ class _$UserTearOff {
   const _$UserTearOff();
 
   _User call(
-      {@JsonKey(name: 'userId')
-          String userId = "",
+      {@JsonKey(name: 'id')
+          String id = "",
       @JsonKey(name: 'name')
           String name = "UserName",
       @JsonKey(name: 'iconUrl')
@@ -51,7 +51,7 @@ class _$UserTearOff {
       @DateTimeConverter()
           DateTime? createdAt}) {
     return _User(
-      userId: userId,
+      id: id,
       name: name,
       iconUrl: iconUrl,
       country: country,
@@ -75,8 +75,8 @@ const $User = _$UserTearOff();
 
 /// @nodoc
 mixin _$User {
-  @JsonKey(name: 'userId')
-  String get userId => throw _privateConstructorUsedError;
+  @JsonKey(name: 'id')
+  String get id => throw _privateConstructorUsedError;
   @JsonKey(name: 'name')
   String get name => throw _privateConstructorUsedError;
   @JsonKey(name: 'iconUrl')
@@ -113,8 +113,8 @@ abstract class $UserCopyWith<$Res> {
   factory $UserCopyWith(User value, $Res Function(User) then) =
       _$UserCopyWithImpl<$Res>;
   $Res call(
-      {@JsonKey(name: 'userId')
-          String userId,
+      {@JsonKey(name: 'id')
+          String id,
       @JsonKey(name: 'name')
           String name,
       @JsonKey(name: 'iconUrl')
@@ -152,7 +152,7 @@ class _$UserCopyWithImpl<$Res> implements $UserCopyWith<$Res> {
 
   @override
   $Res call({
-    Object? userId = freezed,
+    Object? id = freezed,
     Object? name = freezed,
     Object? iconUrl = freezed,
     Object? country = freezed,
@@ -165,9 +165,9 @@ class _$UserCopyWithImpl<$Res> implements $UserCopyWith<$Res> {
     Object? createdAt = freezed,
   }) {
     return _then(_value.copyWith(
-      userId: userId == freezed
-          ? _value.userId
-          : userId // ignore: cast_nullable_to_non_nullable
+      id: id == freezed
+          ? _value.id
+          : id // ignore: cast_nullable_to_non_nullable
               as String,
       name: name == freezed
           ? _value.name
@@ -219,8 +219,8 @@ abstract class _$UserCopyWith<$Res> implements $UserCopyWith<$Res> {
       __$UserCopyWithImpl<$Res>;
   @override
   $Res call(
-      {@JsonKey(name: 'userId')
-          String userId,
+      {@JsonKey(name: 'id')
+          String id,
       @JsonKey(name: 'name')
           String name,
       @JsonKey(name: 'iconUrl')
@@ -259,7 +259,7 @@ class __$UserCopyWithImpl<$Res> extends _$UserCopyWithImpl<$Res>
 
   @override
   $Res call({
-    Object? userId = freezed,
+    Object? id = freezed,
     Object? name = freezed,
     Object? iconUrl = freezed,
     Object? country = freezed,
@@ -272,9 +272,9 @@ class __$UserCopyWithImpl<$Res> extends _$UserCopyWithImpl<$Res>
     Object? createdAt = freezed,
   }) {
     return _then(_User(
-      userId: userId == freezed
-          ? _value.userId
-          : userId // ignore: cast_nullable_to_non_nullable
+      id: id == freezed
+          ? _value.id
+          : id // ignore: cast_nullable_to_non_nullable
               as String,
       name: name == freezed
           ? _value.name
@@ -324,8 +324,8 @@ class __$UserCopyWithImpl<$Res> extends _$UserCopyWithImpl<$Res>
 @JsonSerializable()
 class _$_User extends _User {
   const _$_User(
-      {@JsonKey(name: 'userId')
-          this.userId = "",
+      {@JsonKey(name: 'id')
+          this.id = "",
       @JsonKey(name: 'name')
           this.name = "UserName",
       @JsonKey(name: 'iconUrl')
@@ -356,8 +356,8 @@ class _$_User extends _User {
   factory _$_User.fromJson(Map<String, dynamic> json) => _$$_UserFromJson(json);
 
   @override
-  @JsonKey(name: 'userId')
-  final String userId;
+  @JsonKey(name: 'id')
+  final String id;
   @override
   @JsonKey(name: 'name')
   final String name;
@@ -396,7 +396,7 @@ class _$_User extends _User {
 
   @override
   String toString() {
-    return 'User(userId: $userId, name: $name, iconUrl: $iconUrl, country: $country, nativeLanguages: $nativeLanguages, targetLanguages: $targetLanguages, reviewValue: $reviewValue, correctionCount: $correctionCount, postCount: $postCount, status: $status, createdAt: $createdAt)';
+    return 'User(id: $id, name: $name, iconUrl: $iconUrl, country: $country, nativeLanguages: $nativeLanguages, targetLanguages: $targetLanguages, reviewValue: $reviewValue, correctionCount: $correctionCount, postCount: $postCount, status: $status, createdAt: $createdAt)';
   }
 
   @override
@@ -404,7 +404,7 @@ class _$_User extends _User {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
             other is _User &&
-            const DeepCollectionEquality().equals(other.userId, userId) &&
+            const DeepCollectionEquality().equals(other.id, id) &&
             const DeepCollectionEquality().equals(other.name, name) &&
             const DeepCollectionEquality().equals(other.iconUrl, iconUrl) &&
             const DeepCollectionEquality().equals(other.country, country) &&
@@ -424,7 +424,7 @@ class _$_User extends _User {
   @override
   int get hashCode => Object.hash(
       runtimeType,
-      const DeepCollectionEquality().hash(userId),
+      const DeepCollectionEquality().hash(id),
       const DeepCollectionEquality().hash(name),
       const DeepCollectionEquality().hash(iconUrl),
       const DeepCollectionEquality().hash(country),
@@ -449,8 +449,8 @@ class _$_User extends _User {
 
 abstract class _User extends User {
   const factory _User(
-      {@JsonKey(name: 'userId')
-          String userId,
+      {@JsonKey(name: 'id')
+          String id,
       @JsonKey(name: 'name')
           String name,
       @JsonKey(name: 'iconUrl')
@@ -481,8 +481,8 @@ abstract class _User extends User {
   factory _User.fromJson(Map<String, dynamic> json) = _$_User.fromJson;
 
   @override
-  @JsonKey(name: 'userId')
-  String get userId;
+  @JsonKey(name: 'id')
+  String get id;
   @override
   @JsonKey(name: 'name')
   String get name;

@@ -23,7 +23,8 @@ class _$CorrectionTearOff {
   const _$CorrectionTearOff();
 
   _Correction call(
-      {@JsonKey(name: 'originalTexts') required List<String> originalTexts,
+      {@JsonKey(name: 'id') required String id,
+      @JsonKey(name: 'originalTexts') required List<String> originalTexts,
       @JsonKey(name: 'correctedTexts') required List<String> correctedTexts,
       @JsonKey(name: 'comment') required String comment,
       @JsonKey(name: 'audioUrl') required String audioUrl,
@@ -37,6 +38,7 @@ class _$CorrectionTearOff {
       @JsonKey(name: 'correctedAt') @DateTimeConverter() DateTime? correctedAt,
       @JsonKey(ignore: true) User? correctedUser}) {
     return _Correction(
+      id: id,
       originalTexts: originalTexts,
       correctedTexts: correctedTexts,
       comment: comment,
@@ -63,6 +65,8 @@ const $Correction = _$CorrectionTearOff();
 
 /// @nodoc
 mixin _$Correction {
+  @JsonKey(name: 'id')
+  String get id => throw _privateConstructorUsedError;
   @JsonKey(name: 'originalTexts')
   List<String> get originalTexts => throw _privateConstructorUsedError;
   @JsonKey(name: 'correctedTexts')
@@ -104,7 +108,8 @@ abstract class $CorrectionCopyWith<$Res> {
           Correction value, $Res Function(Correction) then) =
       _$CorrectionCopyWithImpl<$Res>;
   $Res call(
-      {@JsonKey(name: 'originalTexts') List<String> originalTexts,
+      {@JsonKey(name: 'id') String id,
+      @JsonKey(name: 'originalTexts') List<String> originalTexts,
       @JsonKey(name: 'correctedTexts') List<String> correctedTexts,
       @JsonKey(name: 'comment') String comment,
       @JsonKey(name: 'audioUrl') String audioUrl,
@@ -131,6 +136,7 @@ class _$CorrectionCopyWithImpl<$Res> implements $CorrectionCopyWith<$Res> {
 
   @override
   $Res call({
+    Object? id = freezed,
     Object? originalTexts = freezed,
     Object? correctedTexts = freezed,
     Object? comment = freezed,
@@ -146,6 +152,10 @@ class _$CorrectionCopyWithImpl<$Res> implements $CorrectionCopyWith<$Res> {
     Object? correctedUser = freezed,
   }) {
     return _then(_value.copyWith(
+      id: id == freezed
+          ? _value.id
+          : id // ignore: cast_nullable_to_non_nullable
+              as String,
       originalTexts: originalTexts == freezed
           ? _value.originalTexts
           : originalTexts // ignore: cast_nullable_to_non_nullable
@@ -220,7 +230,8 @@ abstract class _$CorrectionCopyWith<$Res> implements $CorrectionCopyWith<$Res> {
       __$CorrectionCopyWithImpl<$Res>;
   @override
   $Res call(
-      {@JsonKey(name: 'originalTexts') List<String> originalTexts,
+      {@JsonKey(name: 'id') String id,
+      @JsonKey(name: 'originalTexts') List<String> originalTexts,
       @JsonKey(name: 'correctedTexts') List<String> correctedTexts,
       @JsonKey(name: 'comment') String comment,
       @JsonKey(name: 'audioUrl') String audioUrl,
@@ -250,6 +261,7 @@ class __$CorrectionCopyWithImpl<$Res> extends _$CorrectionCopyWithImpl<$Res>
 
   @override
   $Res call({
+    Object? id = freezed,
     Object? originalTexts = freezed,
     Object? correctedTexts = freezed,
     Object? comment = freezed,
@@ -265,6 +277,10 @@ class __$CorrectionCopyWithImpl<$Res> extends _$CorrectionCopyWithImpl<$Res>
     Object? correctedUser = freezed,
   }) {
     return _then(_Correction(
+      id: id == freezed
+          ? _value.id
+          : id // ignore: cast_nullable_to_non_nullable
+              as String,
       originalTexts: originalTexts == freezed
           ? _value.originalTexts
           : originalTexts // ignore: cast_nullable_to_non_nullable
@@ -325,7 +341,8 @@ class __$CorrectionCopyWithImpl<$Res> extends _$CorrectionCopyWithImpl<$Res>
 @JsonSerializable()
 class _$_Correction extends _Correction {
   const _$_Correction(
-      {@JsonKey(name: 'originalTexts') required this.originalTexts,
+      {@JsonKey(name: 'id') required this.id,
+      @JsonKey(name: 'originalTexts') required this.originalTexts,
       @JsonKey(name: 'correctedTexts') required this.correctedTexts,
       @JsonKey(name: 'comment') required this.comment,
       @JsonKey(name: 'audioUrl') required this.audioUrl,
@@ -343,6 +360,9 @@ class _$_Correction extends _Correction {
   factory _$_Correction.fromJson(Map<String, dynamic> json) =>
       _$$_CorrectionFromJson(json);
 
+  @override
+  @JsonKey(name: 'id')
+  final String id;
   @override
   @JsonKey(name: 'originalTexts')
   final List<String> originalTexts;
@@ -387,7 +407,7 @@ class _$_Correction extends _Correction {
 
   @override
   String toString() {
-    return 'Correction(originalTexts: $originalTexts, correctedTexts: $correctedTexts, comment: $comment, audioUrl: $audioUrl, messages: $messages, review: $review, vocabularyScore: $vocabularyScore, grammarScore: $grammarScore, fluencyScore: $fluencyScore, pronunciationScore: $pronunciationScore, correctedUserId: $correctedUserId, correctedAt: $correctedAt, correctedUser: $correctedUser)';
+    return 'Correction(id: $id, originalTexts: $originalTexts, correctedTexts: $correctedTexts, comment: $comment, audioUrl: $audioUrl, messages: $messages, review: $review, vocabularyScore: $vocabularyScore, grammarScore: $grammarScore, fluencyScore: $fluencyScore, pronunciationScore: $pronunciationScore, correctedUserId: $correctedUserId, correctedAt: $correctedAt, correctedUser: $correctedUser)';
   }
 
   @override
@@ -395,6 +415,7 @@ class _$_Correction extends _Correction {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
             other is _Correction &&
+            const DeepCollectionEquality().equals(other.id, id) &&
             const DeepCollectionEquality()
                 .equals(other.originalTexts, originalTexts) &&
             const DeepCollectionEquality()
@@ -422,6 +443,7 @@ class _$_Correction extends _Correction {
   @override
   int get hashCode => Object.hash(
       runtimeType,
+      const DeepCollectionEquality().hash(id),
       const DeepCollectionEquality().hash(originalTexts),
       const DeepCollectionEquality().hash(correctedTexts),
       const DeepCollectionEquality().hash(comment),
@@ -449,7 +471,8 @@ class _$_Correction extends _Correction {
 
 abstract class _Correction extends Correction {
   const factory _Correction(
-      {@JsonKey(name: 'originalTexts') required List<String> originalTexts,
+      {@JsonKey(name: 'id') required String id,
+      @JsonKey(name: 'originalTexts') required List<String> originalTexts,
       @JsonKey(name: 'correctedTexts') required List<String> correctedTexts,
       @JsonKey(name: 'comment') required String comment,
       @JsonKey(name: 'audioUrl') required String audioUrl,
@@ -467,6 +490,9 @@ abstract class _Correction extends Correction {
   factory _Correction.fromJson(Map<String, dynamic> json) =
       _$_Correction.fromJson;
 
+  @override
+  @JsonKey(name: 'id')
+  String get id;
   @override
   @JsonKey(name: 'originalTexts')
   List<String> get originalTexts;

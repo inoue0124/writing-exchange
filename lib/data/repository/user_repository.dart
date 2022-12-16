@@ -27,11 +27,7 @@ class UserRepository implements UserRepositoryInterface {
   @override
   Future<void> upsert(User user) async {
     try {
-      await _ref
-          .read(firebaseFirestoreProvider)
-          .usersRef()
-          .doc(user.userId)
-          .set(
+      await _ref.read(firebaseFirestoreProvider).usersRef().doc(user.id).set(
         {
           ...user.toJson(),
           'createdAt': FieldValue.serverTimestamp(),

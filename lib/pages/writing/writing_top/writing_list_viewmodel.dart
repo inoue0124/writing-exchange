@@ -24,17 +24,13 @@ class WritingListViewModel extends StateNotifier<AsyncValue<WritingListState>> {
     state = const AsyncLoading();
     final user = await _userRepository.getMe();
     final writings = await _postRepository.getMyList(
-      userId: user.userId,
+      userId: user.id,
       targetLanguage: _language,
     );
     state = AsyncData(
       WritingListState(
         writings: writings,
       ),
-    );
-
-    print(
-      await _postRepository.getCorrectionNeeded(Language.fromIsoCode('ja')),
     );
   }
 }

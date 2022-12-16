@@ -12,10 +12,12 @@ class WritingListView extends ConsumerWidget {
     super.key,
     required this.language,
     required this.onPressCreateNew,
+    required this.onTapCard,
   });
 
   final Language language;
   final Function onPressCreateNew;
+  final Function(String) onTapCard;
   final ScrollController _scrollController = ScrollController();
 
   @override
@@ -38,14 +40,17 @@ class WritingListView extends ConsumerWidget {
                         runSpacing: 16,
                         children: [
                           for (var writing in state.writings)
-                            PostListItem(
-                              title: writing.title,
-                              body: writing.content,
-                              imageUrls: writing.imageUrls,
-                              correctedCount: writing.correctionCount,
-                              editButtonTitle: t.updateCorrection,
-                              onPressEdit: () {},
-                            ),
+                            InkWell(
+                              onTap: () => onTapCard(writing.id),
+                              child: PostListItem(
+                                title: writing.title,
+                                body: writing.content,
+                                imageUrls: writing.imageUrls,
+                                correctedCount: writing.correctionCount,
+                                editButtonTitle: t.updateCorrection,
+                                onPressEdit: () {},
+                              ),
+                            )
                         ],
                       ),
                     ),

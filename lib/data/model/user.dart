@@ -15,7 +15,7 @@ part 'user.g.dart';
 class User with _$User {
   const User._();
   const factory User({
-    @JsonKey(name: 'userId') @Default("") String userId,
+    @JsonKey(name: 'id') @Default("") String id,
     @JsonKey(name: 'name') @Default("UserName") String name,
     @JsonKey(name: 'iconUrl') String? iconUrl,
     @JsonKey(name: 'country') @CountryCodeConverter() Country? country,

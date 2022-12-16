@@ -21,7 +21,7 @@ class AuthService implements AuthServiceInterface {
     try {
       final credential =
           await _ref.read(firebaseAuthProvider).signInAnonymously();
-      user = user.copyWith(userId: credential.user!.uid);
+      user = user.copyWith(id: credential.user!.uid);
       return user;
     } on FirebaseException catch (e) {
       throw e.toString();

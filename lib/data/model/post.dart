@@ -15,6 +15,7 @@ part 'post.g.dart';
 class Post with _$Post {
   const Post._();
   const factory Post({
+    @JsonKey(name: 'id') required String id,
     @JsonKey(name: 'title') required String title,
     @JsonKey(name: 'content') @NewLineStringConverter() required String content,
     @JsonKey(name: 'audioUrl') required String audioUrl,
@@ -24,6 +25,7 @@ class Post with _$Post {
     @JsonKey(name: 'language') @LanguageConverter() required Language language,
     @JsonKey(name: 'correctionCount') @Default(0) int correctionCount,
     @JsonKey(name: 'postedAt') @DateTimeConverter() DateTime? postedAt,
+    @JsonKey(name: 'updatedAt') @DateTimeConverter() DateTime? updatedAt,
     @JsonKey(ignore: true) User? user,
   }) = _Post;
 

@@ -2,23 +2,42 @@ import 'package:flutter/material.dart';
 import 'package:writing_exchange/app/app_routes.dart';
 import 'package:writing_exchange/pages/correction/correction_edit/correction_edit_view.dart';
 import 'package:writing_exchange/pages/writing/create_writing/create_writing_view.dart';
+import 'package:writing_exchange/pages/writing/writing_detail/writing_detail_view.dart';
 import 'package:writing_exchange/pages/writing/writing_top/writing_top_view.dart';
 
-Map<String, WidgetBuilder> writingFlow(BuildContext context, Function push) {
+Map<String, Function> writingFlow(BuildContext context) {
   return {
     AppRoutes.writingTop: (context) => WritingTopView(
           onPressCreateNew: () => {
-            push(
+            Navigator.push<Widget>(
               context,
-              AppRoutes.createWriting,
-              pushModaly: true,
+              MaterialPageRoute(
+                builder: (context) =>
+                    writingFlow(context)[AppRoutes.createWriting]!(context),
+                fullscreenDialog: true,
+              ),
             ),
           },
           onPressGoToCorrection: () => {
-            push(
+            Navigator.push<Widget>(
               context,
-              AppRoutes.correctionEdit,
-            )
+              MaterialPageRoute(
+                builder: (context) =>
+                    writingFlow(context)[AppRoutes.correctionEdit]!(context),
+              ),
+            ),
+          },
+          onTapCard: (postId) => {
+            Navigator.push<Widget>(
+              context,
+              MaterialPageRoute(
+                builder: (context) =>
+                    writingFlow(context)[AppRoutes.writingDetail]!(
+                  context,
+                  postId,
+                ),
+              ),
+            ),
           },
         ),
     AppRoutes.createWriting: (context) => CreateWritingView(
@@ -30,6 +49,8 @@ Map<String, WidgetBuilder> writingFlow(BuildContext context, Function push) {
           onFinishCorrection: () => {
             Navigator.pop(context),
           },
-        )
+        ),
+    AppRoutes.writingDetail: (context, postId) =>
+        WritingDetailView(postId: postId)
   };
 }

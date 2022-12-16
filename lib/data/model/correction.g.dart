@@ -8,6 +8,7 @@ part of 'correction.dart';
 
 _$_Correction _$$_CorrectionFromJson(Map<String, dynamic> json) =>
     _$_Correction(
+      id: json['id'] as String,
       originalTexts: (json['originalTexts'] as List<dynamic>)
           .map((e) => e as String)
           .toList(),
@@ -31,6 +32,7 @@ _$_Correction _$$_CorrectionFromJson(Map<String, dynamic> json) =>
 
 Map<String, dynamic> _$$_CorrectionToJson(_$_Correction instance) =>
     <String, dynamic>{
+      'id': instance.id,
       'originalTexts': instance.originalTexts,
       'correctedTexts': instance.correctedTexts,
       'comment': instance.comment,
