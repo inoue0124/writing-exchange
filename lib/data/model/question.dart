@@ -5,6 +5,7 @@ import 'package:writing_exchange/data/model/datetime_converter.dart';
 import 'package:writing_exchange/data/model/language_converter.dart';
 import 'package:writing_exchange/data/model/question_message.dart';
 import 'package:writing_exchange/data/model/question_type.dart';
+import 'package:writing_exchange/data/model/user.dart';
 
 part 'question.freezed.dart';
 part 'question.g.dart';
@@ -13,6 +14,7 @@ part 'question.g.dart';
 class Question with _$Question {
   const Question._();
   const factory Question({
+    @JsonKey(name: 'id') required String id,
     @JsonKey(name: 'type') required QuestionType type,
     @JsonKey(name: 'targetLanguage')
     @LanguageConverter()
@@ -22,10 +24,12 @@ class Question with _$Question {
         required Language answerLanguage,
     @JsonKey(name: 'phraseA') required String phraseA,
     @JsonKey(name: 'phraseB') String? phraseB,
-    @JsonKey(name: 'messages') required List<QuestionMessage> messages,
+    // @JsonKey(name: 'messages') required List<QuestionMessage> messages,
     @JsonKey(name: 'questionedAt')
     @DateTimeConverter()
         required DateTime questionedAt,
+    @JsonKey(name: 'userId') String? userId,
+    @JsonKey(ignore: true) User? user,
   }) = _Question;
 
   factory Question.fromJson(Map<String, dynamic> json) =>

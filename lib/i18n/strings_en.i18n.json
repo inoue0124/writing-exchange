@@ -17,5 +17,6 @@
   "walkthroughTitle3": "Ask native speakers!",
   "walkthroughSubitle1": "Improve your writing skills by writing essays on various topics such as daily events, future dreams and goals, work and lifestyle.",
   "walkthroughSubitle2": "Every time you correct someone else's essay once, your essay will be corrected once by a native speaker.",
-  "walkthroughSubitle3": "You can ask native speakers as many questions as you have answered other learners' questions."
+  "walkthroughSubitle3": "You can ask native speakers as many questions as you have answered other learners' questions.",
+  "questionType1": "Whats the difference between ${phraseA} and ${phraseB}?"
 }

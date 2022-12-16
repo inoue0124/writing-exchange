@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:writing_exchange/components/loading_state_view.dart';
-import 'package:writing_exchange/pages/writing/writing_top/writing_list_view.dart';
+import 'package:writing_exchange/pages/writing/writing_top/writing_list/writing_list_view.dart';
 import 'package:writing_exchange/pages/writing/writing_top/writing_top_viewmodel.dart';
 
 class WritingTopView extends ConsumerWidget {

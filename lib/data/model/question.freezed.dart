@@ -23,7 +23,9 @@ class _$QuestionTearOff {
   const _$QuestionTearOff();
 
   _Question call(
-      {@JsonKey(name: 'type')
+      {@JsonKey(name: 'id')
+          required String id,
+      @JsonKey(name: 'type')
           required QuestionType type,
       @JsonKey(name: 'targetLanguage')
       @LanguageConverter()
@@ -35,19 +37,23 @@ class _$QuestionTearOff {
           required String phraseA,
       @JsonKey(name: 'phraseB')
           String? phraseB,
-      @JsonKey(name: 'messages')
-          required List<QuestionMessage> messages,
       @JsonKey(name: 'questionedAt')
       @DateTimeConverter()
-          required DateTime questionedAt}) {
+          required DateTime questionedAt,
+      @JsonKey(name: 'userId')
+          String? userId,
+      @JsonKey(ignore: true)
+          User? user}) {
     return _Question(
+      id: id,
       type: type,
       targetLanguage: targetLanguage,
       answerLanguage: answerLanguage,
       phraseA: phraseA,
       phraseB: phraseB,
-      messages: messages,
       questionedAt: questionedAt,
+      userId: userId,
+      user: user,
     );
   }
 
@@ -61,6 +67,8 @@ const $Question = _$QuestionTearOff();
 
 /// @nodoc
 mixin _$Question {
+  @JsonKey(name: 'id')
+  String get id => throw _privateConstructorUsedError;
   @JsonKey(name: 'type')
   QuestionType get type => throw _privateConstructorUsedError;
   @JsonKey(name: 'targetLanguage')
@@ -72,12 +80,15 @@ mixin _$Question {
   @JsonKey(name: 'phraseA')
   String get phraseA => throw _privateConstructorUsedError;
   @JsonKey(name: 'phraseB')
-  String? get phraseB => throw _privateConstructorUsedError;
-  @JsonKey(name: 'messages')
-  List<QuestionMessage> get messages => throw _privateConstructorUsedError;
+  String? get phraseB =>
+      throw _privateConstructorUsedError; // @JsonKey(name: 'messages') required List<QuestionMessage> messages,
   @JsonKey(name: 'questionedAt')
   @DateTimeConverter()
   DateTime get questionedAt => throw _privateConstructorUsedError;
+  @JsonKey(name: 'userId')
+  String? get userId => throw _privateConstructorUsedError;
+  @JsonKey(ignore: true)
+  User? get user => throw _privateConstructorUsedError;
 
   Map<String, dynamic> toJson() => throw _privateConstructorUsedError;
   @JsonKey(ignore: true)
@@ -90,7 +101,9 @@ abstract class $QuestionCopyWith<$Res> {
   factory $QuestionCopyWith(Question value, $Res Function(Question) then) =
       _$QuestionCopyWithImpl<$Res>;
   $Res call(
-      {@JsonKey(name: 'type')
+      {@JsonKey(name: 'id')
+          String id,
+      @JsonKey(name: 'type')
           QuestionType type,
       @JsonKey(name: 'targetLanguage')
       @LanguageConverter()
@@ -102,11 +115,15 @@ abstract class $QuestionCopyWith<$Res> {
           String phraseA,
       @JsonKey(name: 'phraseB')
           String? phraseB,
-      @JsonKey(name: 'messages')
-          List<QuestionMessage> messages,
       @JsonKey(name: 'questionedAt')
       @DateTimeConverter()
-          DateTime questionedAt});
+          DateTime questionedAt,
+      @JsonKey(name: 'userId')
+          String? userId,
+      @JsonKey(ignore: true)
+          User? user});
+
+  $UserCopyWith<$Res>? get user;
 }
 
 /// @nodoc
@@ -119,15 +136,21 @@ class _$QuestionCopyWithImpl<$Res> implements $QuestionCopyWith<$Res> {
 
   @override
   $Res call({
+    Object? id = freezed,
     Object? type = freezed,
     Object? targetLanguage = freezed,
     Object? answerLanguage = freezed,
     Object? phraseA = freezed,
     Object? phraseB = freezed,
-    Object? messages = freezed,
     Object? questionedAt = freezed,
+    Object? userId = freezed,
+    Object? user = freezed,
   }) {
     return _then(_value.copyWith(
+      id: id == freezed
+          ? _value.id
+          : id // ignore: cast_nullable_to_non_nullable
+              as String,
       type: type == freezed
           ? _value.type
           : type // ignore: cast_nullable_to_non_nullable
@@ -148,15 +171,30 @@ class _$QuestionCopyWithImpl<$Res> implements $QuestionCopyWith<$Res> {
           ? _value.phraseB
           : phraseB // ignore: cast_nullable_to_non_nullable
               as String?,
-      messages: messages == freezed
-          ? _value.messages
-          : messages // ignore: cast_nullable_to_non_nullable
-              as List<QuestionMessage>,
       questionedAt: questionedAt == freezed
           ? _value.questionedAt
           : questionedAt // ignore: cast_nullable_to_non_nullable
               as DateTime,
+      userId: userId == freezed
+          ? _value.userId
+          : userId // ignore: cast_nullable_to_non_nullable
+              as String?,
+      user: user == freezed
+          ? _value.user
+          : user // ignore: cast_nullable_to_non_nullable
+              as User?,
     ));
+  }
+
+  @override
+  $UserCopyWith<$Res>? get user {
+    if (_value.user == null) {
+      return null;
+    }
+
+    return $UserCopyWith<$Res>(_value.user!, (value) {
+      return _then(_value.copyWith(user: value));
+    });
   }
 }
 
@@ -166,7 +204,9 @@ abstract class _$QuestionCopyWith<$Res> implements $QuestionCopyWith<$Res> {
       __$QuestionCopyWithImpl<$Res>;
   @override
   $Res call(
-      {@JsonKey(name: 'type')
+      {@JsonKey(name: 'id')
+          String id,
+      @JsonKey(name: 'type')
           QuestionType type,
       @JsonKey(name: 'targetLanguage')
       @LanguageConverter()
@@ -178,11 +218,16 @@ abstract class _$QuestionCopyWith<$Res> implements $QuestionCopyWith<$Res> {
           String phraseA,
       @JsonKey(name: 'phraseB')
           String? phraseB,
-      @JsonKey(name: 'messages')
-          List<QuestionMessage> messages,
       @JsonKey(name: 'questionedAt')
       @DateTimeConverter()
-          DateTime questionedAt});
+          DateTime questionedAt,
+      @JsonKey(name: 'userId')
+          String? userId,
+      @JsonKey(ignore: true)
+          User? user});
+
+  @override
+  $UserCopyWith<$Res>? get user;
 }
 
 /// @nodoc
@@ -196,15 +241,21 @@ class __$QuestionCopyWithImpl<$Res> extends _$QuestionCopyWithImpl<$Res>
 
   @override
   $Res call({
+    Object? id = freezed,
     Object? type = freezed,
     Object? targetLanguage = freezed,
     Object? answerLanguage = freezed,
     Object? phraseA = freezed,
     Object? phraseB = freezed,
-    Object? messages = freezed,
     Object? questionedAt = freezed,
+    Object? userId = freezed,
+    Object? user = freezed,
   }) {
     return _then(_Question(
+      id: id == freezed
+          ? _value.id
+          : id // ignore: cast_nullable_to_non_nullable
+              as String,
       type: type == freezed
           ? _value.type
           : type // ignore: cast_nullable_to_non_nullable
@@ -225,14 +276,18 @@ class __$QuestionCopyWithImpl<$Res> extends _$QuestionCopyWithImpl<$Res>
           ? _value.phraseB
           : phraseB // ignore: cast_nullable_to_non_nullable
               as String?,
-      messages: messages == freezed
-          ? _value.messages
-          : messages // ignore: cast_nullable_to_non_nullable
-              as List<QuestionMessage>,
       questionedAt: questionedAt == freezed
           ? _value.questionedAt
           : questionedAt // ignore: cast_nullable_to_non_nullable
               as DateTime,
+      userId: userId == freezed
+          ? _value.userId
+          : userId // ignore: cast_nullable_to_non_nullable
+              as String?,
+      user: user == freezed
+          ? _value.user
+          : user // ignore: cast_nullable_to_non_nullable
+              as User?,
     ));
   }
 }
@@ -241,7 +296,9 @@ class __$QuestionCopyWithImpl<$Res> extends _$QuestionCopyWithImpl<$Res>
 @JsonSerializable()
 class _$_Question extends _Question {
   const _$_Question(
-      {@JsonKey(name: 'type')
+      {@JsonKey(name: 'id')
+          required this.id,
+      @JsonKey(name: 'type')
           required this.type,
       @JsonKey(name: 'targetLanguage')
       @LanguageConverter()
@@ -253,16 +310,21 @@ class _$_Question extends _Question {
           required this.phraseA,
       @JsonKey(name: 'phraseB')
           this.phraseB,
-      @JsonKey(name: 'messages')
-          required this.messages,
       @JsonKey(name: 'questionedAt')
       @DateTimeConverter()
-          required this.questionedAt})
+          required this.questionedAt,
+      @JsonKey(name: 'userId')
+          this.userId,
+      @JsonKey(ignore: true)
+          this.user})
       : super._();
 
   factory _$_Question.fromJson(Map<String, dynamic> json) =>
       _$$_QuestionFromJson(json);
 
+  @override
+  @JsonKey(name: 'id')
+  final String id;
   @override
   @JsonKey(name: 'type')
   final QuestionType type;
@@ -280,17 +342,20 @@ class _$_Question extends _Question {
   @override
   @JsonKey(name: 'phraseB')
   final String? phraseB;
-  @override
-  @JsonKey(name: 'messages')
-  final List<QuestionMessage> messages;
-  @override
+  @override // @JsonKey(name: 'messages') required List<QuestionMessage> messages,
   @JsonKey(name: 'questionedAt')
   @DateTimeConverter()
   final DateTime questionedAt;
+  @override
+  @JsonKey(name: 'userId')
+  final String? userId;
+  @override
+  @JsonKey(ignore: true)
+  final User? user;
 
   @override
   String toString() {
-    return 'Question(type: $type, targetLanguage: $targetLanguage, answerLanguage: $answerLanguage, phraseA: $phraseA, phraseB: $phraseB, messages: $messages, questionedAt: $questionedAt)';
+    return 'Question(id: $id, type: $type, targetLanguage: $targetLanguage, answerLanguage: $answerLanguage, phraseA: $phraseA, phraseB: $phraseB, questionedAt: $questionedAt, userId: $userId, user: $user)';
   }
 
   @override
@@ -298,6 +363,7 @@ class _$_Question extends _Question {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
             other is _Question &&
+            const DeepCollectionEquality().equals(other.id, id) &&
             const DeepCollectionEquality().equals(other.type, type) &&
             const DeepCollectionEquality()
                 .equals(other.targetLanguage, targetLanguage) &&
@@ -305,21 +371,24 @@ class _$_Question extends _Question {
                 .equals(other.answerLanguage, answerLanguage) &&
             const DeepCollectionEquality().equals(other.phraseA, phraseA) &&
             const DeepCollectionEquality().equals(other.phraseB, phraseB) &&
-            const DeepCollectionEquality().equals(other.messages, messages) &&
             const DeepCollectionEquality()
-                .equals(other.questionedAt, questionedAt));
+                .equals(other.questionedAt, questionedAt) &&
+            const DeepCollectionEquality().equals(other.userId, userId) &&
+            const DeepCollectionEquality().equals(other.user, user));
   }
 
   @override
   int get hashCode => Object.hash(
       runtimeType,
+      const DeepCollectionEquality().hash(id),
       const DeepCollectionEquality().hash(type),
       const DeepCollectionEquality().hash(targetLanguage),
       const DeepCollectionEquality().hash(answerLanguage),
       const DeepCollectionEquality().hash(phraseA),
       const DeepCollectionEquality().hash(phraseB),
-      const DeepCollectionEquality().hash(messages),
-      const DeepCollectionEquality().hash(questionedAt));
+      const DeepCollectionEquality().hash(questionedAt),
+      const DeepCollectionEquality().hash(userId),
+      const DeepCollectionEquality().hash(user));
 
   @JsonKey(ignore: true)
   @override
@@ -334,7 +403,9 @@ class _$_Question extends _Question {
 
 abstract class _Question extends Question {
   const factory _Question(
-      {@JsonKey(name: 'type')
+      {@JsonKey(name: 'id')
+          required String id,
+      @JsonKey(name: 'type')
           required QuestionType type,
       @JsonKey(name: 'targetLanguage')
       @LanguageConverter()
@@ -346,15 +417,20 @@ abstract class _Question extends Question {
           required String phraseA,
       @JsonKey(name: 'phraseB')
           String? phraseB,
-      @JsonKey(name: 'messages')
-          required List<QuestionMessage> messages,
       @JsonKey(name: 'questionedAt')
       @DateTimeConverter()
-          required DateTime questionedAt}) = _$_Question;
+          required DateTime questionedAt,
+      @JsonKey(name: 'userId')
+          String? userId,
+      @JsonKey(ignore: true)
+          User? user}) = _$_Question;
   const _Question._() : super._();
 
   factory _Question.fromJson(Map<String, dynamic> json) = _$_Question.fromJson;
 
+  @override
+  @JsonKey(name: 'id')
+  String get id;
   @override
   @JsonKey(name: 'type')
   QuestionType get type;
@@ -372,13 +448,16 @@ abstract class _Question extends Question {
   @override
   @JsonKey(name: 'phraseB')
   String? get phraseB;
-  @override
-  @JsonKey(name: 'messages')
-  List<QuestionMessage> get messages;
-  @override
+  @override // @JsonKey(name: 'messages') required List<QuestionMessage> messages,
   @JsonKey(name: 'questionedAt')
   @DateTimeConverter()
   DateTime get questionedAt;
+  @override
+  @JsonKey(name: 'userId')
+  String? get userId;
+  @override
+  @JsonKey(ignore: true)
+  User? get user;
   @override
   @JsonKey(ignore: true)
   _$QuestionCopyWith<_Question> get copyWith =>

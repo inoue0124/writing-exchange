@@ -4,7 +4,7 @@ import 'package:language_picker/languages.dart';
 import 'package:writing_exchange/components/multiple_image_upload.dart';
 import 'package:writing_exchange/components/rounded_button.dart';
 import 'package:writing_exchange/pages/writing/create_writing/create_writing_viewmodel.dart';
-import 'package:writing_exchange/pages/writing/writing_top/writing_list_viewmodel.dart';
+import 'package:writing_exchange/pages/writing/writing_top/writing_list/writing_list_viewmodel.dart';
 import 'package:writing_exchange/pages/writing/writing_top/writing_top_viewmodel.dart';
 
 class CreateWritingView extends ConsumerWidget {

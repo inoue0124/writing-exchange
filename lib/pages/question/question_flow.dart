@@ -4,6 +4,10 @@ import 'package:writing_exchange/pages/question/question_top/question_top_view.d
 
 Map<String, WidgetBuilder> questionFlow(BuildContext context) {
   return {
-    AppRoutes.questionTop: (context) => QuestionTopView(),
+    AppRoutes.questionTop: (context) => QuestionTopView(
+          onPressCreateNew: () => {},
+          onPressGoToCorrection: () => {},
+          onTapCard: (postId) => {},
+        ),
   };
 }

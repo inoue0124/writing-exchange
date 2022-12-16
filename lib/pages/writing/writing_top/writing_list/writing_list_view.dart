@@ -5,7 +5,7 @@ import 'package:writing_exchange/components/empty_state_view.dart';
 import 'package:writing_exchange/components/loading_state_view.dart';
 import 'package:writing_exchange/components/post_list_item.dart';
 import 'package:writing_exchange/i18n/strings.g.dart';
-import 'package:writing_exchange/pages/writing/writing_top/writing_list_viewmodel.dart';
+import 'package:writing_exchange/pages/writing/writing_top/writing_list/writing_list_viewmodel.dart';
 
 class WritingListView extends ConsumerWidget {
   WritingListView({

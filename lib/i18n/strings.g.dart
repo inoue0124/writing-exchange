@@ -1,9 +1,9 @@
 /// Generated file. Do not edit.
 ///
 /// Locales: 2
-/// Strings: 38 (19 per locale)
+/// Strings: 40 (20 per locale)
 ///
-/// Built on 2022-12-10 at 13:57 UTC
+/// Built on 2022-12-16 at 17:43 UTC
 
 // coverage:ignore-file
 // ignore_for_file: type=lint
@@ -167,6 +167,7 @@ class _StringsEn implements BaseTranslations<AppLocale, _StringsEn> {
 	String get walkthroughSubitle1 => 'Improve your writing skills by writing essays on various topics such as daily events, future dreams and goals, work and lifestyle.';
 	String get walkthroughSubitle2 => 'Every time you correct someone else\'s essay once, your essay will be corrected once by a native speaker.';
 	String get walkthroughSubitle3 => 'You can ask native speakers as many questions as you have answered other learners\' questions.';
+	String questionType1({required Object phraseA, required Object phraseB}) => 'Whats the difference between ${phraseA} and ${phraseB}?';
 }
 
 // Path: <root>
@@ -213,6 +214,7 @@ class _StringsJa implements _StringsEn {
 	@override String get walkthroughSubitle1 => '毎日の出来事、将来の夢や目標、仕事やライフスタイルなど色々なテーマの作文で、外国語のライティング能力を高めましょう。';
 	@override String get walkthroughSubitle2 => '他の人の作文を1回添削する毎に、あなたの作文をネイティブが1回添削してくれます。';
 	@override String get walkthroughSubitle3 => 'あなたが他の学習者の質問に回答した数だけ、ネイティブに質問することができます。';
+	@override String questionType1({required Object phraseA, required Object phraseB}) => '${phraseA}と${phraseB}の違いは何ですか？';
 }
 
 /// Flat map(s) containing all translations.
@@ -240,6 +242,7 @@ extension on _StringsEn {
 			case 'walkthroughSubitle1': return 'Improve your writing skills by writing essays on various topics such as daily events, future dreams and goals, work and lifestyle.';
 			case 'walkthroughSubitle2': return 'Every time you correct someone else\'s essay once, your essay will be corrected once by a native speaker.';
 			case 'walkthroughSubitle3': return 'You can ask native speakers as many questions as you have answered other learners\' questions.';
+			case 'questionType1': return ({required Object phraseA, required Object phraseB}) => 'Whats the difference between ${phraseA} and ${phraseB}?';
 			default: return null;
 		}
 	}
@@ -267,6 +270,7 @@ extension on _StringsJa {
 			case 'walkthroughSubitle1': return '毎日の出来事、将来の夢や目標、仕事やライフスタイルなど色々なテーマの作文で、外国語のライティング能力を高めましょう。';
 			case 'walkthroughSubitle2': return '他の人の作文を1回添削する毎に、あなたの作文をネイティブが1回添削してくれます。';
 			case 'walkthroughSubitle3': return 'あなたが他の学習者の質問に回答した数だけ、ネイティブに質問することができます。';
+			case 'questionType1': return ({required Object phraseA, required Object phraseB}) => '${phraseA}と${phraseB}の違いは何ですか？';
 			default: return null;
 		}
 	}
